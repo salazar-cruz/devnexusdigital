@@ -1,7 +1,131 @@
-const header=document.querySelector('.site-header');const progress=document.querySelector('.scroll-progress');const toggle=document.querySelector('.menu-toggle');const nav=document.querySelector('.main-nav');function onScroll(){const y=window.scrollY;header.classList.toggle('scrolled',y>30);const h=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(h>0?y/h*100:0)+'%'}window.addEventListener('scroll',onScroll,{passive:true});onScroll();if(toggle&&nav){toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false')}))}const revealObs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');revealObs.unobserve(entry.target)}})},{threshold:.14});document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));const chartObs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.querySelectorAll('.bars i').forEach(i=>{i.style.width=i.dataset.width||'75%'});const donut=entry.target.querySelector('.donut');if(donut){const p=Number(donut.dataset.percent||0);const c=439.82;const circle=donut.querySelector('.progress');circle.style.strokeDashoffset=c-(c*p/100)}chartObs.unobserve(entry.target)})},{threshold:.28});document.querySelectorAll('.chart-card').forEach(el=>chartObs.observe(el));
+const menuToggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu");
 
-// Network animation, leve e sem bibliotecas externas
-const canvas=document.getElementById('networkCanvas');if(canvas){const ctx=canvas.getContext('2d');let w,h,nodes=[];const count=48;function resize(){w=canvas.width=canvas.offsetWidth*devicePixelRatio;h=canvas.height=canvas.offsetHeight*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);nodes=Array.from({length:count},()=>({x:Math.random()*canvas.offsetWidth,y:Math.random()*canvas.offsetHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*2+1}))}window.addEventListener('resize',resize);resize();function draw(){const cw=canvas.offsetWidth,ch=canvas.offsetHeight;ctx.clearRect(0,0,cw,ch);for(const a of nodes){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>cw)a.vx*=-1;if(a.y<0||a.y>ch)a.vy*=-1;ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle='rgba(0,143,227,.42)';ctx.fill()}for(let i=0;i<nodes.length;i++){for(let j=i+1;j<nodes.length;j++){const a=nodes[i],b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);if(d<145){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(0,143,227,${(1-d/145)*.18})`;ctx.lineWidth=1;ctx.stroke()}}}requestAnimationFrame(draw)}draw()}
+if (menuToggle && menu) {
+  menuToggle.addEventListener("click", () => {
+    const open = menu.classList.toggle("open");
+    menuToggle.classList.toggle("open", open);
+    menuToggle.setAttribute("aria-expanded", String(open));
+  });
 
-// Formulário directo via FormSubmit AJAX. Na primeira mensagem, FormSubmit pede confirmação no email configurado.
-const form=document.getElementById('contactForm');const statusEl=document.getElementById('formStatus');if(form){form.addEventListener('submit',async(e)=>{e.preventDefault();statusEl.textContent='A enviar mensagem...';const data=new FormData(form);try{const res=await fetch('https://formsubmit.co/ajax/econsulting.cv@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:data});if(!res.ok)throw new Error('Erro no envio');form.reset();statusEl.textContent='Mensagem enviada. Verifique também o email de confirmação do serviço, se for a primeira submissão.'}catch(err){statusEl.textContent='Não foi possível enviar por AJAX. A tentar envio directo...';setTimeout(()=>form.submit(),800)}})}
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      menuToggle.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) entry.target.classList.add("visible");
+  });
+}, { threshold: 0.14 });
+
+document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+
+const canvas = document.getElementById("network-bg");
+const ctx = canvas?.getContext("2d");
+let points = [];
+let rafId;
+
+function resizeCanvas() {
+  if (!canvas || !ctx) return;
+  canvas.width = window.innerWidth * window.devicePixelRatio;
+  canvas.height = window.innerHeight * window.devicePixelRatio;
+  ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+  const count = Math.min(72, Math.max(32, Math.floor(window.innerWidth / 22)));
+  points = Array.from({ length: count }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    vx: (Math.random() - .5) * .22,
+    vy: (Math.random() - .5) * .22
+  }));
+}
+
+function drawNetwork() {
+  if (!canvas || !ctx) return;
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+  for (const p of points) {
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0 || p.x > window.innerWidth) p.vx *= -1;
+    if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
+  }
+
+  for (let i = 0; i < points.length; i++) {
+    for (let j = i + 1; j < points.length; j++) {
+      const a = points[i], b = points[j];
+      const dx = a.x - b.x, dy = a.y - b.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 150) {
+        ctx.strokeStyle = `rgba(0, 143, 227, ${0.11 * (1 - dist / 150)})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  for (const p of points) {
+    ctx.fillStyle = "rgba(0, 189, 214, .22)";
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  rafId = requestAnimationFrame(drawNetwork);
+}
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  resizeCanvas();
+  drawNetwork();
+  window.addEventListener("resize", () => {
+    cancelAnimationFrame(rafId);
+    resizeCanvas();
+    drawNetwork();
+  });
+}
+
+const form = document.getElementById("contactForm");
+const statusEl = document.getElementById("formStatus");
+
+if (form && statusEl) {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const endpoint = form.getAttribute("action") || "";
+    if (endpoint.includes("COLOCAR_ID")) {
+      statusEl.textContent = "Formulário ainda sem endpoint. Configure o Formspree no ficheiro index.html.";
+      statusEl.style.color = "#8a4b00";
+      return;
+    }
+
+    statusEl.textContent = "A enviar...";
+    statusEl.style.color = "#5e6f84";
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      });
+
+      if (response.ok) {
+        form.reset();
+        statusEl.textContent = "Mensagem enviada. Obrigado.";
+        statusEl.style.color = "#0c7a43";
+      } else {
+        statusEl.textContent = "Não foi possível enviar. Verifique a configuração do formulário.";
+        statusEl.style.color = "#a12a2a";
+      }
+    } catch (error) {
+      statusEl.textContent = "Falha de rede. Tente novamente dentro de instantes.";
+      statusEl.style.color = "#a12a2a";
+    }
+  });
+}

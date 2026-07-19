@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#071f45"/>
+  <circle cx="1000" cy="120" r="340" fill="#008fe3" opacity=".16"/>
+  <circle cx="110" cy="580" r="260" fill="#00bdd6" opacity=".10"/>
+  <path d="M0 515 C260 420 430 590 700 480 C880 410 1020 380 1200 420" fill="none" stroke="#00bdd6" stroke-width="3" opacity=".3"/>
+  <text x="90" y="245" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="800" letter-spacing="-3" fill="#ffffff">DevNexus Digital</text>
+  <text x="94" y="315" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#c8e8ff">Transformação digital com visão institucional</text>
+  <text x="94" y="380" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#9fb5c9">Educação · Saúde · Eleições · Administração Pública</text>
+</svg>

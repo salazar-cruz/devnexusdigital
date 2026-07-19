@@ -1,20 +1,30 @@
-DEVNEXUS DIGITAL — VERSÃO PROFISSIONAL
+DEVNEXUS DIGITAL — VERSÃO EXECUTIVA
 
 O que mudou:
-- Imagens convertidas e optimizadas para WebP.
-- Logo limpo e mais leve.
-- Design mais profissional: hero com canvas animado, cards, timeline, gráficos animados e transições suaves.
-- Formulário deixa de abrir o cliente de email. Envia via FormSubmit para: econsulting.cv@gmail.com.
+- Remove a estética pesada/brega.
+- Usa logo vectorial limpo em SVG.
+- Usa imagem de fundo optimizada em WebP.
+- Animação de rede leve em canvas.
+- Design mais sóbrio, institucional e profissional.
+- Sem email pessoal no código.
+- Formulário sem mailto.
 
-IMPORTANTE SOBRE O FORMULÁRIO:
-Na primeira submissão, o FormSubmit envia um email de confirmação para econsulting.cv@gmail.com.
-É preciso confirmar essa mensagem uma vez. Depois disso, o formulário passa a enviar directamente.
+FORMULÁRIO:
+O site está no GitHub Pages, que é alojamento estático e não executa backend.
+Para envio directo, cria uma conta Formspree e um formulário para o email corporativo pretendido.
 
-Como publicar no GitHub Desktop:
-1. Descompactar este ZIP.
-2. Copiar index.html, style.css, script.js, obrigado.html e a pasta assets para a pasta local do repositório devnexusdigital.
-3. Substituir os ficheiros antigos.
-4. Abrir GitHub Desktop.
-5. Commit to main.
-6. Push origin.
-7. Esperar 1 a 3 minutos e abrir https://devnexusdigital.com/
+Passos:
+1. Vai a https://formspree.io
+2. Cria um form para o email correcto.
+3. Copia o endpoint, algo como https://formspree.io/f/abcdwxyz
+4. Abre index.html
+5. Procura: https://formspree.io/f/COLOCAR_ID
+6. Substitui pelo endpoint real.
+7. Faz Commit e Push no GitHub Desktop.
+
+PUBLICAÇÃO:
+1. Copia index.html, style.css, script.js e assets/ para a pasta do repositório devnexusdigital.
+2. Substitui os ficheiros antigos.
+3. GitHub Desktop -> Commit to main.
+4. Push origin.
+5. Espera 1 a 3 minutos.
