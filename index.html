@@ -1,198 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DevNexus Digital | Transformação Digital Institucional</title>
-  <meta name="description" content="Consultoria em transformação digital, governação de dados, sistemas de informação e modernização institucional para educação, saúde, eleições e administração pública." />
-  <meta property="og:title" content="DevNexus Digital" />
-  <meta property="og:description" content="Transformação digital com visão institucional." />
-  <meta property="og:image" content="assets/og-image.svg" />
-  <link rel="icon" href="assets/favicon.svg" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Consultoria em transformação digital, governação de dados, sistemas de informação e modernização institucional para educação, saúde, eleições e administração pública.">
+  <meta property="og:title" content="DevNexus Digital">
+  <meta property="og:description" content="Transformação digital com visão institucional.">
+  <meta property="og:image" content="assets/og.svg">
+  <link rel="icon" href="assets/mark.svg">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="network-bg" aria-hidden="true"></canvas>
+  <canvas id="ambient" aria-hidden="true"></canvas>
 
-  <header class="site-header">
-    <div class="container nav">
+  <header class="header">
+    <div class="wrap nav">
       <a class="brand" href="#inicio" aria-label="DevNexus Digital">
-        <img src="assets/devnexus-logo.svg" alt="DevNexus Digital" />
+        <img src="assets/devnexus-logo.svg" alt="DevNexus Digital">
       </a>
-      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span>
-      </button>
-      <nav class="menu" aria-label="Navegação principal">
+      <button class="navbutton" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+      <nav class="menu" aria-label="Menu principal">
         <a href="#sobre">Sobre</a>
         <a href="#sectores">Sectores</a>
         <a href="#servicos">Serviços</a>
         <a href="#metodo">Método</a>
-        <a href="#contacto" class="menu-cta">Contacto</a>
+        <a href="#contacto" class="navcta">Contacto</a>
       </nav>
     </div>
   </header>
 
   <main id="inicio">
     <section class="hero">
-      <div class="hero-glow"></div>
-      <div class="container hero-grid">
+      <div class="wrap hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Consultoria estratégica e arquitectura digital</p>
+          <p class="eyebrow">Consultoria estratégica · sistemas públicos · dados</p>
           <h1>Transformação digital com visão institucional.</h1>
-          <p class="lead">
-            A DevNexus Digital ajuda instituições públicas, projectos e parceiros de desenvolvimento a transformar processos,
-            dados e sistemas em soluções digitais sólidas, governáveis e sustentáveis.
-          </p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#contacto">Iniciar conversa</a>
-            <a class="btn secondary" href="#servicos">Ver serviços</a>
+          <p class="lead">A DevNexus Digital apoia governos, instituições públicas e projectos na estruturação de soluções digitais sólidas, governáveis e sustentáveis.</p>
+          <div class="actions">
+            <a class="button primary" href="#contacto">Iniciar conversa</a>
+            <a class="button secondary" href="#servicos">Ver serviços</a>
           </div>
-          <div class="hero-meta" aria-label="Áreas principais">
+          <div class="chips">
             <span>Governação digital</span>
             <span>Interoperabilidade</span>
-            <span>Sistemas públicos</span>
+            <span>Arquitectura institucional</span>
           </div>
         </div>
 
-        <aside class="executive-panel reveal from-right" aria-label="Painel DevNexus">
-          <div class="panel-top">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="panel-core">
-            <div class="orbit">
-              <i></i><i></i><i></i>
-              <strong>DN</strong>
+        <aside class="dashboard reveal right" aria-label="Painel executivo DevNexus">
+          <div class="dash-top"><span></span><span></span><span></span></div>
+          <div class="dash-main">
+            <div class="constellation" aria-hidden="true">
+              <i></i><i></i><i></i><b>DN</b>
             </div>
             <div>
-              <h2>Estratégia · Dados · Execução</h2>
-              <p>Da prontidão institucional ao desenho funcional, procurement, implementação e transferência de capacidade.</p>
+              <h2>Estratégia, dados e execução.</h2>
+              <p>Do diagnóstico à implementação, com foco em processos reais e capacidade nacional.</p>
             </div>
           </div>
-          <div class="signal-grid">
-            <div><b>01</b><span>Diagnóstico</span></div>
-            <div><b>02</b><span>Arquitectura</span></div>
-            <div><b>03</b><span>Implementação</span></div>
-            <div><b>04</b><span>Sustentação</span></div>
+          <div class="dash-metrics">
+            <div><strong>04</strong><span>Sectores</span></div>
+            <div><strong>08</strong><span>Entregáveis</span></div>
+            <div><strong>360°</strong><span>Abordagem</span></div>
           </div>
         </aside>
       </div>
     </section>
 
     <section id="sobre" class="section">
-      <div class="container split">
-        <div class="section-heading reveal">
-          <p class="kicker">Quem somos</p>
+      <div class="wrap split">
+        <div class="section-title reveal">
+          <p class="kicker">Sobre</p>
           <h2>Menos ruído tecnológico. Mais clareza institucional.</h2>
         </div>
-        <div class="prose reveal">
-          <p>
-            Trabalhamos no ponto onde muitos projectos digitais falham: entre a decisão política, os processos administrativos,
-            os dados reais, a capacidade das equipas e a tecnologia que deve servir tudo isso.
-          </p>
-          <p>
-            A nossa abordagem começa pela instituição, não pela ferramenta. Primeiro clarificam-se mandatos, fluxos,
-            dados, riscos e responsabilidades. Depois desenha-se a solução tecnológica.
-          </p>
+        <div class="copy reveal">
+          <p>Trabalhamos no ponto onde muitos projectos digitais falham: entre a decisão política, o processo administrativo, o dado real, a capacidade das equipas e a tecnologia que deve servir tudo isso.</p>
+          <p>Primeiro clarificam-se mandatos, fluxos, responsabilidades e riscos. Depois desenha-se a solução. O contrário costuma dar plataformas bonitas, caras e inúteis.</p>
         </div>
       </div>
     </section>
 
-    <section id="sectores" class="section muted-section">
-      <div class="container">
-        <div class="section-heading center reveal">
-          <p class="kicker">Sectores de actuação</p>
+    <section id="sectores" class="section pale">
+      <div class="wrap">
+        <div class="section-title centre reveal">
+          <p class="kicker">Sectores</p>
           <h2>Digitalização onde confiança pública e continuidade operacional contam.</h2>
         </div>
-
-        <div class="sector-grid">
-          <article class="sector-card reveal">
-            <span class="line-icon education"></span>
-            <h3>Educação</h3>
-            <p>SIGE, inventário TIC, dados escolares, conectividade, gestão de escolas e apoio à decisão sectorial.</p>
-          </article>
-          <article class="sector-card reveal">
-            <span class="line-icon health"></span>
-            <h3>Saúde</h3>
-            <p>Fluxos de informação, interoperabilidade, registos, dados de gestão e modernização dos serviços.</p>
-          </article>
-          <article class="sector-card reveal">
-            <span class="line-icon elections"></span>
-            <h3>Eleições</h3>
-            <p>Rastreabilidade, integridade dos dados, segurança, transparência operacional e sistemas eleitorais.</p>
-          </article>
-          <article class="sector-card reveal">
-            <span class="line-icon gov"></span>
-            <h3>Administração Pública</h3>
-            <p>Serviços digitais, arquitectura empresarial, interoperabilidade e reorganização de processos públicos.</p>
-          </article>
+        <div class="grid sectors">
+          <article class="card reveal"><span class="icon edu"></span><h3>Educação</h3><p>SIGE, inventário TIC, dados escolares, conectividade e apoio à decisão sectorial.</p></article>
+          <article class="card reveal"><span class="icon health"></span><h3>Saúde</h3><p>Fluxos de informação, registos, interoperabilidade e modernização dos serviços.</p></article>
+          <article class="card reveal"><span class="icon vote"></span><h3>Eleições</h3><p>Rastreabilidade, integridade dos dados, segurança e transparência operacional.</p></article>
+          <article class="card reveal"><span class="icon gov"></span><h3>Administração Pública</h3><p>Serviços digitais, arquitectura empresarial e reorganização de processos públicos.</p></article>
         </div>
       </div>
     </section>
 
     <section id="servicos" class="section">
-      <div class="container">
-        <div class="section-heading center reveal">
+      <div class="wrap">
+        <div class="section-title centre reveal">
           <p class="kicker">Serviços</p>
           <h2>Do conceito à execução controlada.</h2>
         </div>
-
-        <div class="service-list">
-          <article class="service-row reveal">
-            <span>01</span>
-            <div>
-              <h3>Estratégia e governação digital</h3>
-              <p>Estratégias sectoriais, modelos de governação, roteiros, prioridades e mecanismos de coordenação institucional.</p>
-            </div>
-          </article>
-          <article class="service-row reveal">
-            <span>02</span>
-            <div>
-              <h3>Diagnóstico e prontidão institucional</h3>
-              <p>Levantamento de processos, sistemas, dados, infraestruturas, capacidades, riscos e condições de implementação.</p>
-            </div>
-          </article>
-          <article class="service-row reveal">
-            <span>03</span>
-            <div>
-              <h3>Arquitectura e especificações técnicas</h3>
-              <p>Termos de referência, requisitos funcionais, modelos de dados, perfis de acesso, integrações e critérios de aceitação.</p>
-            </div>
-          </article>
-          <article class="service-row reveal">
-            <span>04</span>
-            <div>
-              <h3>Apoio à implementação e capacitação</h3>
-              <p>Acompanhamento técnico, gestão da mudança, formação, manuais operacionais e transferência de capacidade.</p>
-            </div>
-          </article>
+        <div class="services">
+          <article class="service reveal"><b>01</b><div><h3>Estratégia e governação digital</h3><p>Modelos de governação, roteiros, prioridades, planos de acção e coordenação institucional.</p></div></article>
+          <article class="service reveal"><b>02</b><div><h3>Diagnóstico e prontidão</h3><p>Levantamento de processos, sistemas, dados, infraestruturas, riscos e capacidade operacional.</p></div></article>
+          <article class="service reveal"><b>03</b><div><h3>Arquitectura e especificações</h3><p>Termos de referência, requisitos funcionais, modelos de dados, integrações e critérios de aceitação.</p></div></article>
+          <article class="service reveal"><b>04</b><div><h3>Capacitação e implementação</h3><p>Formação, gestão da mudança, acompanhamento técnico e transferência de capacidade.</p></div></article>
         </div>
       </div>
     </section>
 
-    <section id="metodo" class="section dark-section">
-      <div class="container method-grid">
-        <div class="section-heading reveal">
-          <p class="kicker dark">Método</p>
+    <section id="metodo" class="section dark">
+      <div class="wrap method">
+        <div class="section-title reveal">
+          <p class="kicker dark-kicker">Método</p>
           <h2>Primeiro a instituição. Depois a tecnologia.</h2>
-          <p>Uma sequência limpa para evitar plataformas bonitas, caras e inúteis.</p>
+          <p>Sequência prática para sair do PowerPoint e chegar à operação.</p>
         </div>
-
-        <div class="timeline reveal">
+        <div class="steps reveal">
           <div><b>01</b><span>Entender mandato, processo e problema real.</span></div>
-          <div><b>02</b><span>Mapear dados, sistemas, riscos e actores.</span></div>
+          <div><b>02</b><span>Mapear dados, sistemas, actores e riscos.</span></div>
           <div><b>03</b><span>Desenhar arquitectura, requisitos e plano de execução.</span></div>
           <div><b>04</b><span>Acompanhar implementação, aceitação e transferência.</span></div>
         </div>
       </div>
     </section>
 
-    <section class="section proof-section">
-      <div class="container">
-        <div class="section-heading center reveal">
-          <p class="kicker">Resultados</p>
-          <h2>Entregáveis que ajudam a decidir, contratar e executar.</h2>
+    <section class="section deliver-section">
+      <div class="wrap">
+        <div class="section-title centre reveal">
+          <p class="kicker">Entregáveis</p>
+          <h2>Instrumentos que ajudam a decidir, contratar e executar.</h2>
         </div>
-
         <div class="deliverables reveal">
           <span>Diagnósticos institucionais</span>
           <span>Termos de referência</span>
@@ -206,33 +146,22 @@
       </div>
     </section>
 
-    <section id="contacto" class="section contact-section">
-      <div class="container contact-grid">
-        <div class="section-heading reveal">
+    <section id="contacto" class="section contact">
+      <div class="wrap contact-grid">
+        <div class="section-title reveal">
           <p class="kicker">Contacto</p>
           <h2>Fale com a DevNexus Digital.</h2>
-          <p>
-            Envie uma mensagem com o sector, o desafio e o resultado que pretende alcançar.
-          </p>
-          <div class="contact-note">
-            <strong>Email corporativo:</strong> info@devnexusdigital.com
-          </div>
+          <p>Envie o sector, o desafio e o resultado que pretende alcançar.</p>
+          <div class="note">Email corporativo: <strong>info@devnexusdigital.com</strong></div>
         </div>
 
-        <form id="contactForm" class="contact-form reveal" action="https://formspree.io/f/COLOCAR_ID" method="POST">
-          <input type="hidden" name="_subject" value="Nova mensagem via devnexusdigital.com" />
-          <label>
-            Nome
-            <input type="text" name="nome" autocomplete="name" required />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" autocomplete="email" required />
-          </label>
-          <label>
-            Área de interesse
+        <form class="form reveal" id="contactForm" action="COLOCAR_ENDPOINT_AQUI" method="POST">
+          <input type="hidden" name="subject" value="Nova mensagem via devnexusdigital.com">
+          <label>Nome <input name="nome" required autocomplete="name"></label>
+          <label>Email <input type="email" name="email" required autocomplete="email"></label>
+          <label>Área
             <select name="area" required>
-              <option value="">Seleccione</option>
+              <option value="">Seleccionar</option>
               <option>Transformação digital</option>
               <option>Educação</option>
               <option>Saúde</option>
@@ -241,20 +170,17 @@
               <option>Outra</option>
             </select>
           </label>
-          <label>
-            Mensagem
-            <textarea name="mensagem" rows="5" required></textarea>
-          </label>
-          <button class="btn primary full" type="submit">Enviar mensagem</button>
-          <p id="formStatus" class="form-status" role="status"></p>
+          <label>Mensagem <textarea name="mensagem" rows="5" required></textarea></label>
+          <button class="button primary full" type="submit">Enviar mensagem</button>
+          <p class="status" id="formStatus"></p>
         </form>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <img src="assets/devnexus-logo.svg" alt="DevNexus Digital" />
+  <footer class="footer">
+    <div class="wrap foot">
+      <img src="assets/devnexus-logo.svg" alt="DevNexus Digital">
       <p>© 2026 DevNexus Digital. Transformação digital com visão institucional.</p>
     </div>
   </footer>

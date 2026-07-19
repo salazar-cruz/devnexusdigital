@@ -1,19 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 180" role="img" aria-label="DevNexus Digital">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 150">
   <defs>
-    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#00bdd6"/>
-      <stop offset="0.48" stop-color="#008fe3"/>
-      <stop offset="1" stop-color="#062f5f"/>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14B8C8"/>
+      <stop offset="0.55" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#0B1F3A"/>
     </linearGradient>
   </defs>
-  <g transform="translate(20 18)">
-    <circle cx="72" cy="72" r="26" fill="url(#g)"/>
-    <ellipse cx="72" cy="72" rx="62" ry="28" fill="none" stroke="url(#g)" stroke-width="13" transform="rotate(-28 72 72)" stroke-linecap="round"/>
-    <ellipse cx="72" cy="72" rx="62" ry="28" fill="none" stroke="#062f5f" stroke-width="13" transform="rotate(38 72 72)" stroke-linecap="round" opacity=".9"/>
-    <circle cx="18" cy="108" r="12" fill="#062f5f"/>
-    <circle cx="126" cy="36" r="12" fill="#00bdd6"/>
-    <circle cx="128" cy="116" r="12" fill="#008fe3"/>
+  <g transform="translate(18 17)">
+    <circle cx="58" cy="58" r="16" fill="url(#g)"/>
+    <ellipse cx="58" cy="58" rx="51" ry="21" fill="none" stroke="url(#g)" stroke-width="9" transform="rotate(-27 58 58)" stroke-linecap="round"/>
+    <ellipse cx="58" cy="58" rx="51" ry="21" fill="none" stroke="#0B1F3A" stroke-width="9" transform="rotate(39 58 58)" stroke-linecap="round"/>
+    <circle cx="13" cy="89" r="7" fill="#0B1F3A"/>
+    <circle cx="103" cy="28" r="7" fill="#14B8C8"/>
+    <circle cx="106" cy="91" r="7" fill="#2563EB"/>
   </g>
-  <text x="178" y="94" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="800" letter-spacing="-3" fill="#062f5f">Dev<tspan fill="#008fe3">Nexus</tspan></text>
-  <text x="181" y="130" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="4" fill="#5d6b7c">DIGITAL</text>
+  <text x="150" y="78" font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="800" font-size="54" letter-spacing="-2.8" fill="#0B1F3A">Dev<tspan fill="#2563EB">Nexus</tspan></text>
+  <text x="153" y="111" font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="700" font-size="14" letter-spacing="5" fill="#64748B">DIGITAL</text>
 </svg>
