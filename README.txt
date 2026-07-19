@@ -1,14 +1,18 @@
-Formulário configurado para FormSubmit.
+DevNexus Digital — versão inspirada no template Dev's Portfolio.
 
-Destino:
-info@devnexusdigital.com
+Características:
+- ficheiro único: index.html;
+- visual escuro/minimalista;
+- tipografia grande;
+- cubo 3D animado;
+- faces do cubo: DPI, GovCloud, SIGE, Dados, Ciber, Interop;
+- etiquetas orbitais do ecossistema;
+- marquee com termos de transformação digital;
+- secções tipo case studies;
+- formulário configurado para info@devnexusdigital.com via FormSubmit.
 
 Publicação:
-1. Descompactar o ZIP.
-2. Copiar o index.html para a raiz do repositório devnexusdigital.
+1. Descompactar.
+2. Copiar index.html para a raiz do repositório devnexusdigital.
 3. Substituir o index.html antigo.
-4. No GitHub Desktop: Changes -> Commit -> Push.
-
-Nota importante:
-Na primeira submissão real, o FormSubmit envia uma mensagem de confirmação para info@devnexusdigital.com.
-É obrigatório confirmar esse email uma vez. Depois disso, o formulário passa a enviar normalmente.
+4. GitHub Desktop: Changes -> Commit -> Push.

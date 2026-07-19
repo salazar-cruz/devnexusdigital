@@ -4,23 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DevNexus Digital | Transformação Digital Institucional</title>
-  <meta name="description" content="Consultoria em transformação digital, governação de dados, sistemas de informação e modernização institucional para educação, saúde, eleições e administração pública.">
+  <meta name="description" content="Consultoria em transformação digital, DPI, governação de dados, sistemas públicos, interoperabilidade e modernização institucional.">
 
   <style>
     :root {
-      --ink: #112238;
-      --ink-2: #213650;
-      --muted: #6d7e94;
-      --blue: #5a8dee;
-      --blue-2: #8bb7ff;
-      --teal: #35c2cf;
-      --teal-soft: #c9f5f8;
-      --lavender: #eef1ff;
-      --mist: #f7fbff;
-      --paper: rgba(255,255,255,.72);
-      --paper-solid: #ffffff;
-      --line: rgba(33, 54, 80, .10);
-      --shadow: 0 28px 90px rgba(17, 34, 56, .12);
+      --bg: #0d1117;
+      --bg-2: #111827;
+      --paper: #f4f1ea;
+      --paper-2: #e9e3d6;
+      --ink: #14171f;
+      --muted: #7e8794;
+      --soft: rgba(244,241,234,.10);
+      --soft-2: rgba(244,241,234,.16);
+      --line: rgba(244,241,234,.14);
+      --blue: #8fb7ff;
+      --cyan: #85efe6;
+      --mint: #bdf4df;
+      --sand: #f1d6a8;
+      --rose: #eab7ce;
+      --shadow: 0 40px 130px rgba(0,0,0,.34);
       --radius: 30px;
     }
 
@@ -29,214 +31,146 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-      color: var(--ink);
-      line-height: 1.65;
       min-height: 100vh;
-      overflow-x: hidden;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      color: var(--paper);
       background:
-        radial-gradient(circle at 12% 12%, rgba(201,245,248,.85), transparent 28%),
-        radial-gradient(circle at 82% 6%, rgba(238,241,255,.95), transparent 32%),
-        radial-gradient(circle at 76% 72%, rgba(139,183,255,.18), transparent 35%),
-        linear-gradient(135deg, #ffffff 0%, #f7fbff 46%, #eef7fb 100%);
+        radial-gradient(circle at 18% 8%, rgba(143,183,255,.14), transparent 28%),
+        radial-gradient(circle at 82% 18%, rgba(133,239,230,.12), transparent 30%),
+        radial-gradient(circle at 58% 92%, rgba(241,214,168,.10), transparent 36%),
+        linear-gradient(135deg, #090d13 0%, #0d1117 50%, #111827 100%);
+      overflow-x: hidden;
+      line-height: 1.55;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: .22;
+      background-image:
+        linear-gradient(rgba(244,241,234,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(244,241,234,.06) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at 50% 20%, black, transparent 72%);
     }
 
     a { color: inherit; text-decoration: none; }
-    .wrap { width: min(1160px, 92%); margin-inline: auto; }
 
-    .ambient {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(28px);
-      opacity: .55;
-      animation: drift 18s ease-in-out infinite alternate;
-    }
-
-    .blob.one {
-      width: 420px;
-      height: 420px;
-      left: -120px;
-      top: 80px;
-      background: rgba(53,194,207,.22);
-    }
-
-    .blob.two {
-      width: 520px;
-      height: 520px;
-      right: -160px;
-      top: -120px;
-      background: rgba(90,141,238,.18);
-      animation-duration: 22s;
-    }
-
-    .blob.three {
-      width: 360px;
-      height: 360px;
-      right: 12%;
-      bottom: -140px;
-      background: rgba(201,245,248,.42);
-      animation-duration: 20s;
-    }
-
-    @keyframes drift {
-      from { transform: translate3d(0, 0, 0) scale(1); }
-      to { transform: translate3d(42px, -30px, 0) scale(1.08); }
-    }
-
-    #mesh {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      opacity: .55;
-      pointer-events: none;
+    .wrap {
+      width: min(1200px, 92%);
+      margin-inline: auto;
     }
 
     .header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(255,255,255,.70);
-      backdrop-filter: blur(22px);
-      border-bottom: 1px solid rgba(255,255,255,.65);
-      box-shadow: 0 10px 40px rgba(17,34,56,.045);
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      pointer-events: none;
     }
 
     .nav {
-      height: 80px;
+      min-height: 62px;
+      border: 1px solid rgba(244,241,234,.14);
+      border-radius: 999px;
+      background: rgba(13,17,23,.58);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.18);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      padding: 9px 10px 9px 18px;
+      pointer-events: auto;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 13px;
-      color: var(--ink);
+      gap: 11px;
       font-weight: 900;
-      font-size: 1.32rem;
       letter-spacing: -.045em;
+      color: var(--paper);
     }
 
-    .brand-text span { color: var(--blue); }
+    .brand span span { color: var(--cyan); }
 
-    .logo-orbit {
-      --size: 48px;
-      width: var(--size);
-      height: var(--size);
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
       position: relative;
-      border-radius: 18px;
-      flex: 0 0 auto;
       display: grid;
       place-items: center;
       background:
-        linear-gradient(135deg, rgba(255,255,255,.88), rgba(255,255,255,.44)),
-        linear-gradient(135deg, rgba(53,194,207,.22), rgba(90,141,238,.18));
-      border: 1px solid rgba(255,255,255,.72);
-      box-shadow:
-        0 16px 36px rgba(90,141,238,.16),
-        inset 0 1px 0 rgba(255,255,255,.72);
+        linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.03)),
+        linear-gradient(135deg, rgba(133,239,230,.28), rgba(143,183,255,.22));
+      border: 1px solid rgba(244,241,234,.16);
     }
 
-    .logo-orbit .core {
-      width: 18px;
-      height: 18px;
+    .brand-mark b {
+      width: 13px;
+      height: 13px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), var(--blue));
-      box-shadow: 0 0 22px rgba(53,194,207,.42);
-      z-index: 2;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      box-shadow: 0 0 20px rgba(133,239,230,.44);
     }
 
-    .logo-orbit .ring {
+    .brand-mark i {
       position: absolute;
-      inset: 8px;
-      border: 2px solid rgba(53,194,207,.38);
+      width: 48px;
+      height: 19px;
+      border: 2px solid rgba(133,239,230,.56);
       border-radius: 50%;
-      transform: rotate(-18deg) scaleX(1.2);
+      transform: rotate(-28deg);
     }
 
-    .logo-orbit .ring.two {
-      border-color: rgba(90,141,238,.32);
-      transform: rotate(54deg) scaleX(1.16);
-    }
-
-    .sat {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--teal);
-      transform-origin: -16px -16px;
-      animation: satellite 5.6s linear infinite;
-      box-shadow: 0 0 14px rgba(53,194,207,.7);
-    }
-
-    .sat.two {
-      background: var(--blue);
-      animation-duration: 7.2s;
-      animation-delay: -1.4s;
-      transform-origin: 18px -15px;
-    }
-
-    .sat.three {
-      background: #8bb7ff;
-      animation-duration: 8.8s;
-      animation-delay: -3.1s;
-      transform-origin: -18px 17px;
-    }
-
-    @keyframes satellite {
-      from { transform: rotate(0deg) translateX(25px) rotate(0deg); }
-      to { transform: rotate(360deg) translateX(25px) rotate(-360deg); }
+    .brand-mark i:nth-child(3) {
+      border-color: rgba(143,183,255,.50);
+      transform: rotate(42deg);
     }
 
     .menu {
       display: flex;
       align-items: center;
-      gap: 28px;
-      color: var(--ink-2);
-      font-size: .96rem;
-      font-weight: 760;
+      gap: 6px;
+      font-size: .9rem;
+      font-weight: 740;
+      color: rgba(244,241,234,.78);
     }
 
     .menu a {
-      opacity: .82;
-      transition: .22s;
+      padding: 10px 13px;
+      border-radius: 999px;
+      transition: .22s ease;
     }
 
     .menu a:hover {
-      opacity: 1;
-      color: var(--blue);
+      color: var(--paper);
+      background: rgba(244,241,234,.09);
     }
 
-    .navcta {
-      padding: 11px 17px;
-      border-radius: 999px;
-      color: white !important;
-      background: linear-gradient(135deg, #193657, #477be8);
-      box-shadow: 0 14px 34px rgba(90,141,238,.22);
+    .menu .navcta {
+      color: #0d1117;
+      background: var(--paper);
+      margin-left: 4px;
+    }
+
+    .menu .navcta:hover {
+      color: #0d1117;
+      background: white;
     }
 
     .navbutton {
       display: none;
-      width: 44px;
-      height: 44px;
-      border: 0;
-      border-radius: 15px;
-      background: rgba(25,54,87,.92);
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(244,241,234,.14);
+      border-radius: 50%;
+      background: rgba(244,241,234,.08);
       position: relative;
       cursor: pointer;
     }
@@ -246,524 +180,526 @@
       left: 12px;
       right: 12px;
       height: 2px;
-      background: white;
-      transition: .25s;
+      background: var(--paper);
+      transition: .24s ease;
     }
 
-    .navbutton span:first-child { top: 16px; }
-    .navbutton span:last-child { bottom: 16px; }
-    .navbutton.open span:first-child { top: 21px; transform: rotate(45deg); }
-    .navbutton.open span:last-child { bottom: 21px; transform: rotate(-45deg); }
+    .navbutton span:first-child { top: 15px; }
+    .navbutton span:last-child { bottom: 15px; }
+    .navbutton.open span:first-child { top: 20px; transform: rotate(45deg); }
+    .navbutton.open span:last-child { bottom: 20px; transform: rotate(-45deg); }
 
     .hero {
-      min-height: calc(100vh - 80px);
+      min-height: 100vh;
       display: grid;
       align-items: center;
+      padding: 130px 0 80px;
       position: relative;
+      overflow: hidden;
     }
 
-    .hero-inner {
-      padding: 94px 0 76px;
+    .hero-grid {
       display: grid;
       grid-template-columns: 1.05fr .95fr;
-      gap: 62px;
+      gap: 72px;
       align-items: center;
     }
 
-    .eyebrow,
-    .kicker {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      padding: 8px 13px;
+      padding: 8px 12px;
+      border: 1px solid rgba(244,241,234,.14);
       border-radius: 999px;
-      background: rgba(255,255,255,.62);
-      color: #284464;
-      border: 1px solid rgba(255,255,255,.78);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
-      font-size: .78rem;
-      font-weight: 860;
-      letter-spacing: .045em;
+      background: rgba(244,241,234,.06);
+      color: rgba(244,241,234,.70);
       text-transform: uppercase;
-      margin-bottom: 19px;
+      font-size: .72rem;
+      font-weight: 860;
+      letter-spacing: .09em;
+      margin-bottom: 20px;
     }
 
-    .eyebrow::before,
-    .kicker::before {
+    .eyebrow::before {
       content: "";
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 0 0 6px rgba(53,194,207,.13);
+      background: var(--cyan);
+      box-shadow: 0 0 0 7px rgba(133,239,230,.10);
     }
 
     h1 {
-      color: var(--ink);
-      font-size: clamp(3.1rem, 7vw, 7.2rem);
-      line-height: .89;
-      letter-spacing: -.085em;
+      font-size: clamp(4rem, 9.6vw, 10.4rem);
+      line-height: .79;
+      letter-spacing: -.105em;
+      max-width: 980px;
       margin-bottom: 28px;
-      max-width: 920px;
+    }
+
+    .word-muted {
+      color: rgba(244,241,234,.42);
     }
 
     .lead {
-      color: #4d6078;
-      font-size: clamp(1.08rem, 1.75vw, 1.3rem);
-      max-width: 760px;
+      color: rgba(244,241,234,.72);
+      font-size: clamp(1.08rem, 1.7vw, 1.28rem);
+      max-width: 720px;
       margin-bottom: 34px;
     }
 
     .actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 38px;
+      gap: 12px;
+      margin-bottom: 34px;
     }
 
-    .button {
+    .btn {
+      min-height: 48px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      border: 0;
       border-radius: 999px;
-      padding: 13px 22px;
-      font: inherit;
-      font-weight: 860;
-      cursor: pointer;
-      transition: transform .22s, box-shadow .22s, background .22s;
+      padding: 13px 20px;
+      font-weight: 850;
+      transition: transform .22s ease, background .22s ease, border .22s ease;
     }
 
-    .button:hover { transform: translateY(-2px); }
+    .btn:hover { transform: translateY(-2px); }
 
-    .primary {
-      color: white;
-      background: linear-gradient(135deg, #193657, #477be8);
-      box-shadow: 0 18px 44px rgba(90,141,238,.25);
+    .btn.primary {
+      color: #0d1117;
+      background: var(--paper);
     }
 
-    .secondary {
-      color: #193657;
-      background: rgba(255,255,255,.64);
-      border: 1px solid rgba(255,255,255,.78);
-      box-shadow: 0 10px 30px rgba(17,34,56,.055);
+    .btn.secondary {
+      border: 1px solid rgba(244,241,234,.16);
+      background: rgba(244,241,234,.06);
+      color: var(--paper);
     }
 
-    .full { width: 100%; }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+    .mini-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: rgba(244,241,234,.62);
+      font-size: .88rem;
+      font-weight: 720;
     }
 
-    .pillar {
-      padding: 18px;
-      border-radius: 24px;
-      background: rgba(255,255,255,.54);
-      border: 1px solid rgba(255,255,255,.76);
-      box-shadow: 0 18px 48px rgba(17,34,56,.055);
-      backdrop-filter: blur(16px);
-      transition: .25s;
+    .mini-strip span {
+      border: 1px solid rgba(244,241,234,.12);
+      background: rgba(244,241,234,.05);
+      border-radius: 999px;
+      padding: 8px 10px;
     }
 
-    .pillar:hover {
-      transform: translateY(-4px);
-      background: rgba(255,255,255,.72);
-    }
-
-    .pillar strong {
-      display: block;
-      color: var(--ink);
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-
-    .pillar span {
-      color: var(--muted);
-      font-size: .94rem;
-    }
-
-    .hero-logo-stage {
-      position: relative;
-      min-height: 420px;
-      border-radius: 42px;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.52), rgba(255,255,255,.20)),
-        radial-gradient(circle at 30% 25%, rgba(201,245,248,.55), transparent 34%),
-        radial-gradient(circle at 72% 70%, rgba(139,183,255,.28), transparent 38%);
-      border: 1px solid rgba(255,255,255,.72);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(22px);
+    .cube-stage {
+      min-height: 560px;
       display: grid;
       place-items: center;
+      position: relative;
+      perspective: 1150px;
+      border-radius: 44px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(133,239,230,.12), transparent 34%),
+        radial-gradient(circle at 72% 72%, rgba(143,183,255,.14), transparent 36%),
+        rgba(244,241,234,.035);
+      border: 1px solid rgba(244,241,234,.12);
+      box-shadow: var(--shadow);
       overflow: hidden;
     }
 
-    .hero-logo-stage::before {
+    .cube-stage::before {
       content: "";
       position: absolute;
-      inset: 32px;
-      border: 1px solid rgba(90,141,238,.12);
-      border-radius: 50%;
-      animation: breathe 5s ease-in-out infinite;
+      inset: 40px;
+      border: 1px solid rgba(244,241,234,.08);
+      border-radius: 38px;
+      transform: rotate(-3deg);
     }
 
-    .hero-logo-stage::after {
+    .cube-stage::after {
       content: "";
       position: absolute;
-      width: 120%;
-      height: 120%;
-      background:
-        linear-gradient(90deg, transparent, rgba(255,255,255,.34), transparent);
-      transform: translateX(-80%) rotate(18deg);
-      animation: sheen 7s ease-in-out infinite;
+      width: 140%;
+      height: 90px;
+      background: linear-gradient(90deg, transparent, rgba(244,241,234,.16), transparent);
+      transform: rotate(-18deg) translateX(-68%);
+      animation: sweep 8s ease-in-out infinite;
     }
 
-    @keyframes breathe {
-      0%, 100% { transform: scale(.96); opacity: .55; }
-      50% { transform: scale(1.04); opacity: 1; }
+    @keyframes sweep {
+      0%, 34% { transform: rotate(-18deg) translateX(-72%); opacity: 0; }
+      45% { opacity: 1; }
+      70%, 100% { transform: rotate(-18deg) translateX(72%); opacity: 0; }
     }
 
-    @keyframes sheen {
-      0%, 28% { transform: translateX(-90%) rotate(18deg); }
-      55%, 100% { transform: translateX(90%) rotate(18deg); }
-    }
-
-    .large-mark {
-      --size: 230px;
-      width: var(--size);
-      height: var(--size);
-      border-radius: 58px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.32)),
-        linear-gradient(135deg, rgba(53,194,207,.18), rgba(90,141,238,.20));
-      border: 1px solid rgba(255,255,255,.82);
-      display: grid;
-      place-items: center;
+    .cube {
+      --s: 240px;
+      width: var(--s);
+      height: var(--s);
       position: relative;
+      transform-style: preserve-3d;
+      animation: cubeRotate 18s cubic-bezier(.65,0,.35,1) infinite;
       z-index: 2;
-      box-shadow:
-        0 30px 80px rgba(90,141,238,.20),
-        inset 0 1px 0 rgba(255,255,255,.9);
     }
 
-    .large-mark .core {
-      width: 76px;
-      height: 76px;
-      border-radius: 26px;
-      background: linear-gradient(135deg, var(--teal), var(--blue));
+    .cube:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes cubeRotate {
+      0%   { transform: rotateX(-18deg) rotateY(28deg); }
+      18%  { transform: rotateX(-18deg) rotateY(118deg); }
+      34%  { transform: rotateX(-18deg) rotateY(208deg); }
+      50%  { transform: rotateX(-18deg) rotateY(298deg); }
+      66%  { transform: rotateX(72deg) rotateY(318deg); }
+      82%  { transform: rotateX(-108deg) rotateY(318deg); }
+      100% { transform: rotateX(-18deg) rotateY(388deg); }
+    }
+
+    .face {
+      position: absolute;
+      inset: 0;
       display: grid;
       place-items: center;
-      color: white;
-      font-weight: 900;
-      font-size: 1.4rem;
-      letter-spacing: -.06em;
-      box-shadow: 0 20px 46px rgba(53,194,207,.28);
-      z-index: 3;
+      border: 1px solid rgba(244,241,234,.18);
+      border-radius: 28px;
+      background:
+        linear-gradient(145deg, rgba(244,241,234,.17), rgba(244,241,234,.045)),
+        radial-gradient(circle at 22% 18%, rgba(133,239,230,.18), transparent 42%);
+      backdrop-filter: blur(18px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.14);
+      text-align: center;
+      padding: 22px;
     }
 
-    .large-mark .orbit-line {
+    .face strong {
+      display: block;
+      font-size: clamp(1.8rem, 3vw, 2.65rem);
+      line-height: .9;
+      letter-spacing: -.075em;
+      color: var(--paper);
+      margin-bottom: 12px;
+    }
+
+    .face span {
+      display: block;
+      color: rgba(244,241,234,.62);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .68rem;
+      font-weight: 850;
+    }
+
+    .front  { transform: translateZ(calc(var(--s) / 2)); }
+    .back   { transform: rotateY(180deg) translateZ(calc(var(--s) / 2)); }
+    .right  { transform: rotateY(90deg) translateZ(calc(var(--s) / 2)); }
+    .left   { transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)); }
+    .top    { transform: rotateX(90deg) translateZ(calc(var(--s) / 2)); }
+    .bottom { transform: rotateX(-90deg) translateZ(calc(var(--s) / 2)); }
+
+    .orbit-tags {
       position: absolute;
-      border-radius: 50%;
-      border: 3px solid rgba(53,194,207,.38);
-      width: 184px;
-      height: 76px;
-      transform: rotate(-26deg);
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
     }
 
-    .large-mark .orbit-line.two {
-      border-color: rgba(90,141,238,.35);
-      transform: rotate(42deg);
-    }
-
-    .large-mark .orbit-line.three {
-      border-color: rgba(17,34,56,.13);
-      transform: rotate(90deg);
-      width: 178px;
-      height: 84px;
-    }
-
-    .large-mark .satellite {
+    .tag {
       position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 0 24px rgba(53,194,207,.68);
-      animation: heroSatellite 8s linear infinite;
+      border: 1px solid rgba(244,241,234,.12);
+      background: rgba(244,241,234,.055);
+      color: rgba(244,241,234,.72);
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-size: .76rem;
+      font-weight: 780;
+      animation: floatTag 7s ease-in-out infinite alternate;
     }
 
-    .large-mark .satellite.two {
-      width: 13px;
-      height: 13px;
-      background: var(--blue);
-      animation-duration: 10.5s;
-      animation-delay: -2.5s;
+    .tag:nth-child(1) { left: 8%; top: 15%; color: var(--cyan); }
+    .tag:nth-child(2) { right: 9%; top: 18%; animation-delay: -.9s; }
+    .tag:nth-child(3) { left: 12%; bottom: 18%; animation-delay: -1.6s; color: var(--sand); }
+    .tag:nth-child(4) { right: 10%; bottom: 20%; animation-delay: -2.3s; color: var(--blue); }
+    .tag:nth-child(5) { left: 42%; top: 6%; animation-delay: -3s; color: var(--mint); }
+    .tag:nth-child(6) { left: 38%; bottom: 8%; animation-delay: -4.1s; color: var(--rose); }
+
+    @keyframes floatTag {
+      from { transform: translate3d(0, -6px, 0); opacity: .68; }
+      to { transform: translate3d(0, 10px, 0); opacity: 1; }
     }
 
-    .large-mark .satellite.three {
-      width: 11px;
-      height: 11px;
-      background: #8bb7ff;
-      animation-duration: 12.5s;
-      animation-delay: -5s;
+    .marquee {
+      border-top: 1px solid rgba(244,241,234,.10);
+      border-bottom: 1px solid rgba(244,241,234,.10);
+      overflow: hidden;
+      background: rgba(244,241,234,.035);
     }
 
-    @keyframes heroSatellite {
-      from { transform: rotate(0deg) translateX(116px) rotate(0deg); }
-      to { transform: rotate(360deg) translateX(116px) rotate(-360deg); }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      gap: 28px;
+      padding: 18px 0;
+      animation: marquee 30s linear infinite;
+      color: rgba(244,241,234,.55);
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      white-space: nowrap;
+      font-size: .82rem;
     }
 
-    .section { padding: 96px 0; }
-    .pale { background: rgba(255,255,255,.44); }
+    .marquee-track span::after {
+      content: "·";
+      margin-left: 28px;
+      color: rgba(244,241,234,.22);
+    }
 
-    .split,
-    .method,
-    .contact-grid {
+    @keyframes marquee {
+      to { transform: translateX(-50%); }
+    }
+
+    .section {
+      padding: 104px 0;
+    }
+
+    .section-head {
       display: grid;
       grid-template-columns: .9fr 1.1fr;
-      gap: 56px;
-      align-items: start;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 38px;
     }
 
-    .section-title h2 {
-      color: var(--ink);
-      font-size: clamp(2.1rem, 4vw, 4rem);
-      letter-spacing: -.065em;
-      line-height: 1.02;
+    .kicker {
+      color: rgba(244,241,234,.52);
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-weight: 900;
+      font-size: .78rem;
+      margin-bottom: 15px;
     }
 
-    .section-title p:not(.kicker) {
-      color: var(--muted);
-      margin-top: 16px;
-      max-width: 660px;
+    .section-title {
+      font-size: clamp(2.8rem, 5.4vw, 6rem);
+      line-height: .86;
+      letter-spacing: -.09em;
+      color: var(--paper);
     }
 
-    .centre {
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto 46px;
-    }
-
-    .centre p:not(.kicker) {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .copy {
-      display: grid;
-      gap: 18px;
-      color: var(--muted);
+    .section-intro {
+      color: rgba(244,241,234,.63);
       font-size: 1.08rem;
+      max-width: 680px;
     }
 
-    .grid { display: grid; gap: 18px; }
-    .sectors { grid-template-columns: repeat(4, 1fr); }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
 
-    .card {
-      min-height: 270px;
+    .work-card {
+      min-height: 350px;
+      border-radius: 34px;
       padding: 28px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.58);
-      border: 1px solid rgba(255,255,255,.76);
-      box-shadow: 0 18px 56px rgba(17,34,56,.065);
-      backdrop-filter: blur(16px);
-      transition: .24s;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 86% 10%, rgba(143,183,255,.12), transparent 38%),
+        rgba(244,241,234,.055);
+      border: 1px solid rgba(244,241,234,.12);
+      box-shadow: 0 20px 80px rgba(0,0,0,.14);
+      transition: .28s ease;
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      background: rgba(255,255,255,.74);
+    .work-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(244,241,234,.22);
+      background:
+        radial-gradient(circle at 86% 10%, rgba(133,239,230,.14), transparent 38%),
+        rgba(244,241,234,.075);
+    }
+
+    .work-card.large {
+      grid-column: span 2;
+      min-height: 390px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .card-num {
+      color: rgba(244,241,234,.38);
+      font-weight: 900;
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .work-card h3 {
+      font-size: clamp(1.8rem, 3.3vw, 3.5rem);
+      line-height: .92;
+      letter-spacing: -.07em;
+      color: var(--paper);
+      margin-bottom: 16px;
+    }
+
+    .work-card p {
+      color: rgba(244,241,234,.62);
+      max-width: 620px;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .stack span {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(244,241,234,.07);
+      border: 1px solid rgba(244,241,234,.10);
+      color: rgba(244,241,234,.66);
+      font-size: .78rem;
+      font-weight: 770;
+    }
+
+    .mini-cube {
+      justify-self: end;
+      width: 240px;
+      aspect-ratio: 1;
+      border-radius: 36px;
+      border: 1px solid rgba(244,241,234,.14);
+      background:
+        linear-gradient(135deg, rgba(244,241,234,.10), rgba(244,241,234,.03)),
+        radial-gradient(circle at 40% 40%, rgba(133,239,230,.18), transparent 50%);
+      display: grid;
+      place-items: center;
+      transform: rotate(-7deg);
+    }
+
+    .mini-cube span {
+      font-size: 4rem;
+      font-weight: 950;
+      letter-spacing: -.1em;
+      color: rgba(244,241,234,.82);
+    }
+
+    .ecosystem {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .eco-item {
+      border: 1px solid rgba(244,241,234,.11);
+      background: rgba(244,241,234,.045);
+      border-radius: 22px;
+      padding: 18px;
+      min-height: 118px;
+      transition: .24s ease;
+    }
+
+    .eco-item:hover {
+      transform: translateY(-4px);
+      background: rgba(244,241,234,.07);
+    }
+
+    .eco-item b {
+      display: block;
+      color: var(--paper);
+      font-size: 1rem;
+      margin-bottom: 7px;
+    }
+
+    .eco-item span {
+      color: rgba(244,241,234,.56);
+      font-size: .9rem;
+    }
+
+    .contact-panel {
+      border-radius: 40px;
+      padding: 34px;
+      background:
+        radial-gradient(circle at 90% 8%, rgba(133,239,230,.10), transparent 38%),
+        rgba(244,241,234,.06);
+      border: 1px solid rgba(244,241,234,.12);
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 42px;
+      align-items: start;
       box-shadow: var(--shadow);
     }
 
-    .card h3 {
-      color: var(--ink);
-      font-size: 1.25rem;
-      margin: 22px 0 10px;
+    .contact-panel h2 {
+      font-size: clamp(2.9rem, 6vw, 7rem);
+      line-height: .82;
+      letter-spacing: -.1em;
+      margin-bottom: 18px;
     }
 
-    .card p { color: var(--muted); }
-
-    .icon {
-      width: 52px;
-      height: 52px;
-      display: block;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(53,194,207,.22), rgba(90,141,238,.16));
-      position: relative;
+    .contact-panel p {
+      color: rgba(244,241,234,.63);
+      max-width: 560px;
     }
 
-    .icon::before,
-    .icon::after {
-      content: "";
-      position: absolute;
-      border: 2px solid var(--blue);
-      border-radius: 4px;
-    }
-
-    .edu::before { width: 28px; height: 18px; left: 11px; top: 16px; transform: skewX(-12deg); }
-    .health::before { width: 24px; height: 8px; left: 14px; top: 22px; border-radius: 2px; background: var(--blue); }
-    .health::after { width: 8px; height: 24px; left: 22px; top: 14px; border-radius: 2px; background: var(--blue); }
-    .vote::before { width: 24px; height: 28px; left: 14px; top: 13px; }
-    .vote::after { width: 17px; height: 2px; left: 18px; top: 21px; transform: rotate(-18deg); }
-    .gov::before { width: 30px; height: 20px; left: 11px; top: 21px; }
-    .gov::after { width: 36px; height: 0; left: 8px; top: 15px; border-radius: 0; }
-
-    .services {
-      display: grid;
-      gap: 16px;
-    }
-
-    .service {
-      display: grid;
-      grid-template-columns: 78px 1fr;
-      gap: 24px;
-      padding: 28px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.60);
-      border: 1px solid rgba(255,255,255,.78);
-      box-shadow: 0 16px 50px rgba(17,34,56,.06);
-      backdrop-filter: blur(16px);
-    }
-
-    .service b {
-      width: 58px;
-      height: 58px;
-      border-radius: 20px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #193657, #477be8);
-      color: #d7fbff;
-    }
-
-    .service h3 {
-      color: var(--ink);
-      font-size: 1.25rem;
-      margin-bottom: 6px;
-    }
-
-    .service p {
-      color: var(--muted);
-      max-width: 820px;
-    }
-
-    .dark {
-      color: white;
-      background:
-        radial-gradient(circle at 80% 12%, rgba(139,183,255,.22), transparent 35%),
-        linear-gradient(135deg, #122842, #173b5f 58%, #1e536d);
-    }
-
-    .dark .section-title h2 { color: white; }
-    .dark .section-title p:not(.kicker) { color: #d7e9fa; }
-
-    .dark-kicker {
-      background: rgba(255,255,255,.08);
-      color: #e2f8ff;
-      border-color: rgba(255,255,255,.12);
-    }
-
-    .steps {
+    .form {
       display: grid;
       gap: 14px;
     }
 
-    .steps div {
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 18px;
-      padding: 22px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-    }
-
-    .steps b { color: #aaf6ff; }
-    .steps span { color: #e0edf8; }
-
-    .deliverables {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .deliverables span {
-      padding: 13px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.60);
-      color: var(--ink);
-      border: 1px solid rgba(255,255,255,.76);
-      font-weight: 760;
-      box-shadow: 0 12px 34px rgba(17,34,56,.045);
-    }
-
-    .contact {
-      background: rgba(255,255,255,.38);
-    }
-
-    .note {
-      margin-top: 24px;
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.62);
-      border: 1px solid rgba(255,255,255,.78);
-      color: var(--ink);
-    }
-
-    .form {
-      padding: 30px;
-      border-radius: 30px;
-      background: rgba(255,255,255,.66);
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.78);
-      backdrop-filter: blur(18px);
-      display: grid;
-      gap: 16px;
-    }
-
     .form label {
+      color: rgba(244,241,234,.70);
+      font-weight: 760;
       display: grid;
       gap: 7px;
-      color: #263a50;
-      font-weight: 760;
     }
 
     .form input,
     .form select,
     .form textarea {
       width: 100%;
-      border: 1px solid rgba(33,54,80,.12);
-      border-radius: 16px;
+      border: 1px solid rgba(244,241,234,.14);
+      border-radius: 18px;
       padding: 14px 15px;
-      background: rgba(255,255,255,.72);
-      color: var(--ink);
-      font: inherit;
+      color: var(--paper);
+      background: rgba(244,241,234,.055);
       outline: none;
+      font: inherit;
     }
 
     .form input:focus,
     .form select:focus,
     .form textarea:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 4px rgba(90,141,238,.12);
+      border-color: rgba(133,239,230,.45);
+      box-shadow: 0 0 0 4px rgba(133,239,230,.10);
+    }
+
+    .form button {
+      border: 0;
+      margin-top: 4px;
     }
 
     .status {
       min-height: 22px;
-      color: var(--muted);
-      font-size: .95rem;
+      color: rgba(244,241,234,.50);
+      font-size: .92rem;
     }
 
     .footer {
-      padding: 34px 0;
-      background: #112238;
-      color: #c9d8ea;
+      padding: 36px 0 46px;
+      color: rgba(244,241,234,.45);
+      border-top: 1px solid rgba(244,241,234,.10);
     }
 
     .foot {
@@ -774,24 +710,15 @@
       flex-wrap: wrap;
     }
 
-    .foot .brand {
-      color: white;
-      font-size: 1.08rem;
-    }
-
-    .foot .brand span span { color: #aaf6ff; }
-
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .8s ease, transform .8s ease;
+      transform: translateY(34px);
+      transition: opacity .85s ease, transform .85s ease;
     }
-
-    .reveal.right { transform: translateX(38px); }
 
     .reveal.visible {
       opacity: 1;
-      transform: translate(0,0);
+      transform: translateY(0);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -802,122 +729,127 @@
       }
     }
 
-    @media (max-width: 1060px) {
-      .hero-inner,
-      .split,
-      .method,
-      .contact-grid {
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .section-head,
+      .contact-panel,
+      .work-card.large {
         grid-template-columns: 1fr;
       }
 
-      .hero-logo-stage {
-        min-height: 360px;
+      .cube-stage {
+        min-height: 470px;
       }
 
-      .sectors,
-      .pillars {
-        grid-template-columns: 1fr 1fr;
+      .ecosystem {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .mini-cube {
+        justify-self: start;
       }
     }
 
     @media (max-width: 740px) {
-      .navbutton { display: block; }
+      .header {
+        top: 10px;
+      }
+
+      .nav {
+        border-radius: 28px;
+        min-height: 60px;
+      }
+
+      .navbutton {
+        display: block;
+      }
 
       .menu {
         position: absolute;
-        top: 80px;
         left: 4%;
         right: 4%;
+        top: 74px;
         display: none;
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        background: rgba(255,255,255,.94);
-        border-radius: 22px;
-        border: 1px solid rgba(255,255,255,.76);
-        box-shadow: var(--shadow);
-        overflow: hidden;
+        border: 1px solid rgba(244,241,234,.14);
+        background: rgba(13,17,23,.92);
+        border-radius: 24px;
+        padding: 8px;
+        backdrop-filter: blur(22px);
       }
 
-      .menu.open { display: flex; }
+      .menu.open {
+        display: flex;
+      }
 
       .menu a {
-        padding: 15px 18px;
-        border-bottom: 1px solid var(--line);
+        padding: 14px 16px;
       }
 
-      .navcta {
-        margin: 12px;
+      .menu .navcta {
+        margin-top: 6px;
         text-align: center;
       }
 
       .hero {
-        min-height: auto;
-      }
-
-      .hero-inner {
-        padding: 58px 0;
+        padding-top: 110px;
       }
 
       h1 {
-        font-size: clamp(2.7rem, 16vw, 4.8rem);
+        font-size: clamp(3.5rem, 18vw, 5.8rem);
       }
 
-      .large-mark {
-        --size: 190px;
+      .cube-stage {
+        min-height: 390px;
+        border-radius: 30px;
       }
 
-      .large-mark .satellite {
-        animation-name: heroSatelliteMobile;
+      .cube {
+        --s: 182px;
       }
 
-      @keyframes heroSatelliteMobile {
-        from { transform: rotate(0deg) translateX(96px) rotate(0deg); }
-        to { transform: rotate(360deg) translateX(96px) rotate(-360deg); }
+      .face {
+        border-radius: 22px;
       }
 
-      .sectors,
-      .pillars {
+      .face strong {
+        font-size: 1.55rem;
+      }
+
+      .work-grid,
+      .ecosystem {
         grid-template-columns: 1fr;
       }
 
-      .service {
-        grid-template-columns: 1fr;
+      .work-card.large {
+        grid-column: span 1;
       }
 
       .section {
-        padding: 72px 0;
+        padding: 78px 0;
+      }
+
+      .contact-panel {
+        padding: 24px;
+        border-radius: 30px;
       }
 
       .foot {
-        justify-content: center;
-        text-align: center;
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="ambient" aria-hidden="true">
-    <div class="blob one"></div>
-    <div class="blob two"></div>
-    <div class="blob three"></div>
-  </div>
-
-  <canvas id="mesh" aria-hidden="true"></canvas>
-
   <header class="header">
     <div class="wrap nav">
       <a class="brand" href="#inicio" aria-label="DevNexus Digital">
-        <span class="logo-orbit" aria-hidden="true">
-          <span class="ring"></span>
-          <span class="ring two"></span>
-          <span class="core"></span>
-          <span class="sat"></span>
-          <span class="sat two"></span>
-          <span class="sat three"></span>
-        </span>
-        <span class="brand-text">Dev<span>Nexus</span> Digital</span>
+        <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
+        <span>Dev<span>Nexus</span> Digital</span>
       </a>
 
       <button class="navbutton" aria-label="Abrir menu" aria-expanded="false">
@@ -926,9 +858,8 @@
       </button>
 
       <nav class="menu" aria-label="Menu principal">
-        <a href="#sobre">Sobre</a>
-        <a href="#sectores">Sectores</a>
-        <a href="#servicos">Serviços</a>
+        <a href="#ecosistema">Ecossistema</a>
+        <a href="#trabalho">Trabalho</a>
         <a href="#metodo">Método</a>
         <a href="#contacto" class="navcta">Contacto</a>
       </nav>
@@ -937,254 +868,216 @@
 
   <main id="inicio">
     <section class="hero">
-      <div class="wrap hero-inner">
+      <div class="wrap hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Consultoria estratégica · sistemas públicos · dados</p>
+          <p class="eyebrow">Digital Public Infrastructure · Governação · Sistemas</p>
 
-          <h1>Transformação digital com visão institucional.</h1>
+          <h1>
+            RESOLVER<br>
+            <span class="word-muted">PROBLEMAS</span><br>
+            PÚBLICOS
+          </h1>
 
           <p class="lead">
-            A DevNexus Digital apoia governos, instituições públicas e projectos na estruturação de soluções digitais sólidas,
-            governáveis e sustentáveis para educação, saúde, eleições e administração pública.
+            A DevNexus Digital trabalha no desenho, integração e sustentação do ecossistema de transformação digital:
+            DPI, dados, interoperabilidade, serviços públicos, educação, saúde, eleições e modernização administrativa.
           </p>
 
           <div class="actions">
-            <a class="button primary" href="#contacto">Iniciar conversa</a>
-            <a class="button secondary" href="#servicos">Ver serviços</a>
+            <a class="btn primary" href="#contacto">Falar com a DevNexus</a>
+            <a class="btn secondary" href="#ecosistema">Ver ecossistema</a>
           </div>
 
-          <div class="pillars">
-            <div class="pillar">
-              <strong>Estratégia</strong>
-              <span>Roteiros, prioridades e governação institucional.</span>
-            </div>
-            <div class="pillar">
-              <strong>Dados</strong>
-              <span>Interoperabilidade, qualidade e apoio à decisão.</span>
-            </div>
-            <div class="pillar">
-              <strong>Execução</strong>
-              <span>Requisitos, implementação, aceitação e capacitação.</span>
-            </div>
+          <div class="mini-strip">
+            <span>DPI</span>
+            <span>Dados</span>
+            <span>Interop</span>
+            <span>GovCloud</span>
+            <span>SIGE</span>
+            <span>Cibersegurança</span>
           </div>
         </div>
 
-        <div class="hero-logo-stage reveal right" aria-hidden="true">
-          <div class="large-mark">
-            <span class="orbit-line"></span>
-            <span class="orbit-line two"></span>
-            <span class="orbit-line three"></span>
-            <span class="core">DN</span>
-            <span class="satellite"></span>
-            <span class="satellite two"></span>
-            <span class="satellite three"></span>
+        <div class="cube-stage reveal" aria-label="Cubo animado do ecossistema de transformação digital">
+          <div class="orbit-tags">
+            <span class="tag">Identidade Digital</span>
+            <span class="tag">Serviços Públicos</span>
+            <span class="tag">Procurement</span>
+            <span class="tag">APD / Dados</span>
+            <span class="tag">Pagamentos</span>
+            <span class="tag">Capacitação</span>
+          </div>
+
+          <div class="cube">
+            <div class="face front"><div><strong>DPI</strong><span>Digital Public Infrastructure</span></div></div>
+            <div class="face back"><div><strong>GovCloud</strong><span>Infraestrutura soberana</span></div></div>
+            <div class="face right"><div><strong>SIGE</strong><span>Educação e gestão escolar</span></div></div>
+            <div class="face left"><div><strong>Dados</strong><span>Governação e qualidade</span></div></div>
+            <div class="face top"><div><strong>Ciber</strong><span>Segurança e resiliência</span></div></div>
+            <div class="face bottom"><div><strong>Interop</strong><span>APIs, eGIF e integração</span></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="sobre" class="section">
-      <div class="wrap split">
-        <div class="section-title reveal">
-          <p class="kicker">Sobre</p>
-          <h2>Menos ruído tecnológico. Mais clareza institucional.</h2>
-        </div>
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Identidade Digital</span><span>Registos</span><span>Pagamentos Digitais</span><span>Interoperabilidade</span><span>Governação de Dados</span><span>Cibersegurança</span><span>Serviços Públicos Digitais</span><span>Educação</span><span>Saúde</span><span>Eleições</span><span>GovCloud</span><span>Procurement</span>
+        <span>Identidade Digital</span><span>Registos</span><span>Pagamentos Digitais</span><span>Interoperabilidade</span><span>Governação de Dados</span><span>Cibersegurança</span><span>Serviços Públicos Digitais</span><span>Educação</span><span>Saúde</span><span>Eleições</span><span>GovCloud</span><span>Procurement</span>
+      </div>
+    </section>
 
-        <div class="copy reveal">
-          <p>
-            Trabalhamos no ponto onde muitos projectos digitais falham: entre a decisão política, o processo administrativo,
-            o dado real, a capacidade das equipas e a tecnologia que deve servir tudo isso.
+    <section id="ecosistema" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">Ecossistema</p>
+            <h2 class="section-title">A transformação digital não é uma aplicação.</h2>
+          </div>
+          <p class="section-intro">
+            É uma arquitectura institucional: pessoas, processos, dados, plataformas, regras, financiamento,
+            contratação, segurança e capacidade de operação.
           </p>
-          <p>
-            Primeiro clarificam-se mandatos, fluxos, responsabilidades e riscos. Depois desenha-se a solução.
-            O contrário costuma dar plataformas bonitas, caras e inúteis.
+        </div>
+
+        <div class="ecosystem">
+          <div class="eco-item reveal"><b>DPI</b><span>Identidade, registos, pagamentos, interoperabilidade e serviços comuns.</span></div>
+          <div class="eco-item reveal"><b>Dados</b><span>Modelos, qualidade, protecção, partilha e uso para decisão.</span></div>
+          <div class="eco-item reveal"><b>Interoperabilidade</b><span>APIs, eGIF, barramento, normas e integração entre sistemas.</span></div>
+          <div class="eco-item reveal"><b>Cibersegurança</b><span>Risco, continuidade, resposta, resiliência e confiança operacional.</span></div>
+          <div class="eco-item reveal"><b>Educação</b><span>SIGE, escolas, inventário TIC, conectividade e gestão sectorial.</span></div>
+          <div class="eco-item reveal"><b>Saúde</b><span>Registos, fluxos de informação, interoperabilidade e continuidade.</span></div>
+          <div class="eco-item reveal"><b>Eleições</b><span>Integridade dos dados, rastreabilidade e transparência operacional.</span></div>
+          <div class="eco-item reveal"><b>Procurement</b><span>TDR, especificações, avaliação, aceitação e sustentabilidade.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trabalho" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">Trabalho</p>
+            <h2 class="section-title">Da ideia bonita ao sistema que aguenta.</h2>
+          </div>
+          <p class="section-intro">
+            O foco é transformar intenção política em arquitectura, requisitos, contratação, implementação e operação real.
           </p>
         </div>
+
+        <div class="work-grid">
+          <article class="work-card large reveal">
+            <div>
+              <p class="card-num">Case framework · 01</p>
+              <h3>Arquitectura institucional de transformação digital.</h3>
+              <p>Mapeamento de actores, mandatos, processos, dados, plataformas, riscos e decisões necessárias para evitar projectos tecnológicos soltos.</p>
+              <div class="stack">
+                <span>Governação</span><span>Roteiro</span><span>eGIF</span><span>DPI</span><span>Dados</span>
+              </div>
+            </div>
+            <div class="mini-cube"><span>DPI</span></div>
+          </article>
+
+          <article class="work-card reveal">
+            <p class="card-num">Case framework · 02</p>
+            <h3>Sistemas sectoriais.</h3>
+            <p>Educação, saúde e eleições com foco em dados fiáveis, processos claros e operação sustentável.</p>
+            <div class="stack">
+              <span>SIGE</span><span>Saúde</span><span>Eleições</span><span>Operação</span>
+            </div>
+          </article>
+
+          <article class="work-card reveal">
+            <p class="card-num">Case framework · 03</p>
+            <h3>Procurement técnico.</h3>
+            <p>Termos de referência, especificações, critérios de avaliação, aceitação e transferência de capacidade.</p>
+            <div class="stack">
+              <span>TDR</span><span>BOQ</span><span>Aceitação</span><span>Capacitação</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section id="sectores" class="section pale">
+    <section id="metodo" class="section">
       <div class="wrap">
-        <div class="section-title centre reveal">
-          <p class="kicker">Sectores</p>
-          <h2>Digitalização onde confiança pública e continuidade operacional contam.</h2>
-        </div>
-
-        <div class="grid sectors">
-          <article class="card reveal">
-            <span class="icon edu"></span>
-            <h3>Educação</h3>
-            <p>SIGE, inventário TIC, dados escolares, conectividade e apoio à decisão sectorial.</p>
-          </article>
-
-          <article class="card reveal">
-            <span class="icon health"></span>
-            <h3>Saúde</h3>
-            <p>Fluxos de informação, registos, interoperabilidade e modernização dos serviços.</p>
-          </article>
-
-          <article class="card reveal">
-            <span class="icon vote"></span>
-            <h3>Eleições</h3>
-            <p>Rastreabilidade, integridade dos dados, segurança e transparência operacional.</p>
-          </article>
-
-          <article class="card reveal">
-            <span class="icon gov"></span>
-            <h3>Administração Pública</h3>
-            <p>Serviços digitais, arquitectura empresarial e reorganização de processos públicos.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="servicos" class="section">
-      <div class="wrap">
-        <div class="section-title centre reveal">
-          <p class="kicker">Serviços</p>
-          <h2>Do conceito à execução controlada.</h2>
-        </div>
-
-        <div class="services">
-          <article class="service reveal">
-            <b>01</b>
-            <div>
-              <h3>Estratégia e governação digital</h3>
-              <p>Modelos de governação, roteiros, prioridades, planos de acção e coordenação institucional.</p>
-            </div>
-          </article>
-
-          <article class="service reveal">
-            <b>02</b>
-            <div>
-              <h3>Diagnóstico e prontidão</h3>
-              <p>Levantamento de processos, sistemas, dados, infraestruturas, riscos e capacidade operacional.</p>
-            </div>
-          </article>
-
-          <article class="service reveal">
-            <b>03</b>
-            <div>
-              <h3>Arquitectura e especificações</h3>
-              <p>Termos de referência, requisitos funcionais, modelos de dados, integrações e critérios de aceitação.</p>
-            </div>
-          </article>
-
-          <article class="service reveal">
-            <b>04</b>
-            <div>
-              <h3>Capacitação e implementação</h3>
-              <p>Formação, gestão da mudança, acompanhamento técnico e transferência de capacidade.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="metodo" class="section dark">
-      <div class="wrap method">
-        <div class="section-title reveal">
-          <p class="kicker dark-kicker">Método</p>
-          <h2>Primeiro a instituição. Depois a tecnologia.</h2>
-          <p>Sequência prática para sair do PowerPoint e chegar à operação.</p>
-        </div>
-
-        <div class="steps reveal">
-          <div><b>01</b><span>Entender mandato, processo e problema real.</span></div>
-          <div><b>02</b><span>Mapear dados, sistemas, actores e riscos.</span></div>
-          <div><b>03</b><span>Desenhar arquitectura, requisitos e plano de execução.</span></div>
-          <div><b>04</b><span>Acompanhar implementação, aceitação e transferência.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section deliver-section">
-      <div class="wrap">
-        <div class="section-title centre reveal">
-          <p class="kicker">Entregáveis</p>
-          <h2>Instrumentos que ajudam a decidir, contratar e executar.</h2>
-        </div>
-
-        <div class="deliverables reveal">
-          <span>Diagnósticos institucionais</span>
-          <span>Termos de referência</span>
-          <span>Modelos de dados</span>
-          <span>Arquitecturas de interoperabilidade</span>
-          <span>Planos de capacitação</span>
-          <span>Critérios de aceitação</span>
-          <span>Roteiros de implementação</span>
-          <span>Relatórios técnicos</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="contacto" class="section contact">
-      <div class="wrap contact-grid">
-        <div class="section-title reveal">
-          <p class="kicker">Contacto</p>
-          <h2>Fale com a DevNexus Digital.</h2>
-          <p>Envie o sector, o desafio e o resultado que pretende alcançar.</p>
-
-          <div class="note">
-            Email corporativo: <strong>info@devnexusdigital.com</strong>
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">Método</p>
+            <h2 class="section-title">Primeiro o problema. Depois a tecnologia.</h2>
           </div>
+          <p class="section-intro">
+            Uma sequência curta, pragmática e dura contra a ilusão de comprar plataformas antes de entender a instituição.
+          </p>
         </div>
 
-        <form class="form reveal" id="contactForm" action="https://formsubmit.co/info@devnexusdigital.com" method="POST">
-          <input type="hidden" name="_subject" value="Nova mensagem via devnexusdigital.com">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://devnexusdigital.com/#contacto">
+        <div class="ecosystem">
+          <div class="eco-item reveal"><b>01 · Diagnóstico</b><span>Mandato, actores, processos, dados, sistemas e constrangimentos.</span></div>
+          <div class="eco-item reveal"><b>02 · Arquitectura</b><span>Modelo funcional, dados, integrações, segurança e operação.</span></div>
+          <div class="eco-item reveal"><b>03 · Contratação</b><span>TDR, especificações, critérios de avaliação e gestão de risco.</span></div>
+          <div class="eco-item reveal"><b>04 · Sustentação</b><span>Formação, aceitação, manuais, governação e melhoria contínua.</span></div>
+        </div>
+      </div>
+    </section>
 
-          <label>
-            Nome
-            <input name="nome" required autocomplete="name">
-          </label>
+    <section id="contacto" class="section">
+      <div class="wrap">
+        <div class="contact-panel reveal">
+          <div>
+            <p class="kicker">Contacto</p>
+            <h2>LET'S<br>TALK</h2>
+            <p>
+              Envie o sector, o problema e o resultado pretendido. O formulário está configurado para
+              info@devnexusdigital.com.
+            </p>
+          </div>
 
-          <label>
-            Email
-            <input type="email" name="email" required autocomplete="email">
-          </label>
+          <form class="form" id="contactForm" action="https://formsubmit.co/info@devnexusdigital.com" method="POST">
+            <input type="hidden" name="_subject" value="Nova mensagem via devnexusdigital.com">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://devnexusdigital.com/#contacto">
 
-          <label>
-            Área
-            <select name="area" required>
-              <option value="">Seleccionar</option>
-              <option>Transformação digital</option>
-              <option>Educação</option>
-              <option>Saúde</option>
-              <option>Eleições</option>
-              <option>Administração Pública</option>
-              <option>Outra</option>
-            </select>
-          </label>
+            <label>Nome
+              <input name="nome" required autocomplete="name">
+            </label>
 
-          <label>
-            Mensagem
-            <textarea name="mensagem" rows="5" required></textarea>
-          </label>
+            <label>Email
+              <input type="email" name="email" required autocomplete="email">
+            </label>
 
-          <button class="button primary full" type="submit">Enviar mensagem</button>
-          <p class="status" id="formStatus">As mensagens serão enviadas para info@devnexusdigital.com.</p>
-        </form>
+            <label>Área
+              <select name="area" required>
+                <option value="">Seleccionar</option>
+                <option>DPI</option>
+                <option>Governação digital</option>
+                <option>Educação / SIGE</option>
+                <option>Saúde</option>
+                <option>Eleições</option>
+                <option>Dados e interoperabilidade</option>
+                <option>Procurement técnico</option>
+              </select>
+            </label>
+
+            <label>Mensagem
+              <textarea name="mensagem" rows="5" required></textarea>
+            </label>
+
+            <button class="btn primary" type="submit">Enviar mensagem</button>
+            <p class="status" id="formStatus">Primeira submissão exige confirmação no email corporativo.</p>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="wrap foot">
-      <a class="brand" href="#inicio" aria-label="DevNexus Digital">
-        <span class="logo-orbit" aria-hidden="true">
-          <span class="ring"></span>
-          <span class="ring two"></span>
-          <span class="core"></span>
-          <span class="sat"></span>
-          <span class="sat two"></span>
-          <span class="sat three"></span>
-        </span>
-        <span class="brand-text">Dev<span>Nexus</span> Digital</span>
-      </a>
-      <p>© 2026 DevNexus Digital. Transformação digital com visão institucional.</p>
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
+        <span>Dev<span>Nexus</span> Digital</span>
+      </div>
+      <p>© 2026 DevNexus Digital · Transformação digital com visão institucional.</p>
     </div>
   </footer>
 
@@ -1199,8 +1092,8 @@
         navButton.setAttribute("aria-expanded", String(open));
       });
 
-      menu.querySelectorAll("a").forEach((a) => {
-        a.addEventListener("click", () => {
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
           menu.classList.remove("open");
           navButton.classList.remove("open");
           navButton.setAttribute("aria-expanded", "false");
@@ -1208,83 +1101,29 @@
       });
     }
 
-    const revealObserver = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add("visible");
       });
     }, { threshold: 0.14 });
 
-    document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    const canvas = document.getElementById("mesh");
-    const ctx = canvas && canvas.getContext("2d");
-    let points = [];
-    let raf;
+    const cubeStage = document.querySelector(".cube-stage");
+    const cube = document.querySelector(".cube");
 
-    function resizeCanvas() {
-      if (!canvas || !ctx) return;
+    if (cubeStage && cube && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      cubeStage.addEventListener("mousemove", (event) => {
+        const rect = cubeStage.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width - 0.5) * 14;
+        const y = ((event.clientY - rect.top) / rect.height - 0.5) * -14;
+        cubeStage.style.setProperty("--mx", `${x}deg`);
+        cubeStage.style.setProperty("--my", `${y}deg`);
+        cube.style.filter = "drop-shadow(0 28px 60px rgba(0,0,0,.28))";
+      });
 
-      canvas.width = window.innerWidth * window.devicePixelRatio;
-      canvas.height = window.innerHeight * window.devicePixelRatio;
-      ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-
-      const count = Math.min(64, Math.max(28, Math.floor(window.innerWidth / 26)));
-      points = Array.from({ length: count }, () => ({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        vx: (Math.random() - 0.5) * 0.18,
-        vy: (Math.random() - 0.5) * 0.18
-      }));
-    }
-
-    function drawMesh() {
-      if (!canvas || !ctx) return;
-
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-      for (const p of points) {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > window.innerWidth) p.vx *= -1;
-        if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
-      }
-
-      for (let i = 0; i < points.length; i++) {
-        for (let j = i + 1; j < points.length; j++) {
-          const a = points[i];
-          const b = points[j];
-          const d = Math.hypot(a.x - b.x, a.y - b.y);
-
-          if (d < 145) {
-            ctx.strokeStyle = `rgba(90,141,238,${0.085 * (1 - d / 145)})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      for (const p of points) {
-        ctx.fillStyle = "rgba(53,194,207,.18)";
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      raf = requestAnimationFrame(drawMesh);
-    }
-
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      resizeCanvas();
-      drawMesh();
-
-      window.addEventListener("resize", () => {
-        cancelAnimationFrame(raf);
-        resizeCanvas();
-        drawMesh();
+      cubeStage.addEventListener("mouseleave", () => {
+        cube.style.filter = "";
       });
     }
 
@@ -1294,7 +1133,6 @@
     if (form && status) {
       form.addEventListener("submit", () => {
         status.textContent = "A enviar mensagem...";
-        status.style.color = "#4d6078";
       });
     }
   </script>
