@@ -1130,8 +1130,11 @@
           </div>
         </div>
 
-        <form class="form reveal" id="contactForm" action="COLOCAR_ENDPOINT_AQUI" method="POST">
-          <input type="hidden" name="subject" value="Nova mensagem via devnexusdigital.com">
+        <form class="form reveal" id="contactForm" action="https://formsubmit.co/info@devnexusdigital.com" method="POST">
+          <input type="hidden" name="_subject" value="Nova mensagem via devnexusdigital.com">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://devnexusdigital.com/#contacto">
 
           <label>
             Nome
@@ -1162,7 +1165,7 @@
           </label>
 
           <button class="button primary full" type="submit">Enviar mensagem</button>
-          <p class="status" id="formStatus"></p>
+          <p class="status" id="formStatus">As mensagens serão enviadas para info@devnexusdigital.com.</p>
         </form>
       </div>
     </section>
@@ -1289,38 +1292,9 @@
     const status = document.getElementById("formStatus");
 
     if (form && status) {
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        const endpoint = form.getAttribute("action") || "";
-
-        if (!endpoint || endpoint === "COLOCAR_ENDPOINT_AQUI") {
-          status.textContent = "Falta configurar o endpoint do formulário.";
-          status.style.color = "#8a4b00";
-          return;
-        }
-
-        status.textContent = "A enviar...";
-
-        try {
-          const response = await fetch(endpoint, {
-            method: "POST",
-            body: new FormData(form),
-            headers: { "Accept": "application/json" }
-          });
-
-          if (response.ok) {
-            form.reset();
-            status.textContent = "Mensagem enviada.";
-            status.style.color = "#0c7a43";
-          } else {
-            status.textContent = "Erro no envio. Verifique o endpoint.";
-            status.style.color = "#a12a2a";
-          }
-        } catch (error) {
-          status.textContent = "Falha de rede. Tente novamente.";
-          status.style.color = "#a12a2a";
-        }
+      form.addEventListener("submit", () => {
+        status.textContent = "A enviar mensagem...";
+        status.style.color = "#4d6078";
       });
     }
   </script>
