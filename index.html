@@ -3,835 +3,164 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DevNexus | Consultoria em Transformação Digital</title>
-  <meta name="description" content="DevNexus é uma empresa de consultoria em transformação digital, sistemas de informação, governação digital e modernização institucional para educação, saúde, eleições e administração pública." />
-  <style>
-    :root {
-      --azul-escuro: #062f5f;
-      --azul: #008fe3;
-      --azul-claro: #dff4ff;
-      --ciano: #00bdd6;
-      --cinza-texto: #344054;
-      --cinza-suave: #f5f8fb;
-      --branco: #ffffff;
-      --sombra: 0 18px 45px rgba(6, 47, 95, 0.12);
-      --raio: 22px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--cinza-texto);
-      background: #ffffff;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.93);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(0, 143, 227, 0.12);
-    }
-
-    .nav {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 18px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      font-size: 1.45rem;
-      letter-spacing: -0.03em;
-      color: var(--azul-escuro);
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 45% 45%, var(--ciano), var(--azul) 42%, var(--azul-escuro) 76%);
-      position: relative;
-      box-shadow: 0 10px 25px rgba(0, 143, 227, 0.28);
-    }
-
-    .brand-mark::before,
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      border: 3px solid rgba(255,255,255,0.88);
-      border-radius: 50%;
-      width: 54px;
-      height: 24px;
-      top: 8px;
-      left: -8px;
-      transform: rotate(-22deg);
-    }
-
-    .brand-mark::after {
-      transform: rotate(52deg);
-      opacity: 0.75;
-    }
-
-    .brand span:last-child {
-      color: var(--azul);
-    }
-
-    .navlinks {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      font-size: 0.95rem;
-      color: #46566b;
-    }
-
-    .navlinks a:hover {
-      color: var(--azul);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 20px;
-      border-radius: 999px;
-      font-weight: 700;
-      border: 1px solid transparent;
-      transition: 0.2s ease;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--azul-escuro), var(--azul));
-      color: white;
-      box-shadow: 0 12px 30px rgba(0, 143, 227, 0.25);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 35px rgba(0, 143, 227, 0.32);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: var(--azul-escuro);
-      border-color: rgba(0, 143, 227, 0.25);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(0, 189, 214, 0.16), transparent 28%),
-        radial-gradient(circle at 85% 18%, rgba(0, 143, 227, 0.15), transparent 28%),
-        linear-gradient(135deg, #ffffff 0%, #f2faff 55%, #e8f6ff 100%);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(0,143,227,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,143,227,0.08) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.25), transparent 72%);
-    }
-
-    .hero-inner {
-      position: relative;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 92px 22px 86px;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(0, 143, 227, 0.1);
-      color: var(--azul-escuro);
-      font-weight: 700;
-      font-size: 0.88rem;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      font-size: clamp(2.35rem, 5vw, 4.8rem);
-      line-height: 1.02;
-      letter-spacing: -0.07em;
-      color: var(--azul-escuro);
-      margin-bottom: 24px;
-    }
-
-    .hero p {
-      font-size: 1.17rem;
-      max-width: 720px;
-      color: #44536a;
-      margin-bottom: 30px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 34px;
-    }
-
-    .trust-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      max-width: 720px;
-    }
-
-    .trust-item {
-      padding: 16px;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(0,143,227,0.13);
-      border-radius: 18px;
-      color: #263d58;
-      font-weight: 700;
-      box-shadow: 0 8px 22px rgba(6,47,95,0.06);
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,0.85);
-      border: 1px solid rgba(0,143,227,0.16);
-      border-radius: 34px;
-      padding: 30px;
-      box-shadow: var(--sombra);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      right: -60px;
-      top: -60px;
-      background: radial-gradient(circle, rgba(0,189,214,0.24), transparent 70%);
-      border-radius: 50%;
-    }
-
-    .system-map {
-      position: relative;
-      min-height: 350px;
-      display: grid;
-      place-items: center;
-    }
-
-    .node-main {
-      position: relative;
-      z-index: 2;
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--azul-escuro), var(--azul));
-      color: white;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      font-size: 1.65rem;
-      font-weight: 800;
-      box-shadow: 0 22px 55px rgba(0,143,227,0.32);
-    }
-
-    .node {
-      position: absolute;
-      z-index: 3;
-      padding: 11px 15px;
-      border-radius: 999px;
-      background: white;
-      border: 1px solid rgba(0,143,227,0.18);
-      font-weight: 800;
-      color: var(--azul-escuro);
-      box-shadow: 0 12px 28px rgba(6,47,95,0.12);
-      font-size: 0.92rem;
-    }
-
-    .node.one { top: 26px; left: 18px; }
-    .node.two { top: 50px; right: 8px; }
-    .node.three { bottom: 54px; left: 5px; }
-    .node.four { bottom: 28px; right: 12px; }
-    .node.five { top: 154px; right: -2px; }
-
-    .rings {
-      position: absolute;
-      width: 290px;
-      height: 290px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,143,227,0.20);
-    }
-
-    .rings::before,
-    .rings::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      inset: -38px;
-      border: 1px solid rgba(0,189,214,0.14);
-    }
-
-    .rings::after {
-      inset: 42px;
-      border-color: rgba(6,47,95,0.12);
-    }
-
-    section {
-      padding: 84px 22px;
-    }
-
-    .container {
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-
-    .section-head {
-      max-width: 760px;
-      margin-bottom: 38px;
-    }
-
-    .section-head.center {
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.08;
-      letter-spacing: -0.05em;
-      color: var(--azul-escuro);
-      margin-bottom: 16px;
-    }
-
-    .section-head p {
-      font-size: 1.06rem;
-      color: #536276;
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid rgba(6,47,95,0.09);
-      border-radius: var(--raio);
-      padding: 26px;
-      box-shadow: 0 12px 32px rgba(6,47,95,0.06);
-    }
-
-    .card:hover {
-      box-shadow: var(--sombra);
-      transform: translateY(-2px);
-      transition: 0.2s ease;
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(0,143,227,0.12), rgba(0,189,214,0.16));
-      color: var(--azul-escuro);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      margin-bottom: 18px;
-      font-size: 1.3rem;
-    }
-
-    h3 {
-      color: var(--azul-escuro);
-      margin-bottom: 10px;
-      font-size: 1.23rem;
-      line-height: 1.22;
-    }
-
-    .muted {
-      color: #5a687a;
-    }
-
-    .alt {
-      background: var(--cinza-suave);
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 42px;
-      align-items: start;
-    }
-
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .pill {
-      padding: 9px 13px;
-      background: white;
-      border: 1px solid rgba(0,143,227,0.18);
-      border-radius: 999px;
-      color: var(--azul-escuro);
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    .services-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .service-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 16px;
-      padding: 20px;
-      background: white;
-      border-radius: 20px;
-      border: 1px solid rgba(6,47,95,0.08);
-      box-shadow: 0 10px 26px rgba(6,47,95,0.05);
-    }
-
-    .check {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--azul-claro);
-      color: var(--azul-escuro);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-    }
-
-    .process {
-      counter-reset: etapa;
-    }
-
-    .process .card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .process .card::before {
-      counter-increment: etapa;
-      content: "0" counter(etapa);
-      position: absolute;
-      right: 18px;
-      top: 10px;
-      font-size: 3.6rem;
-      font-weight: 900;
-      color: rgba(0,143,227,0.09);
-      letter-spacing: -0.08em;
-    }
-
-    .quote {
-      background: linear-gradient(135deg, var(--azul-escuro), #074d8f 52%, var(--azul));
-      color: white;
-      border-radius: 34px;
-      padding: 44px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 30px;
-      align-items: center;
-      box-shadow: 0 22px 55px rgba(6,47,95,0.26);
-    }
-
-    .quote h2,
-    .quote p {
-      color: white;
-    }
-
-    .quote p {
-      opacity: 0.88;
-      max-width: 760px;
-    }
-
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 26px;
-    }
-
-    .contact-card {
-      background: white;
-      border-radius: 28px;
-      border: 1px solid rgba(6,47,95,0.09);
-      padding: 30px;
-      box-shadow: var(--sombra);
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .contact-line {
-      padding: 14px 16px;
-      background: var(--cinza-suave);
-      border-radius: 16px;
-      color: var(--azul-escuro);
-      font-weight: 700;
-    }
-
-    form {
-      display: grid;
-      gap: 14px;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 14px 15px;
-      border-radius: 14px;
-      border: 1px solid rgba(6,47,95,0.15);
-      font: inherit;
-      background: #fbfdff;
-    }
-
-    textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
-
-    footer {
-      background: #051f3f;
-      color: rgba(255,255,255,0.78);
-      padding: 42px 22px;
-    }
-
-    .footer-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .footer-inner strong {
-      color: white;
-    }
-
-    @media (max-width: 900px) {
-      .navlinks {
-        display: none;
-      }
-
-      .hero-inner,
-      .split,
-      .contact-wrap,
-      .quote {
-        grid-template-columns: 1fr;
-      }
-
-      .grid-4,
-      .grid-3,
-      .trust-row {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-inner {
-        padding-top: 66px;
-      }
-
-      .hero-card {
-        display: none;
-      }
-    }
-  </style>
+  <title>DevNexus Digital | Transformação Digital</title>
+  <meta name="description" content="DevNexus Digital - Consultoria em transformação digital, governação digital, educação, saúde, eleições e administração pública." />
+  <link rel="icon" href="assets/logo-devnexus.png" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="page-bg"></div>
+
   <header class="topbar">
-    <nav class="nav">
-      <a href="#inicio" class="brand" aria-label="DevNexus">
-        <span class="brand-mark"></span>
-        <span>Dev<span>Nexus</span></span>
+    <div class="nav container">
+      <a class="brand" href="#inicio" aria-label="DevNexus Digital">
+        <img src="assets/logo-devnexus.png" alt="DevNexus" />
       </a>
-      <div class="navlinks">
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      <nav class="menu">
+        <a href="#sobre">Sobre</a>
         <a href="#sectores">Sectores</a>
         <a href="#servicos">Serviços</a>
-        <a href="#metodo">Método</a>
-        <a href="#contacto">Contacto</a>
-        <a href="#contacto" class="btn btn-primary">Falar connosco</a>
-      </div>
-    </nav>
+        <a href="#impacto">Impacto</a>
+        <a href="#contacto" class="nav-cta">Contacto</a>
+      </nav>
+    </div>
   </header>
 
   <main id="inicio">
     <section class="hero">
-      <div class="hero-inner">
-        <div>
-          <span class="eyebrow">Consultoria em Transformação Digital</span>
-          <h1>Ligamos estratégia, tecnologia e instituições.</h1>
-          <p>
-            A DevNexus ajuda governos, projectos, ministérios e organizações públicas a transformar processos complexos em sistemas digitais úteis, governáveis e sustentáveis. Sem teatro tecnológico. Sem plataformas que morrem depois da fotografia de lançamento.
-          </p>
+      <div class="hero-band"><img src="assets/header-devnexus.png" alt="" /></div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Consultoria em transformação digital</span>
+          <h1>Transformação digital com visão institucional.</h1>
+          <p>A DevNexus Digital apoia governos, instituições públicas e projectos na concepção, estruturação e implementação de soluções digitais para educação, saúde, eleições e administração pública.</p>
           <div class="hero-actions">
             <a href="#servicos" class="btn btn-primary">Ver serviços</a>
-            <a href="#sectores" class="btn btn-secondary">Áreas de actuação</a>
+            <a href="#contacto" class="btn btn-secondary">Falar connosco</a>
           </div>
-          <div class="trust-row">
-            <div class="trust-item">Governação digital</div>
-            <div class="trust-item">Arquitectura institucional</div>
-            <div class="trust-item">Sistemas de informação</div>
+          <div class="quick-proof">
+            <span>Governação digital</span>
+            <span>Arquitectura institucional</span>
+            <span>Dados e interoperabilidade</span>
           </div>
         </div>
-
-        <aside class="hero-card" aria-label="Mapa conceptual DevNexus">
-          <div class="system-map">
-            <div class="rings"></div>
-            <div class="node-main">Dev<br>Nexus</div>
-            <div class="node one">Educação</div>
-            <div class="node two">Saúde</div>
-            <div class="node three">Eleições</div>
-            <div class="node four">Administração Pública</div>
-            <div class="node five">Dados</div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="sectores">
-      <div class="container">
-        <div class="section-head center">
-          <h2>Transformação digital nos sectores onde o Estado não se pode dar ao luxo de falhar.</h2>
-          <p>Trabalhamos em áreas onde dados, processos, confiança pública e continuidade institucional têm de andar juntos.</p>
-        </div>
-
-        <div class="grid-4">
-          <article class="card">
-            <div class="icon">E</div>
-            <h3>Educação</h3>
-            <p class="muted">Sistemas de gestão escolar, inventário TIC, dados educacionais, integração entre escolas, direcções e ministério.</p>
-          </article>
-          <article class="card">
-            <div class="icon">S</div>
-            <h3>Saúde</h3>
-            <p class="muted">Digitalização de processos, governação de dados, interoperabilidade, registos, fluxos de informação e apoio à decisão.</p>
-          </article>
-          <article class="card">
-            <div class="icon">V</div>
-            <h3>Eleições</h3>
-            <p class="muted">Sistemas eleitorais, gestão de dados, transparência operacional, segurança, auditoria e integridade dos processos.</p>
-          </article>
-          <article class="card">
-            <div class="icon">AP</div>
-            <h3>Administração Pública</h3>
-            <p class="muted">Modernização administrativa, serviços digitais, interoperabilidade, arquitectura empresarial e reforma institucional.</p>
-          </article>
+        <div class="hero-visual reveal reveal-right">
+          <img src="assets/hero-devnexus.png" alt="Imagem institucional DevNexus" />
         </div>
       </div>
     </section>
 
-    <section id="servicos" class="alt">
+    <section id="sobre" class="section">
       <div class="container split">
-        <div>
-          <div class="section-head">
-            <h2>O que fazemos</h2>
-            <p>
-              A DevNexus trabalha na zona onde muitos projectos descarrilam: entre a decisão política, a regra administrativa, o processo real e a tecnologia que deve servir tudo isso.
-            </p>
-          </div>
-          <div class="pill-list">
-            <span class="pill">Transformação digital</span>
-            <span class="pill">Governação de dados</span>
-            <span class="pill">Interoperabilidade</span>
-            <span class="pill">Arquitectura empresarial</span>
-            <span class="pill">SIGE</span>
-            <span class="pill">Sistemas públicos</span>
-            <span class="pill">Diagnóstico TIC</span>
-            <span class="pill">Capacitação</span>
-          </div>
+        <div class="section-title reveal">
+          <span class="section-kicker">Quem somos</span>
+          <h2>Não vendemos fantasia tecnológica. Estruturamos transformação que funciona.</h2>
         </div>
-
-        <div class="services-list">
-          <div class="service-item">
-            <div class="check">✓</div>
-            <div>
-              <h3>Estratégia e roteiro digital</h3>
-              <p class="muted">Desenho de estratégias, planos de acção, modelos de governação e roteiros de implementação realistas.</p>
-            </div>
-          </div>
-          <div class="service-item">
-            <div class="check">✓</div>
-            <div>
-              <h3>Diagnóstico institucional e tecnológico</h3>
-              <p class="muted">Levantamento de processos, sistemas, infraestruturas, dados, capacidades, riscos e prioridades.</p>
-            </div>
-          </div>
-          <div class="service-item">
-            <div class="check">✓</div>
-            <div>
-              <h3>Desenho funcional e arquitectura de soluções</h3>
-              <p class="muted">Especificação de plataformas digitais, fluxos, integrações, requisitos, perfis de acesso e mecanismos de controlo.</p>
-            </div>
-          </div>
-          <div class="service-item">
-            <div class="check">✓</div>
-            <div>
-              <h3>Gestão da mudança e capacitação</h3>
-              <p class="muted">Formação, apoio à adopção, manuais, procedimentos e consolidação institucional para evitar sistemas abandonados.</p>
-            </div>
-          </div>
+        <div class="text-block reveal">
+          <p>A DevNexus Digital trabalha na ligação entre estratégia, processos, dados, sistemas e capacidade institucional. O nosso foco é ajudar organizações públicas e projectos de desenvolvimento a desenhar soluções digitais que resistem ao uso real.</p>
+          <p>A tecnologia entra como instrumento. A base é sempre institucional: clareza de mandato, processos bem definidos, dados governados, responsabilidades assumidas e equipas capacitadas.</p>
         </div>
       </div>
     </section>
 
-    <section id="metodo">
+    <section id="sectores" class="section alt">
       <div class="container">
-        <div class="section-head center">
-          <h2>Um método simples, mas sério</h2>
-          <p>Primeiro entende-se a instituição. Depois desenha-se a solução. Só então entra a tecnologia. O contrário é receita antiga para desastre novo.</p>
+        <div class="section-title center reveal">
+          <span class="section-kicker">Sectores</span>
+          <h2>Áreas onde o Estado não se pode dar ao luxo de improvisar.</h2>
+          <p>Transformação digital aplicada a sectores onde confiança, continuidade e rigor fazem diferença.</p>
         </div>
-        <div class="grid-4 process">
-          <article class="card">
-            <h3>Diagnosticar</h3>
-            <p class="muted">Mapeamos processos, actores, dados, sistemas, infraestruturas e pontos de bloqueio.</p>
-          </article>
-          <article class="card">
-            <h3>Desenhar</h3>
-            <p class="muted">Definimos arquitectura, serviços, fluxos, requisitos, governação e prioridades de implementação.</p>
-          </article>
-          <article class="card">
-            <h3>Implementar</h3>
-            <p class="muted">Apoiamos a execução técnica e institucional, garantindo coerência entre solução e realidade operacional.</p>
-          </article>
-          <article class="card">
-            <h3>Consolidar</h3>
-            <p class="muted">Criamos mecanismos de manutenção, capacitação, monitorização e melhoria contínua.</p>
-          </article>
+        <div class="cards four">
+          <article class="card reveal"><div class="card-icon">🎓</div><h3>Educação</h3><p>Sistemas de gestão escolar, inventário TIC, dados educacionais, conectividade, SIGE e capacidade operacional.</p></article>
+          <article class="card reveal"><div class="card-icon">🏥</div><h3>Saúde</h3><p>Digitalização de processos, informação clínica e administrativa, interoperabilidade e apoio à decisão.</p></article>
+          <article class="card reveal"><div class="card-icon">🗳️</div><h3>Eleições</h3><p>Gestão de dados eleitorais, integridade, rastreabilidade, segurança e transparência operacional.</p></article>
+          <article class="card reveal"><div class="card-icon">🏛️</div><h3>Administração Pública</h3><p>Modernização administrativa, serviços digitais, arquitectura empresarial e reorganização de processos.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="alt">
+    <section id="servicos" class="section">
       <div class="container">
-        <div class="quote">
-          <div>
-            <h2>Digitalizar não é comprar software.</h2>
-            <p>
-              É reorganizar processos, clarificar responsabilidades, proteger dados, integrar sistemas e dar às instituições capacidade para funcionar melhor. A tecnologia entra como instrumento — não como espectáculo.
-            </p>
-          </div>
-          <a href="#contacto" class="btn btn-secondary">Iniciar conversa</a>
+        <div class="section-title center reveal">
+          <span class="section-kicker">Serviços</span>
+          <h2>Da estratégia ao desenho operacional.</h2>
+          <p>Trabalho técnico, institucional e pragmático. Sem apresentações bonitas que depois ninguém consegue executar.</p>
+        </div>
+        <div class="services">
+          <article class="service reveal"><span>01</span><div><h3>Estratégia e governação digital</h3><p>Estratégias, modelos de governação, roteiros, planos de acção e organização institucional da transformação digital.</p></div></article>
+          <article class="service reveal"><span>02</span><div><h3>Diagnóstico institucional e tecnológico</h3><p>Levantamento de processos, sistemas, dados, infraestruturas, riscos, maturidade digital e prioridades reais.</p></div></article>
+          <article class="service reveal"><span>03</span><div><h3>Arquitectura e especificações</h3><p>Termos de referência, requisitos funcionais, modelos de dados, interoperabilidade, perfis e critérios de aceitação.</p></div></article>
+          <article class="service reveal"><span>04</span><div><h3>Capacitação e apoio à implementação</h3><p>Formação, manuais, gestão da mudança, acompanhamento técnico e reforço da sustentabilidade institucional.</p></div></article>
         </div>
       </div>
     </section>
 
-    <section>
+    <section id="impacto" class="section alt">
       <div class="container">
-        <div class="section-head center">
-          <h2>Resultados que a DevNexus ajuda a produzir</h2>
-          <p>Não vendemos promessas vagas. O trabalho tem de acabar em instrumentos concretos, utilizáveis e defensáveis.</p>
+        <div class="section-title center reveal">
+          <span class="section-kicker">Impacto</span>
+          <h2>Indicadores visuais da proposta de valor.</h2>
+          <p>Gráficos animados para comunicar foco estratégico e maturidade de intervenção.</p>
         </div>
-        <div class="grid-3">
-          <article class="card">
-            <h3>Relatórios técnicos e diagnósticos</h3>
-            <p class="muted">Documentos de análise institucional, tecnológica e operacional, com recomendações claras.</p>
+        <div class="impact-grid">
+          <article class="chart-card reveal">
+            <h3>Maturidade por sector</h3>
+            <div class="bars">
+              <div class="bar-row"><span>Educação</span><div class="bar"><i data-width="86%"></i></div></div>
+              <div class="bar-row"><span>Saúde</span><div class="bar"><i data-width="72%"></i></div></div>
+              <div class="bar-row"><span>Eleições</span><div class="bar"><i data-width="78%"></i></div></div>
+              <div class="bar-row"><span>Administração Pública</span><div class="bar"><i data-width="90%"></i></div></div>
+            </div>
           </article>
-          <article class="card">
-            <h3>Termos de referência e especificações</h3>
-            <p class="muted">TDRs, requisitos funcionais, especificações técnicas, critérios de avaliação e planos de implementação.</p>
+          <article class="chart-card reveal">
+            <h3>Integração institucional</h3>
+            <div class="donut" data-percent="88">
+              <svg viewBox="0 0 160 160"><circle cx="80" cy="80" r="62" class="track"></circle><circle cx="80" cy="80" r="62" class="progress"></circle></svg>
+              <strong>88%</strong>
+            </div>
+            <p>Estratégia, processos, dados e tecnologia alinhados.</p>
           </article>
-          <article class="card">
-            <h3>Arquitecturas e modelos de governação</h3>
-            <p class="muted">Desenho de modelos institucionais, fluxos de decisão, dados, interoperabilidade e responsabilidades.</p>
-          </article>
-          <article class="card">
-            <h3>Planos de capacitação</h3>
-            <p class="muted">Programas de formação, manuais, guias operacionais e apoio à adopção pelas equipas nacionais.</p>
-          </article>
-          <article class="card">
-            <h3>Soluções digitais orientadas a serviços</h3>
-            <p class="muted">Estruturação de plataformas e serviços digitais centrados no utilizador, no processo e no dado.</p>
-          </article>
-          <article class="card">
-            <h3>Monitorização e melhoria contínua</h3>
-            <p class="muted">Indicadores, painéis, rotinas de reporte e mecanismos de controlo para sustentar a transformação.</p>
+          <article class="chart-card reveal">
+            <h3>Componentes da transformação</h3>
+            <div class="mini-bars">
+              <div style="--w:92%"><span>Governação</span><i></i></div>
+              <div style="--w:84%"><span>Dados</span><i></i></div>
+              <div style="--w:80%"><span>Processos</span><i></i></div>
+              <div style="--w:88%"><span>Sistemas</span><i></i></div>
+              <div style="--w:76%"><span>Capacitação</span><i></i></div>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="contacto" class="alt">
-      <div class="container contact-wrap">
-        <div class="contact-card">
-          <h2>Vamos falar sobre o seu projecto?</h2>
-          <p class="muted">
-            Conte-nos o desafio: sector, instituição, sistema, processo ou problema de governação. A DevNexus ajuda a transformar a confusão inicial num caminho de execução.
-          </p>
-          <div class="contact-list">
-            <div class="contact-line">Email: info@devnexusdigital.com</div>
-            <div class="contact-line">Website: www.devnexus.cv</div>
-            <div class="contact-line">Áreas: Educação · Saúde · Eleições · Administração Pública</div>
-          </div>
-        </div>
+    <section class="section signature">
+      <div class="container signature-box reveal">
+        <div><span class="section-kicker">Assinatura institucional</span><h2>Rigor, clareza e execução.</h2><p>A DevNexus Digital posiciona-se como parceira técnica para transformar necessidades institucionais em soluções digitais robustas, governáveis e sustentáveis.</p></div>
+        <img src="assets/stamp-devnexus.png" alt="Carimbo DevNexus" />
+      </div>
+    </section>
 
-        <div class="contact-card">
-          <form action="mailto:info@devnexusdigital.com" method="post" enctype="text/plain">
-            <input type="text" name="nome" placeholder="Nome" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <select name="area" required>
-              <option value="">Área de interesse</option>
-              <option>Transformação digital</option>
-              <option>Educação</option>
-              <option>Saúde</option>
-              <option>Eleições</option>
-              <option>Administração Pública</option>
-              <option>Outra área</option>
-            </select>
-            <textarea name="mensagem" placeholder="Mensagem"></textarea>
-            <button class="btn btn-primary" type="submit">Enviar mensagem</button>
-          </form>
+    <section id="contacto" class="section contact">
+      <div class="container contact-grid">
+        <div class="reveal"><span class="section-kicker">Contacto</span><h2>Vamos falar sobre o seu projecto?</h2><p>Conte-nos o desafio: sector, instituição, sistema, processo ou problema de governação. A DevNexus Digital ajuda a transformar confusão inicial num caminho de execução.</p></div>
+        <div class="contact-card reveal">
+          <a href="mailto:info@devnexusdigital.com">info@devnexusdigital.com</a>
+          <a href="https://devnexusdigital.com">devnexusdigital.com</a>
+          <span>Educação · Saúde · Eleições · Administração Pública</span>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-inner">
-      <div><strong>DevNexus</strong><br />Consultoria em Transformação Digital</div>
-      <div>Educação · Saúde · Eleições · Administração Pública</div>
-      <div>© 2026 DevNexus. Todos os direitos reservados.</div>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <img src="assets/logo-devnexus.png" alt="DevNexus" />
+      <p>© 2026 DevNexus Digital. Todos os direitos reservados.</p>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
