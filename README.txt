@@ -1,13 +1,10 @@
-DevNexus Digital — Rubik sólido e legível.
+DevNexus Digital — Rubik em Canvas 3D.
 
-Esta versão abandona os 27 cubinhos separados, porque visualmente ficavam confusos.
-Agora usa um Rubik sólido:
-- 6 faces;
-- grelha 3x3 em cada face;
-- três faces bem visíveis;
-- profundidade real por CSS 3D;
-- rotação curta, sem virar para posições estranhas;
-- sombras e volume mais fortes.
+Correção:
+- Versões anteriores tentavam fazer Rubik com CSS 3D e ficaram fracas.
+- Esta versão usa Canvas 2D com projecção 3D por código.
+- O Rubik é desenhado como objecto 3D, com cubinhos, faces, sombras, perspectiva e etiquetas.
+- Não depende de imagens, bibliotecas externas, CSS externo ou JS externo.
 
 Publicação:
 1. Descompactar.
