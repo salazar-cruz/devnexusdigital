@@ -1,10 +1,11 @@
-DevNexus Digital — versão Rubik 3x3.
+DevNexus Digital — Rubik 3D real.
 
 Mudança principal:
-- Substituído o cubo simples por um cubo Rubik 3x3.
-- Cada face tem 9 módulos do ecossistema de transformação digital.
-- O cubo tem 6 faces reais, como um Rubik: front, back, right, left, top e bottom.
-- Cada face representa uma família: DPI, GovCloud/Ciber, Sectores, Dados/Normas, Procurement, Estratégia/Operação.
+- O objecto central já não é um quadrado/plano.
+- Agora é composto por 27 cubinhos 3D.
+- Cada cubinho tem faces próprias, profundidade, sombra, separação e autocolantes.
+- As faces visíveis trazem termos do ecossistema de transformação digital.
+- Continua a ser ficheiro único: index.html.
 
 Publicação:
 1. Descompactar.
