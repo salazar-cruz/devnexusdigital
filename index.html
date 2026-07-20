@@ -5,795 +5,550 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DevNexus Digital | Transformação Digital Institucional</title>
   <meta name="description" content="Consultoria em transformação digital, DPI, governação de dados, interoperabilidade, sistemas públicos e modernização institucional.">
-
   <style>
-    :root {
-      --bg: #080b11;
-      --panel: rgba(244,241,234,.055);
-      --panel-2: rgba(244,241,234,.082);
-      --paper: #f4f1ea;
-      --muted: rgba(244,241,234,.62);
-      --soft: rgba(244,241,234,.42);
-      --line: rgba(244,241,234,.13);
-      --cyan: #85efe6;
-      --blue: #8fb7ff;
-      --sand: #f1d6a8;
-      --mint: #bdf4df;
-      --rose: #eab7ce;
-      --violet: #cdbbff;
-      --shadow: 0 42px 140px rgba(0,0,0,.42);
+    :root{
+      --bg:#050505;
+      --ink:#f5f1e8;
+      --muted:rgba(245,241,232,.62);
+      --soft:rgba(245,241,232,.38);
+      --line:rgba(245,241,232,.16);
+      --panel:#111;
+      --panel2:#171717;
+      --cyan:#8ef4ec;
+      --blue:#9bbcff;
+      --sand:#f3d39d;
+      --green:#bff5d8;
+      --rose:#eeb2ca;
+      --orange:#ffb869;
+      --radius:28px;
+      --shadow:0 50px 120px rgba(0,0,0,.55);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      min-height: 100vh;
-      color: var(--paper);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-      line-height: 1.55;
-      overflow-x: hidden;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
       background:
-        radial-gradient(circle at 14% 8%, rgba(143,183,255,.16), transparent 30%),
-        radial-gradient(circle at 86% 12%, rgba(133,239,230,.12), transparent 30%),
-        radial-gradient(circle at 52% 88%, rgba(241,214,168,.11), transparent 40%),
-        linear-gradient(135deg, #06080d 0%, #0b0f16 52%, #111827 100%);
+        radial-gradient(circle at 22% 2%, rgba(142,244,236,.08), transparent 32%),
+        radial-gradient(circle at 76% 18%, rgba(155,188,255,.08), transparent 34%),
+        #050505;
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      overflow-x:hidden;
     }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1240px,92%);margin-inline:auto}
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      opacity: .23;
+    .noise{
+      position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.19;
       background-image:
-        linear-gradient(rgba(244,241,234,.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(244,241,234,.055) 1px, transparent 1px);
-      background-size: 46px 46px;
-      mask-image: radial-gradient(circle at 50% 20%, black, transparent 74%);
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size:38px 38px;
+      mask-image:radial-gradient(circle at 50% 20%, black, transparent 78%);
     }
 
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
+    .topbar{
+      position:fixed;
+      top:18px;left:0;right:0;
+      z-index:80;
+      pointer-events:none;
+    }
+    .nav{
+      min-height:62px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:8px 9px 8px 18px;
+      background:rgba(5,5,5,.72);
+      backdrop-filter:blur(22px);
+      box-shadow:0 20px 70px rgba(0,0,0,.36);
+      pointer-events:auto;
+    }
+    .brand{
+      display:flex;align-items:center;gap:11px;
+      font-weight:950;letter-spacing:-.055em;
+      white-space:nowrap;
+    }
+    .brand span span{color:var(--cyan)}
+    .brand-mark{
+      width:39px;height:39px;border-radius:50%;
+      border:1px solid rgba(245,241,232,.18);
+      display:grid;place-items:center;position:relative;
+      background:linear-gradient(135deg, rgba(142,244,236,.20), rgba(155,188,255,.16));
+    }
+    .brand-mark b{
+      width:13px;height:13px;border-radius:50%;
+      background:linear-gradient(135deg,var(--cyan),var(--blue));
+      box-shadow:0 0 24px rgba(142,244,236,.55);
+    }
+    .brand-mark i{
+      position:absolute;width:49px;height:18px;border-radius:50%;
+      border:2px solid rgba(142,244,236,.55);
+      transform:rotate(-26deg);
+    }
+    .brand-mark i:nth-child(3){transform:rotate(44deg);border-color:rgba(155,188,255,.5)}
+    .menu{
+      display:flex;align-items:center;gap:3px;
+      color:rgba(245,241,232,.72);
+      font-size:.92rem;font-weight:760;
+    }
+    .menu a{
+      border-radius:999px;
+      padding:10px 13px;
+      transition:.22s ease;
+    }
+    .menu a:hover{background:rgba(245,241,232,.09);color:var(--ink)}
+    .menu .navcta{background:var(--ink);color:#050505;margin-left:5px}
+
+    .navbutton{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:rgba(245,241,232,.07);position:relative}
+    .navbutton span{position:absolute;left:12px;right:12px;height:2px;background:var(--ink);transition:.22s}
+    .navbutton span:first-child{top:15px}.navbutton span:last-child{bottom:15px}
+    .navbutton.open span:first-child{top:20px;transform:rotate(45deg)}
+    .navbutton.open span:last-child{bottom:20px;transform:rotate(-45deg)}
+
+    .hero{
+      min-height:100vh;
+      padding:128px 0 70px;
+      display:grid;align-items:end;
+      position:relative;
+    }
+    .hero-layout{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:54px;
+      align-items:end;
+    }
+    .hero-title{
+      font-size:clamp(5rem,14vw,16rem);
+      line-height:.73;
+      letter-spacing:-.13em;
+      font-weight:950;
+      text-transform:uppercase;
+    }
+    .hero-title .soft{color:rgba(245,241,232,.36)}
+    .hero-title .smallword{
+      display:inline-block;
+      font-size:.34em;
+      line-height:1;
+      letter-spacing:-.075em;
+      text-transform:lowercase;
+      color:var(--cyan);
+      transform:translateY(-.12em);
+      margin-left:.06em;
+    }
+    .intro-card{
+      border-radius:32px;
+      border:1px solid var(--line);
       background:
-        linear-gradient(180deg, transparent, rgba(8,11,17,.24) 62%, rgba(8,11,17,.88)),
-        radial-gradient(circle at 50% 0%, transparent 0, rgba(8,11,17,.35) 70%);
+        radial-gradient(circle at 80% 0%, rgba(142,244,236,.14), transparent 36%),
+        rgba(245,241,232,.055);
+      padding:28px;
+      box-shadow:var(--shadow);
+      min-height:360px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      overflow:hidden;
+      position:relative;
     }
-
-    a { color: inherit; text-decoration: none; }
-    .wrap { width: min(1200px, 92%); margin-inline: auto; }
-
-    .header {
-      position: fixed;
-      inset: 18px 0 auto;
-      z-index: 80;
-      pointer-events: none;
+    .intro-card:before{
+      content:"";
+      position:absolute;
+      width:220px;height:220px;border-radius:50%;
+      background:radial-gradient(circle, rgba(155,188,255,.25), transparent 70%);
+      right:-82px;top:-72px;
     }
-
-    .nav {
-      min-height: 62px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 9px 10px 9px 18px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(8,11,17,.62);
-      box-shadow: 0 18px 70px rgba(0,0,0,.26);
-      backdrop-filter: blur(22px);
-      pointer-events: auto;
+    .intro-card p{
+      position:relative;
+      color:var(--muted);
+      font-size:clamp(1.05rem,1.7vw,1.28rem);
+      line-height:1.5;
+      max-width:510px;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      font-weight: 940;
-      letter-spacing: -.05em;
-      white-space: nowrap;
-    }
-
-    .brand span span { color: var(--cyan); }
-
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      position: relative;
+    .intro-card strong{color:var(--ink)}
+    .play-tile{
+      position:relative;
+      min-height:154px;
+      border-radius:26px;
+      border:1px solid rgba(245,241,232,.14);
       background:
-        linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.03)),
-        linear-gradient(135deg, rgba(133,239,230,.28), rgba(143,183,255,.22));
-      border: 1px solid rgba(244,241,234,.16);
+        linear-gradient(135deg, rgba(245,241,232,.11), rgba(245,241,232,.035)),
+        radial-gradient(circle at 40% 40%, rgba(142,244,236,.20), transparent 45%);
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+      isolation:isolate;
+      cursor:pointer;
     }
-
-    .brand-mark b {
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--cyan), var(--blue));
-      box-shadow: 0 0 20px rgba(133,239,230,.44);
+    .play-tile span{
+      display:inline-flex;align-items:center;gap:9px;
+      font-weight:900;color:rgba(245,241,232,.82);
+      background:rgba(5,5,5,.42);
+      border:1px solid rgba(245,241,232,.13);
+      border-radius:999px;padding:10px 13px;
+      backdrop-filter:blur(12px);
     }
-
-    .brand-mark i {
-      position: absolute;
-      width: 48px;
-      height: 19px;
-      border: 2px solid rgba(133,239,230,.56);
-      border-radius: 50%;
-      transform: rotate(-28deg);
+    .play-tile span:before{
+      content:"";
+      width:10px;height:10px;border-radius:50%;
+      background:var(--cyan);
+      box-shadow:0 0 0 7px rgba(142,244,236,.1);
     }
-
-    .brand-mark i:nth-child(3) {
-      border-color: rgba(143,183,255,.50);
-      transform: rotate(42deg);
-    }
-
-    .menu {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: rgba(244,241,234,.76);
-      font-size: .9rem;
-      font-weight: 760;
-    }
-
-    .menu a {
-      padding: 10px 13px;
-      border-radius: 999px;
-      transition: .22s ease;
-    }
-
-    .menu a:hover {
-      background: rgba(244,241,234,.08);
-      color: var(--paper);
-    }
-
-    .menu .navcta {
-      color: #0b0f16;
-      background: var(--paper);
-      margin-left: 4px;
-    }
-
-    .navbutton {
-      display: none;
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(244,241,234,.14);
-      border-radius: 50%;
-      background: rgba(244,241,234,.08);
-      position: relative;
-      cursor: pointer;
-    }
-
-    .navbutton span {
-      position: absolute;
-      left: 12px;
-      right: 12px;
-      height: 2px;
-      background: var(--paper);
-      transition: .22s;
-    }
-
-    .navbutton span:first-child { top: 15px; }
-    .navbutton span:last-child { bottom: 15px; }
-    .navbutton.open span:first-child { top: 20px; transform: rotate(45deg); }
-    .navbutton.open span:last-child { bottom: 20px; transform: rotate(-45deg); }
-
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      align-items: center;
-      padding: 126px 0 80px;
-      position: relative;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.03fr .97fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(244,241,234,.055);
-      color: rgba(244,241,234,.68);
-      text-transform: uppercase;
-      letter-spacing: .095em;
-      font-size: .72rem;
-      font-weight: 880;
-      margin-bottom: 22px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 0 7px rgba(133,239,230,.10);
-    }
-
-    h1 {
-      font-size: clamp(4.2rem, 9.5vw, 10.7rem);
-      line-height: .78;
-      letter-spacing: -.112em;
-      max-width: 980px;
-      margin-bottom: 30px;
-    }
-
-    .word-muted { color: rgba(244,241,234,.38); }
-
-    .lead {
-      max-width: 740px;
-      color: rgba(244,241,234,.70);
-      font-size: clamp(1.08rem, 1.7vw, 1.28rem);
-      margin-bottom: 34px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 34px;
-    }
-
-    .btn {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      padding: 13px 20px;
-      border: 0;
-      font: inherit;
-      font-weight: 870;
-      cursor: pointer;
-      transition: .22s ease;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn.primary {
-      color: #0b0f16;
-      background: var(--paper);
-    }
-
-    .btn.secondary {
-      border: 1px solid rgba(244,241,234,.16);
-      background: rgba(244,241,234,.06);
-      color: var(--paper);
-    }
-
-    .mini-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      color: rgba(244,241,234,.58);
-      font-size: .88rem;
-      font-weight: 740;
-    }
-
-    .mini-strip span {
-      border: 1px solid rgba(244,241,234,.11);
-      background: rgba(244,241,234,.048);
-      border-radius: 999px;
-      padding: 8px 10px;
-    }
-
-    .wordmesh-card {
-      min-height: 640px;
-      position: relative;
-      border: 1px solid rgba(244,241,234,.12);
-      border-radius: 44px;
-      overflow: hidden;
+    .play-lines{
+      position:absolute;inset:-20%;
       background:
-        radial-gradient(circle at 30% 25%, rgba(133,239,230,.13), transparent 34%),
-        radial-gradient(circle at 72% 70%, rgba(143,183,255,.13), transparent 36%),
-        rgba(244,241,234,.034);
-      box-shadow: var(--shadow);
-      isolation: isolate;
+        linear-gradient(90deg, transparent 0 45%, rgba(245,241,232,.10) 50%, transparent 55%),
+        linear-gradient(0deg, transparent 0 45%, rgba(245,241,232,.08) 50%, transparent 55%);
+      background-size:70px 70px;
+      transform:rotate(-12deg);
+      opacity:.5;
+      animation:gridmove 9s linear infinite;
+      z-index:-1;
     }
+    .play-tile:hover .play-lines{animation-duration:3s}
+    @keyframes gridmove{to{transform:rotate(-12deg) translate(70px,70px)}}
 
-    .wordmesh-card::before {
-      content: "";
-      position: absolute;
-      inset: 34px;
-      border: 1px solid rgba(244,241,234,.075);
-      border-radius: 38px;
-      transform: rotate(-3deg);
-      pointer-events: none;
-      z-index: 1;
+    .scroll-mark{
+      display:flex;gap:8px;align-items:center;
+      color:rgba(245,241,232,.46);
+      text-transform:uppercase;
+      letter-spacing:.1em;font-size:.72rem;font-weight:900;
+      margin-top:38px;
     }
+    .scroll-mark:before{content:"";width:42px;height:1px;background:rgba(245,241,232,.28)}
 
-    .wordmesh-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,.11), transparent);
-      transform: translateX(-85%) rotate(12deg);
-      animation: sweep 8s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 2;
+    .section{padding:104px 0}
+    .split-head{
+      display:grid;
+      grid-template-columns:.82fr 1.18fr;
+      gap:70px;
+      align-items:start;
+      margin-bottom:46px;
     }
-
-    @keyframes sweep {
-      0%, 34% { transform: translateX(-85%) rotate(12deg); opacity: 0; }
-      48% { opacity: .9; }
-      76%, 100% { transform: translateX(85%) rotate(12deg); opacity: 0; }
+    .section-title{
+      font-size:clamp(4rem,9vw,10rem);
+      line-height:.75;
+      letter-spacing:-.12em;
+      font-weight:950;
+      text-transform:uppercase;
     }
-
-    #wordMesh {
-      width: 100%;
-      height: 100%;
-      min-height: 640px;
-      display: block;
-      cursor: grab;
-      position: relative;
-      z-index: 3;
+    .section-title span{
+      display:block;
+      color:rgba(245,241,232,.36);
+      text-transform:lowercase;
+      font-size:.42em;
+      letter-spacing:-.08em;
+      margin-left:.03em;
     }
-
-    #wordMesh:active { cursor: grabbing; }
-
-    .mesh-caption {
-      position: absolute;
-      left: 26px;
-      bottom: 24px;
-      z-index: 4;
-      max-width: 320px;
-      color: rgba(244,241,234,.52);
-      font-size: .88rem;
-      font-weight: 720;
+    .section-copy{
+      color:var(--muted);
+      font-size:clamp(1.05rem,1.7vw,1.26rem);
+      line-height:1.65;
+      max-width:780px;
     }
+    .section-copy strong{color:var(--ink)}
 
-    .mesh-caption b {
-      color: var(--paper);
-      display: block;
-      margin-bottom: 4px;
+    .logos{
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:12px;
+      margin-top:38px;
     }
-
-    .marquee {
-      overflow: hidden;
-      border-top: 1px solid rgba(244,241,234,.10);
-      border-bottom: 1px solid rgba(244,241,234,.10);
-      background: rgba(244,241,234,.032);
+    .logo-pill{
+      height:82px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      display:grid;
+      place-items:center;
+      color:rgba(245,241,232,.55);
+      font-weight:900;
+      background:rgba(245,241,232,.04);
+      transition:.22s;
     }
+    .logo-pill:hover{background:rgba(245,241,232,.08);color:var(--ink);transform:translateY(-4px)}
 
-    .marquee-track {
-      width: max-content;
-      display: flex;
-      gap: 28px;
-      padding: 18px 0;
-      color: rgba(244,241,234,.50);
-      font-weight: 860;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      white-space: nowrap;
-      font-size: .82rem;
-      animation: marquee 34s linear infinite;
+    .case-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
     }
-
-    .marquee-track span::after {
-      content: "·";
-      margin-left: 28px;
-      color: rgba(244,241,234,.20);
+    .case-card{
+      min-height:430px;
+      border:1px solid var(--line);
+      background:rgba(245,241,232,.052);
+      border-radius:34px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:0 24px 90px rgba(0,0,0,.22);
+      transition:.28s ease;
     }
-
-    @keyframes marquee {
-      to { transform: translateX(-50%); }
-    }
-
-    .section { padding: 106px 0; }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 62px;
-      align-items: end;
-      margin-bottom: 40px;
-    }
-
-    .kicker {
-      color: rgba(244,241,234,.50);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 920;
-      font-size: .78rem;
-      margin-bottom: 15px;
-    }
-
-    .section-title {
-      font-size: clamp(2.8rem, 5.5vw, 6.2rem);
-      line-height: .86;
-      letter-spacing: -.095em;
-    }
-
-    .section-intro {
-      color: rgba(244,241,234,.61);
-      font-size: 1.08rem;
-      max-width: 700px;
-    }
-
-    .ecosystem {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .eco-item {
-      min-height: 128px;
-      padding: 18px;
-      border-radius: 23px;
-      border: 1px solid rgba(244,241,234,.11);
-      background: rgba(244,241,234,.046);
-      transition: .25s ease;
-    }
-
-    .eco-item:hover {
-      transform: translateY(-5px);
-      background: rgba(244,241,234,.072);
-      border-color: rgba(244,241,234,.18);
-    }
-
-    .eco-item b {
-      display: block;
-      color: var(--paper);
-      margin-bottom: 8px;
-      font-size: 1rem;
-    }
-
-    .eco-item span {
-      color: rgba(244,241,234,.56);
-      font-size: .91rem;
-    }
-
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .work-card {
-      min-height: 350px;
-      padding: 28px;
-      border-radius: 34px;
-      position: relative;
-      overflow: hidden;
+    .case-card:hover{transform:translateY(-8px);border-color:rgba(245,241,232,.28);background:rgba(245,241,232,.075)}
+    .case-card.big{grid-column:span 2}
+    .case-art{
+      height:235px;
       background:
-        radial-gradient(circle at 86% 10%, rgba(143,183,255,.12), transparent 38%),
-        rgba(244,241,234,.052);
-      border: 1px solid rgba(244,241,234,.12);
-      box-shadow: 0 20px 80px rgba(0,0,0,.14);
-      transition: .28s ease;
+        radial-gradient(circle at 22% 28%, rgba(142,244,236,.20), transparent 32%),
+        radial-gradient(circle at 72% 46%, rgba(155,188,255,.20), transparent 34%),
+        linear-gradient(135deg, #141414, #0b0b0b);
+      position:relative;
+      overflow:hidden;
+    }
+    .case-art:before{
+      content:"";
+      position:absolute;inset:24px;
+      border:1px solid rgba(245,241,232,.10);
+      border-radius:28px;
+      transform:rotate(-3deg);
+    }
+    .case-art:after{
+      content:"";
+      position:absolute;inset:-40%;
+      background:linear-gradient(90deg,transparent,rgba(245,241,232,.12),transparent);
+      transform:rotate(16deg) translateX(-70%);
+      animation:sweep 7s ease-in-out infinite;
+    }
+    @keyframes sweep{0%,38%{transform:rotate(16deg) translateX(-75%);opacity:0}55%{opacity:1}80%,100%{transform:rotate(16deg) translateX(70%);opacity:0}}
+    .case-art .chips{
+      position:absolute;inset:0;padding:26px;display:flex;align-content:flex-start;flex-wrap:wrap;gap:9px;z-index:2
+    }
+    .chip{
+      border:1px solid rgba(245,241,232,.13);
+      background:rgba(5,5,5,.42);
+      backdrop-filter:blur(10px);
+      border-radius:999px;
+      padding:8px 10px;
+      font-size:.78rem;
+      font-weight:850;
+      color:rgba(245,241,232,.78);
+    }
+    .case-body{padding:26px}
+    .case-kicker{
+      color:var(--cyan);
+      font-weight:900;
+      font-size:.74rem;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+    .case-body h3{
+      font-size:clamp(1.8rem,3.4vw,3.4rem);
+      line-height:.92;
+      letter-spacing:-.075em;
+      margin-bottom:14px;
+    }
+    .case-body p{
+      color:var(--muted);
+      max-width:720px;
     }
 
-    .work-card:hover {
-      transform: translateY(-8px);
+    .life{
+      display:grid;
+      grid-template-columns:.88fr 1.12fr;
+      gap:42px;
+      align-items:stretch;
+    }
+    .life-panel{
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:rgba(245,241,232,.05);
+      min-height:420px;
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .life-panel h3{
+      font-size:clamp(3rem,6.4vw,7rem);
+      line-height:.82;
+      letter-spacing:-.11em;
+      margin-bottom:20px;
+    }
+    .life-panel h3 span{color:rgba(245,241,232,.36)}
+    .life-panel p{color:var(--muted);font-size:1.08rem;line-height:1.65}
+    .photo-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+    .photo{
+      min-height:126px;
+      border-radius:26px;
+      border:1px solid var(--line);
       background:
-        radial-gradient(circle at 86% 10%, rgba(133,239,230,.14), transparent 38%),
-        rgba(244,241,234,.074);
-      border-color: rgba(244,241,234,.21);
+        radial-gradient(circle at 38% 32%, rgba(142,244,236,.18), transparent 34%),
+        rgba(245,241,232,.052);
+      display:grid;
+      place-items:center;
+      color:rgba(245,241,232,.62);
+      font-weight:900;
+      transform:rotate(var(--rot));
+      transition:.22s ease;
     }
+    .photo:hover{transform:rotate(0) scale(1.03);background:rgba(245,241,232,.08);color:var(--ink)}
 
-    .work-card.large {
-      grid-column: span 2;
-      min-height: 398px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      align-items: end;
+    .cta{
+      padding:100px 0 80px;
+      position:relative;
     }
-
-    .card-num {
-      color: rgba(244,241,234,.36);
-      font-weight: 920;
-      font-size: .82rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .work-card h3 {
-      font-size: clamp(1.8rem, 3.3vw, 3.5rem);
-      line-height: .92;
-      letter-spacing: -.075em;
-      margin-bottom: 16px;
-    }
-
-    .work-card p {
-      color: rgba(244,241,234,.60);
-      max-width: 640px;
-    }
-
-    .stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 24px;
-    }
-
-    .stack span {
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(244,241,234,.07);
-      border: 1px solid rgba(244,241,234,.10);
-      color: rgba(244,241,234,.64);
-      font-size: .78rem;
-      font-weight: 780;
-    }
-
-    .case-visual {
-      min-height: 230px;
-      align-self: stretch;
-      border-radius: 30px;
-      border: 1px solid rgba(244,241,234,.12);
+    .cta-panel{
+      min-height:560px;
+      border-radius:42px;
+      border:1px solid var(--line);
       background:
-        linear-gradient(135deg, rgba(244,241,234,.08), rgba(244,241,234,.025)),
-        radial-gradient(circle at 42% 38%, rgba(133,239,230,.20), transparent 38%),
-        radial-gradient(circle at 68% 62%, rgba(143,183,255,.15), transparent 36%);
-      position: relative;
-      overflow: hidden;
+        radial-gradient(circle at 18% 24%, rgba(142,244,236,.16), transparent 34%),
+        radial-gradient(circle at 82% 72%, rgba(155,188,255,.12), transparent 36%),
+        rgba(245,241,232,.052);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      padding:34px;
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:40px;
+      align-items:end;
     }
-
-    .case-visual span {
-      position: absolute;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(244,241,234,.12);
-      background: rgba(8,11,17,.38);
-      color: rgba(244,241,234,.72);
-      font-size: .78rem;
-      font-weight: 800;
+    .cta h2{
+      font-size:clamp(4.2rem,10.4vw,12rem);
+      line-height:.74;
+      letter-spacing:-.13em;
+      text-transform:uppercase;
     }
-
-    .case-visual span:nth-child(1) { left: 10%; top: 18%; color: var(--cyan); }
-    .case-visual span:nth-child(2) { right: 12%; top: 24%; color: var(--blue); }
-    .case-visual span:nth-child(3) { left: 22%; bottom: 22%; color: var(--sand); }
-    .case-visual span:nth-child(4) { right: 18%; bottom: 18%; color: var(--mint); }
-
-    .process {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+    .cta h2 span{
+      display:block;color:rgba(245,241,232,.36);text-transform:lowercase;font-size:.42em;letter-spacing:-.08em;
     }
-
-    .step {
-      padding: 22px;
-      border-radius: 26px;
-      min-height: 210px;
-      border: 1px solid rgba(244,241,234,.11);
-      background: rgba(244,241,234,.046);
+    .form{
+      display:grid;
+      gap:14px;
+      position:relative;
+      z-index:4;
     }
-
-    .step b {
-      display: block;
-      color: var(--cyan);
-      font-size: .86rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 26px;
+    .form label{display:grid;gap:7px;color:rgba(245,241,232,.72);font-weight:760}
+    .form input,.form select,.form textarea{
+      width:100%;
+      border:1px solid rgba(245,241,232,.15);
+      border-radius:18px;
+      padding:14px 15px;
+      color:var(--ink);
+      background:rgba(5,5,5,.34);
+      outline:none;
+      font:inherit;
     }
-
-    .step h3 {
-      font-size: 1.26rem;
-      letter-spacing: -.045em;
-      margin-bottom: 10px;
+    .form input:focus,.form select:focus,.form textarea:focus{
+      border-color:rgba(142,244,236,.46);
+      box-shadow:0 0 0 4px rgba(142,244,236,.10);
     }
-
-    .step p {
-      color: rgba(244,241,234,.58);
-      font-size: .95rem;
+    .status{min-height:20px;color:rgba(245,241,232,.48);font-size:.9rem}
+    .dragzone{
+      position:absolute;inset:0;z-index:2;pointer-events:none;
     }
-
-    .contact-panel {
-      padding: 34px;
-      border-radius: 40px;
-      background:
-        radial-gradient(circle at 90% 8%, rgba(133,239,230,.10), transparent 38%),
-        rgba(244,241,234,.058);
-      border: 1px solid rgba(244,241,234,.12);
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 42px;
-      align-items: start;
-      box-shadow: var(--shadow);
+    .drag-card{
+      position:absolute;
+      min-width:92px;
+      min-height:54px;
+      display:grid;
+      place-items:center;
+      border-radius:22px;
+      padding:10px 14px;
+      color:#050505;
+      background:var(--ink);
+      font-weight:950;
+      letter-spacing:-.04em;
+      box-shadow:0 22px 60px rgba(0,0,0,.35);
+      pointer-events:auto;
+      cursor:grab;
+      user-select:none;
+      touch-action:none;
     }
-
-    .contact-panel h2 {
-      font-size: clamp(3rem, 6.2vw, 7.4rem);
-      line-height: .80;
-      letter-spacing: -.112em;
-      margin-bottom: 20px;
+    .drag-card:active{cursor:grabbing}
+    .drag-card small{
+      position:absolute;
+      top:-24px;
+      left:8px;
+      color:rgba(245,241,232,.58);
+      font-size:.68rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:900;
+      white-space:nowrap;
     }
+    .d1{left:54%;top:15%;background:var(--cyan)}
+    .d2{left:74%;top:27%;background:var(--blue)}
+    .d3{left:63%;top:45%;background:var(--sand)}
+    .d4{left:83%;top:58%;background:var(--green)}
+    .d5{left:55%;top:72%;background:var(--rose)}
 
-    .contact-panel p {
-      color: rgba(244,241,234,.62);
-      max-width: 560px;
+    .footer{
+      border-top:1px solid rgba(245,241,232,.10);
+      padding:34px 0 48px;
+      color:rgba(245,241,232,.42);
     }
+    .foot{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}
 
-    .form {
-      display: grid;
-      gap: 14px;
+    .reveal{
+      opacity:0;
+      transform:translateY(34px);
+      transition:opacity .8s ease, transform .8s ease;
     }
+    .reveal.visible{opacity:1;transform:translateY(0)}
 
-    .form label {
-      display: grid;
-      gap: 7px;
-      color: rgba(244,241,234,.70);
-      font-weight: 760;
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
     }
-
-    .form input,
-    .form select,
-    .form textarea {
-      width: 100%;
-      border: 1px solid rgba(244,241,234,.14);
-      border-radius: 18px;
-      padding: 14px 15px;
-      color: var(--paper);
-      background: rgba(244,241,234,.055);
-      outline: none;
-      font: inherit;
+    @media(max-width:1060px){
+      .hero-layout,.split-head,.life,.cta-panel{grid-template-columns:1fr}
+      .logos{grid-template-columns:repeat(3,1fr)}
+      .d1,.d2,.d3,.d4,.d5{left:auto;right:24px}
+      .d1{top:6%}.d2{top:18%}.d3{top:30%}.d4{top:42%}.d5{top:54%}
     }
-
-    .form input:focus,
-    .form select:focus,
-    .form textarea:focus {
-      border-color: rgba(133,239,230,.45);
-      box-shadow: 0 0 0 4px rgba(133,239,230,.10);
-    }
-
-    .status {
-      min-height: 22px;
-      color: rgba(244,241,234,.50);
-      font-size: .92rem;
-    }
-
-    .footer {
-      padding: 36px 0 46px;
-      color: rgba(244,241,234,.45);
-      border-top: 1px solid rgba(244,241,234,.10);
-    }
-
-    .foot {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(34px);
-      transition: opacity .82s ease, transform .82s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
+    @media(max-width:740px){
+      .topbar{top:10px}
+      .nav{border-radius:28px;min-height:60px}
+      .navbutton{display:block}
+      .menu{
+        position:absolute;left:4%;right:4%;top:74px;
+        display:none;flex-direction:column;align-items:stretch;
+        background:rgba(5,5,5,.93);
+        border:1px solid var(--line);
+        border-radius:24px;padding:8px;
+        backdrop-filter:blur(20px);
       }
-    }
-
-    @media (max-width: 1060px) {
-      .hero-grid,
-      .section-head,
-      .work-card.large,
-      .contact-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .wordmesh-card { min-height: 540px; }
-      #wordMesh { min-height: 540px; }
-
-      .ecosystem,
-      .process {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 740px) {
-      .header { top: 10px; }
-      .nav { border-radius: 28px; min-height: 60px; }
-      .navbutton { display: block; }
-
-      .menu {
-        position: absolute;
-        left: 4%;
-        right: 4%;
-        top: 74px;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        border: 1px solid rgba(244,241,234,.14);
-        background: rgba(8,11,17,.93);
-        border-radius: 24px;
-        padding: 8px;
-        backdrop-filter: blur(22px);
-      }
-
-      .menu.open { display: flex; }
-      .menu a { padding: 14px 16px; }
-      .menu .navcta { margin-top: 6px; text-align: center; }
-
-      .hero { padding-top: 110px; }
-      h1 { font-size: clamp(3.5rem, 18vw, 5.8rem); }
-
-      .wordmesh-card {
-        min-height: 430px;
-        border-radius: 30px;
-      }
-
-      #wordMesh { min-height: 430px; }
-
-      .mesh-caption {
-        left: 18px;
-        right: 18px;
-        bottom: 16px;
-      }
-
-      .section { padding: 78px 0; }
-
-      .ecosystem,
-      .process,
-      .work-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .work-card.large { grid-column: span 1; }
-
-      .contact-panel {
-        padding: 24px;
-        border-radius: 30px;
-      }
-
-      .foot {
-        align-items: flex-start;
-        flex-direction: column;
-      }
+      .menu.open{display:flex}
+      .menu a{padding:14px 16px}
+      .menu .navcta{text-align:center;margin-top:6px}
+      .hero{padding-top:112px}
+      .hero-title{font-size:clamp(4rem,20vw,6rem)}
+      .intro-card{min-height:300px}
+      .section{padding:78px 0}
+      .section-title{font-size:clamp(3.4rem,16vw,5.8rem)}
+      .logos,.case-grid,.photo-grid{grid-template-columns:1fr}
+      .case-card.big{grid-column:span 1}
+      .cta-panel{padding:24px;border-radius:30px;min-height:640px}
+      .cta h2{font-size:clamp(3.6rem,17vw,5.8rem)}
+      .drag-card{transform:scale(.86)}
+      .d1,.d2,.d3,.d4,.d5{right:14px}
+      .foot{align-items:flex-start;flex-direction:column}
     }
   </style>
 </head>
 
 <body>
-  <header class="header">
+  <div class="noise"></div>
+
+  <header class="topbar">
     <div class="wrap nav">
       <a class="brand" href="#inicio" aria-label="DevNexus Digital">
         <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
-        <span>Dev<span>Nexus</span> Digital</span>
+        <span>Dev<span>Nexus</span></span>
       </a>
 
       <button class="navbutton" aria-label="Abrir menu" aria-expanded="false">
-        <span></span>
-        <span></span>
+        <span></span><span></span>
       </button>
 
-      <nav class="menu" aria-label="Menu principal">
-        <a href="#ecosistema">Ecossistema</a>
-        <a href="#trabalho">Trabalho</a>
-        <a href="#metodo">Método</a>
+      <nav class="menu">
+        <a href="#experiencia">Experiência</a>
+        <a href="#casos">Casos</a>
+        <a href="#visao">Visão</a>
         <a href="#contacto" class="navcta">Contacto</a>
       </nav>
     </div>
@@ -801,161 +556,141 @@
 
   <main id="inicio">
     <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Digital Public Infrastructure · Dados · Sistemas Públicos</p>
-
-          <h1>
+      <div class="wrap hero-layout">
+        <div>
+          <h1 class="hero-title reveal">
             RESOLVER<br>
-            <span class="word-muted">PROBLEMAS</span><br>
-            PÚBLICOS
+            <span class="smallword">problemas</span><br>
+            <span class="soft">PÚBLICOS</span>
           </h1>
+          <div class="scroll-mark reveal">Digital Public Infrastructure · Dados · Estado</div>
+        </div>
 
-          <p class="lead">
-            A DevNexus Digital transforma intenção institucional em arquitectura, dados, interoperabilidade,
-            procurement técnico e serviços digitais sustentáveis.
+        <aside class="intro-card reveal">
+          <p>
+            A DevNexus Digital transforma <strong>problemas institucionais complexos</strong>
+            em arquitecturas digitais claras: DPI, dados, interoperabilidade, sistemas públicos,
+            procurement técnico e capacidade de operação.
           </p>
 
-          <div class="actions">
-            <a class="btn primary" href="#contacto">Falar com a DevNexus</a>
-            <a class="btn secondary" href="#trabalho">Ver abordagem</a>
+          <div class="play-tile" aria-label="Bloco interactivo visual">
+            <div class="play-lines"></div>
+            <span>Hover to connect</span>
           </div>
-
-          <div class="mini-strip">
-            <span>DPI</span>
-            <span>Dados</span>
-            <span>Interop</span>
-            <span>GovCloud</span>
-            <span>SIGE</span>
-            <span>Cibersegurança</span>
-          </div>
-        </div>
-
-        <div class="wordmesh-card reveal">
-          <canvas id="wordMesh" aria-label="Malha interactiva do ecossistema de transformação digital"></canvas>
-          <p class="mesh-caption"><b>Ecossistema interactivo</b>Arraste as palavras. A transformação digital funciona quando as peças se ligam.</p>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <section class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Identidade Digital</span><span>Registos</span><span>Pagamentos Digitais</span><span>Interoperabilidade</span><span>Governação de Dados</span><span>Cibersegurança</span><span>Serviços Públicos Digitais</span><span>Educação</span><span>Saúde</span><span>Eleições</span><span>GovCloud</span><span>Procurement</span>
-        <span>Identidade Digital</span><span>Registos</span><span>Pagamentos Digitais</span><span>Interoperabilidade</span><span>Governação de Dados</span><span>Cibersegurança</span><span>Serviços Públicos Digitais</span><span>Educação</span><span>Saúde</span><span>Eleições</span><span>GovCloud</span><span>Procurement</span>
-      </div>
-    </section>
-
-    <section id="ecosistema" class="section">
+    <section id="experiencia" class="section">
       <div class="wrap">
-        <div class="section-head reveal">
+        <div class="split-head reveal">
+          <h2 class="section-title">Work<span>experience</span></h2>
           <div>
-            <p class="kicker">Ecossistema</p>
-            <h2 class="section-title">A transformação digital não é uma aplicação.</h2>
+            <p class="section-copy">
+              A trajectória da DevNexus concentra-se em governação digital, sistemas de informação públicos,
+              transformação sectorial e desenho técnico de projectos. O trabalho começa no mandato institucional
+              e termina na operação: <strong>arquitectura, dados, contratação, implementação e sustentabilidade.</strong>
+            </p>
+            <div class="logos">
+              <div class="logo-pill">DPI</div>
+              <div class="logo-pill">SIGE</div>
+              <div class="logo-pill">eGIF</div>
+              <div class="logo-pill">APD</div>
+              <div class="logo-pill">GovCloud</div>
+              <div class="logo-pill">PMO</div>
+            </div>
           </div>
-          <p class="section-intro">
-            É uma arquitectura institucional: pessoas, processos, dados, plataformas, regras, financiamento,
-            contratação, segurança e capacidade de operação.
-          </p>
-        </div>
-
-        <div class="ecosystem">
-          <div class="eco-item reveal"><b>DPI</b><span>Identidade, registos, pagamentos, interoperabilidade e serviços comuns.</span></div>
-          <div class="eco-item reveal"><b>Dados</b><span>Modelos, qualidade, protecção, partilha e uso para decisão.</span></div>
-          <div class="eco-item reveal"><b>Interoperabilidade</b><span>APIs, eGIF, barramento, normas e integração entre sistemas.</span></div>
-          <div class="eco-item reveal"><b>Cibersegurança</b><span>Risco, continuidade, resposta, resiliência e confiança operacional.</span></div>
-          <div class="eco-item reveal"><b>Educação</b><span>SIGE, inventário TIC, conectividade, dados escolares e gestão sectorial.</span></div>
-          <div class="eco-item reveal"><b>Saúde</b><span>Registos, fluxos de informação, interoperabilidade e continuidade.</span></div>
-          <div class="eco-item reveal"><b>Eleições</b><span>Integridade dos dados, rastreabilidade, transparência e operação segura.</span></div>
-          <div class="eco-item reveal"><b>Procurement</b><span>TDR, especificações, avaliação, aceitação e sustentabilidade.</span></div>
         </div>
       </div>
     </section>
 
-    <section id="trabalho" class="section">
+    <section id="casos" class="section">
       <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">Trabalho</p>
-            <h2 class="section-title">Da ideia bonita ao sistema que aguenta.</h2>
-          </div>
-          <p class="section-intro">
-            A abordagem junta estratégia, arquitectura, contratação e operação. Sem teatro digital.
+        <div class="split-head reveal">
+          <h2 class="section-title">Case<span>studies</span></h2>
+          <p class="section-copy">
+            Em vez de vender tecnologia solta, a DevNexus organiza problemas públicos em frentes de intervenção:
+            serviços, dados, processos, cibersegurança, contratação e mudança institucional.
           </p>
         </div>
 
-        <div class="work-grid">
-          <article class="work-card large reveal">
-            <div>
-              <p class="card-num">Framework · 01</p>
-              <h3>Arquitectura institucional de transformação digital.</h3>
-              <p>
-                Mapeamento de actores, mandatos, processos, dados, plataformas, riscos e decisões necessárias
-                para evitar projectos tecnológicos soltos.
-              </p>
-              <div class="stack">
-                <span>Governação</span><span>Roteiro</span><span>eGIF</span><span>DPI</span><span>Dados</span>
+        <div class="case-grid">
+          <article class="case-card big reveal">
+            <div class="case-art">
+              <div class="chips">
+                <span class="chip">DPI</span>
+                <span class="chip">Identidade</span>
+                <span class="chip">Pagamentos</span>
+                <span class="chip">Interoperabilidade</span>
               </div>
             </div>
-            <div class="case-visual" aria-hidden="true">
-              <span>DPI</span>
-              <span>Dados</span>
-              <span>Interop</span>
-              <span>Serviços</span>
+            <div class="case-body">
+              <p class="case-kicker">CASE STUDY</p>
+              <h3>Transformar serviços públicos em arquitectura digital coerente.</h3>
+              <p>Integração de identidade, registos, dados, pagamentos e canais digitais com governação, segurança e operação.</p>
             </div>
           </article>
 
-          <article class="work-card reveal">
-            <p class="card-num">Framework · 02</p>
-            <h3>Sistemas sectoriais.</h3>
-            <p>Educação, saúde e eleições com foco em dados fiáveis, processos claros e operação sustentável.</p>
-            <div class="stack">
-              <span>SIGE</span><span>Saúde</span><span>Eleições</span><span>Operação</span>
+          <article class="case-card reveal">
+            <div class="case-art">
+              <div class="chips">
+                <span class="chip">SIGE</span>
+                <span class="chip">Escolas</span>
+                <span class="chip">Inventário</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <p class="case-kicker">CASE STUDY</p>
+              <h3>Educação com dados fiáveis e operação sustentável.</h3>
+              <p>SIGE, inventário tecnológico, conectividade, processos escolares e gestão sectorial baseada em evidência.</p>
             </div>
           </article>
 
-          <article class="work-card reveal">
-            <p class="card-num">Framework · 03</p>
-            <h3>Procurement técnico.</h3>
-            <p>Termos de referência, especificações, critérios de avaliação, aceitação e transferência de capacidade.</p>
-            <div class="stack">
-              <span>TDR</span><span>BOQ</span><span>Aceitação</span><span>Capacitação</span>
+          <article class="case-card reveal">
+            <div class="case-art">
+              <div class="chips">
+                <span class="chip">TDR</span>
+                <span class="chip">BOQ</span>
+                <span class="chip">Avaliação</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <p class="case-kicker">CASE STUDY</p>
+              <h3>Procurement técnico que protege o projecto.</h3>
+              <p>Especificações, critérios de avaliação, aceitação, transferência de capacidade e sustentabilidade pós-contrato.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="metodo" class="section">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">Método</p>
-            <h2 class="section-title">Primeiro o problema. Depois a tecnologia.</h2>
-          </div>
-          <p class="section-intro">
-            Sequência curta, pragmática e dura contra a ilusão de comprar plataformas antes de entender a instituição.
+    <section id="visao" class="section">
+      <div class="wrap life">
+        <div class="life-panel reveal">
+          <h3>When not<br><span>building systems</span></h3>
+          <p>
+            A visão é simples: a transformação digital falha quando vira espectáculo tecnológico.
+            O foco da DevNexus é fazer o Estado funcionar melhor, com dados, processos e sistemas que aguentam.
           </p>
         </div>
 
-        <div class="process">
-          <div class="step reveal"><b>01</b><h3>Diagnóstico</h3><p>Mandato, actores, processos, dados, sistemas e constrangimentos.</p></div>
-          <div class="step reveal"><b>02</b><h3>Arquitectura</h3><p>Modelo funcional, dados, integrações, segurança e operação.</p></div>
-          <div class="step reveal"><b>03</b><h3>Contratação</h3><p>TDR, especificações, critérios de avaliação e gestão de risco.</p></div>
-          <div class="step reveal"><b>04</b><h3>Sustentação</h3><p>Formação, aceitação, manuais, governação e melhoria contínua.</p></div>
+        <div class="photo-grid reveal">
+          <div class="photo" style="--rot:-3deg">Dados</div>
+          <div class="photo" style="--rot:2deg">Interop</div>
+          <div class="photo" style="--rot:-1deg">Ciber</div>
+          <div class="photo" style="--rot:3deg">Serviços</div>
+          <div class="photo" style="--rot:-2deg">GovCloud</div>
+          <div class="photo" style="--rot:2deg">DPI</div>
         </div>
       </div>
     </section>
 
-    <section id="contacto" class="section">
+    <section id="contacto" class="cta">
       <div class="wrap">
-        <div class="contact-panel reveal">
+        <div class="cta-panel reveal">
           <div>
-            <p class="kicker">Contacto</p>
-            <h2>LET'S<br>TALK</h2>
-            <p>
-              Envie o sector, o problema e o resultado pretendido. O formulário está configurado para
-              info@devnexusdigital.com.
-            </p>
+            <p class="case-kicker">OPEN TO WORK</p>
+            <h2>Looking for<span>digital transformation?</span>Let's talk</h2>
           </div>
 
           <form class="form" id="contactForm" action="https://formsubmit.co/info@devnexusdigital.com" method="POST">
@@ -992,6 +727,14 @@
             <button class="btn primary" type="submit">Enviar mensagem</button>
             <p class="status" id="formStatus">Primeira submissão exige confirmação no email corporativo.</p>
           </form>
+
+          <div class="dragzone" aria-hidden="true">
+            <div class="drag-card d1"><small>Drag me!</small>DPI</div>
+            <div class="drag-card d2">Dados</div>
+            <div class="drag-card d3">Interop</div>
+            <div class="drag-card d4">SIGE</div>
+            <div class="drag-card d5">Ciber</div>
+          </div>
         </div>
       </div>
     </section>
@@ -1001,7 +744,7 @@
     <div class="wrap foot">
       <div class="brand">
         <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
-        <span>Dev<span>Nexus</span> Digital</span>
+        <span>Dev<span>Nexus</span></span>
       </div>
       <p>© 2026 DevNexus Digital · Transformação digital com visão institucional.</p>
     </div>
@@ -1031,248 +774,49 @@
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add("visible");
       });
-    }, { threshold: 0.14 });
+    }, { threshold: .14 });
 
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
     const form = document.getElementById("contactForm");
     const status = document.getElementById("formStatus");
-
     if (form && status) {
       form.addEventListener("submit", () => {
         status.textContent = "A enviar mensagem...";
       });
     }
 
-    const canvas = document.getElementById("wordMesh");
-    const ctx = canvas.getContext("2d");
+    const dragCards = document.querySelectorAll(".drag-card");
+    dragCards.forEach(card => {
+      let active = false;
+      let ox = 0, oy = 0;
 
-    const palette = ["#85efe6", "#8fb7ff", "#f1d6a8", "#bdf4df", "#eab7ce", "#cdbbff", "#f4f1ea"];
-
-    const words = [
-      { text: "DPI", size: 34, group: 0 },
-      { text: "Dados", size: 30, group: 1 },
-      { text: "Interop", size: 29, group: 0 },
-      { text: "GovCloud", size: 27, group: 2 },
-      { text: "SIGE", size: 27, group: 1 },
-      { text: "Ciber", size: 25, group: 3 },
-      { text: "APD", size: 24, group: 4 },
-      { text: "eGIF", size: 24, group: 0 },
-      { text: "Identidade", size: 22, group: 0 },
-      { text: "Registos", size: 21, group: 2 },
-      { text: "Pagamentos", size: 21, group: 5 },
-      { text: "Serviços Públicos", size: 20, group: 1 },
-      { text: "Procurement", size: 20, group: 2 },
-      { text: "TDR", size: 19, group: 4 },
-      { text: "BOQ", size: 18, group: 5 },
-      { text: "Saúde", size: 19, group: 3 },
-      { text: "Educação", size: 19, group: 1 },
-      { text: "Eleições", size: 19, group: 2 },
-      { text: "BI", size: 18, group: 1 },
-      { text: "APIs", size: 18, group: 0 },
-      { text: "SOC", size: 17, group: 3 },
-      { text: "CERT", size: 17, group: 3 },
-      { text: "PMO", size: 17, group: 5 },
-      { text: "Roadmap", size: 18, group: 4 }
-    ];
-
-    let nodes = [];
-    let dragging = null;
-    let pointer = { x: 0, y: 0, active: false };
-    let dpr = 1;
-
-    function resetNodes() {
-      const rect = canvas.getBoundingClientRect();
-      const cx = rect.width / 2;
-      const cy = rect.height / 2;
-      const radius = Math.min(rect.width, rect.height) * 0.30;
-
-      nodes = words.map((w, i) => {
-        const angle = (Math.PI * 2 * i) / words.length - Math.PI / 2;
-        const rr = radius * (0.55 + (i % 5) * 0.10);
-        return {
-          ...w,
-          x: cx + Math.cos(angle) * rr + (Math.random() - 0.5) * 34,
-          y: cy + Math.sin(angle) * rr + (Math.random() - 0.5) * 34,
-          vx: (Math.random() - 0.5) * 0.24,
-          vy: (Math.random() - 0.5) * 0.24,
-          tx: cx + Math.cos(angle) * rr,
-          ty: cy + Math.sin(angle) * rr,
-          r: Math.max(36, w.size * 1.9)
-        };
+      card.addEventListener("pointerdown", e => {
+        active = true;
+        const rect = card.getBoundingClientRect();
+        const parent = card.parentElement.getBoundingClientRect();
+        ox = e.clientX - rect.left;
+        oy = e.clientY - rect.top;
+        card.style.left = (rect.left - parent.left) + "px";
+        card.style.top = (rect.top - parent.top) + "px";
+        card.style.right = "auto";
+        card.setPointerCapture(e.pointerId);
       });
-    }
 
-    function resize() {
-      const rect = canvas.getBoundingClientRect();
-      dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-      canvas.width = Math.floor(rect.width * dpr);
-      canvas.height = Math.floor(rect.height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      resetNodes();
-    }
+      card.addEventListener("pointermove", e => {
+        if (!active) return;
+        const parent = card.parentElement.getBoundingClientRect();
+        card.style.left = (e.clientX - parent.left - ox) + "px";
+        card.style.top = (e.clientY - parent.top - oy) + "px";
+      });
 
-    function getPointer(event) {
-      const rect = canvas.getBoundingClientRect();
-      const touch = event.touches && event.touches[0];
-      return {
-        x: (touch ? touch.clientX : event.clientX) - rect.left,
-        y: (touch ? touch.clientY : event.clientY) - rect.top
-      };
-    }
+      card.addEventListener("pointerup", e => {
+        active = false;
+        try { card.releasePointerCapture(e.pointerId); } catch (err) {}
+      });
 
-    function findNode(x, y) {
-      for (let i = nodes.length - 1; i >= 0; i--) {
-        const n = nodes[i];
-        if (Math.hypot(n.x - x, n.y - y) < n.r) return n;
-      }
-      return null;
-    }
-
-    canvas.addEventListener("pointerdown", (event) => {
-      const p = getPointer(event);
-      pointer = { ...p, active: true };
-      dragging = findNode(p.x, p.y);
-      if (dragging) {
-        dragging.vx = 0;
-        dragging.vy = 0;
-        canvas.setPointerCapture(event.pointerId);
-      }
+      card.addEventListener("pointercancel", () => { active = false; });
     });
-
-    canvas.addEventListener("pointermove", (event) => {
-      const p = getPointer(event);
-      pointer = { ...p, active: true };
-
-      if (dragging) {
-        dragging.x += (p.x - dragging.x) * 0.34;
-        dragging.y += (p.y - dragging.y) * 0.34;
-      }
-    });
-
-    canvas.addEventListener("pointerup", (event) => {
-      dragging = null;
-      pointer.active = false;
-      try { canvas.releasePointerCapture(event.pointerId); } catch (e) {}
-    });
-
-    canvas.addEventListener("pointerleave", () => {
-      pointer.active = false;
-      dragging = null;
-    });
-
-    function drawRoundedLabel(n, alpha) {
-      ctx.save();
-      ctx.font = `900 ${n.size}px Inter, Arial, sans-serif`;
-      const textW = ctx.measureText(n.text).width;
-      const padX = 16;
-      const padY = 10;
-      const w = textW + padX * 2;
-      const h = n.size + padY * 2;
-      const x = n.x - w / 2;
-      const y = n.y - h / 2;
-      const radius = Math.min(18, h / 2);
-
-      ctx.globalAlpha = alpha;
-      ctx.beginPath();
-      ctx.roundRect(x, y, w, h, radius);
-      ctx.fillStyle = "rgba(8,11,17,.48)";
-      ctx.fill();
-      ctx.strokeStyle = "rgba(244,241,234,.13)";
-      ctx.lineWidth = 1;
-      ctx.stroke();
-
-      const grad = ctx.createLinearGradient(x, y, x + w, y + h);
-      grad.addColorStop(0, palette[n.group % palette.length]);
-      grad.addColorStop(1, "#f4f1ea");
-
-      ctx.fillStyle = grad;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText(n.text, n.x, n.y + 1);
-      ctx.restore();
-    }
-
-    function tick() {
-      const rect = canvas.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
-
-      ctx.clearRect(0, 0, w, h);
-
-      const bg = ctx.createRadialGradient(w * 0.50, h * 0.44, 20, w * 0.50, h * 0.44, Math.max(w, h) * .62);
-      bg.addColorStop(0, "rgba(133,239,230,.11)");
-      bg.addColorStop(.52, "rgba(143,183,255,.055)");
-      bg.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, w, h);
-
-      for (const n of nodes) {
-        if (n !== dragging) {
-          n.vx += (n.tx - n.x) * 0.0009;
-          n.vy += (n.ty - n.y) * 0.0009;
-
-          if (pointer.active) {
-            const dx = n.x - pointer.x;
-            const dy = n.y - pointer.y;
-            const dist = Math.max(1, Math.hypot(dx, dy));
-            if (dist < 130) {
-              const force = (130 - dist) / 130;
-              n.vx += (dx / dist) * force * 0.16;
-              n.vy += (dy / dist) * force * 0.16;
-            }
-          }
-
-          n.x += n.vx;
-          n.y += n.vy;
-          n.vx *= 0.935;
-          n.vy *= 0.935;
-
-          if (n.x < 40 || n.x > w - 40) n.vx *= -0.72;
-          if (n.y < 40 || n.y > h - 40) n.vy *= -0.72;
-          n.x = Math.max(36, Math.min(w - 36, n.x));
-          n.y = Math.max(44, Math.min(h - 64, n.y));
-        }
-      }
-
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const a = nodes[i];
-          const b = nodes[j];
-          const dist = Math.hypot(a.x - b.x, a.y - b.y);
-          const limit = a.group === b.group ? 230 : 150;
-
-          if (dist < limit) {
-            const alpha = (1 - dist / limit) * (a.group === b.group ? .23 : .10);
-            ctx.strokeStyle = `rgba(133,239,230,${alpha})`;
-            ctx.lineWidth = a.group === b.group ? 1.2 : .8;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            const mx = (a.x + b.x) / 2;
-            const my = (a.y + b.y) / 2;
-            ctx.quadraticCurveTo(mx, my - 18, b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      for (const n of nodes) {
-        const near = pointer.active && Math.hypot(n.x - pointer.x, n.y - pointer.y) < 150;
-        const alpha = n === dragging ? 1 : near ? .96 : .84;
-        drawRoundedLabel(n, alpha);
-      }
-
-      requestAnimationFrame(tick);
-    }
-
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      resize();
-      window.addEventListener("resize", resize);
-      requestAnimationFrame(tick);
-    } else {
-      resize();
-      for (const n of nodes) drawRoundedLabel(n, .9);
-    }
   </script>
 </body>
 </html>
