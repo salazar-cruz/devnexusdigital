@@ -1,69 +1,48 @@
-// DevNexus Digital — interactions
-
 (() => {
-  document.body.classList.add("is-loading");
-
-  const loader = document.getElementById("loader");
-  const loadNumber = document.getElementById("loadNumber");
-
-  let progress = 0;
-  const loadingTimer = setInterval(() => {
-    progress += Math.ceil(Math.random() * 13);
-    if (progress >= 100) progress = 100;
-    if (loadNumber) loadNumber.textContent = `${progress}%`;
-
-    if (progress >= 100) {
-      clearInterval(loadingTimer);
-      setTimeout(() => {
-        document.body.classList.remove("is-loading");
-        document.body.classList.add("ready");
-        if (loader) loader.classList.add("hidden");
-      }, 250);
-    }
-  }, 45);
+  document.body.classList.add("ready");
 
   const cursor = document.getElementById("cursor");
   if (cursor && !window.matchMedia("(pointer: coarse)").matches) {
-    let x = window.innerWidth / 2;
-    let y = window.innerHeight / 2;
+    let x = innerWidth / 2;
+    let y = innerHeight / 2;
     let tx = x;
     let ty = y;
 
-    window.addEventListener("pointermove", (event) => {
+    addEventListener("pointermove", (event) => {
       tx = event.clientX;
       ty = event.clientY;
     });
 
-    const animateCursor = () => {
+    const move = () => {
       x += (tx - x) * 0.22;
       y += (ty - y) * 0.22;
       cursor.style.left = `${x}px`;
       cursor.style.top = `${y}px`;
-      requestAnimationFrame(animateCursor);
+      requestAnimationFrame(move);
     };
-    animateCursor();
+    move();
 
     document.querySelectorAll("a, button, .drag-card, [data-tilt], #wordMesh").forEach((el) => {
-      el.addEventListener("mouseenter", () => cursor.classList.add("cursor--active"));
-      el.addEventListener("mouseleave", () => cursor.classList.remove("cursor--active"));
+      el.addEventListener("mouseenter", () => cursor.classList.add("active"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("active"));
     });
   }
 
-  const navButton = document.getElementById("navButton");
-  const menu = document.getElementById("menu");
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-  if (navButton && menu) {
-    navButton.addEventListener("click", () => {
-      const open = menu.classList.toggle("open");
-      navButton.classList.toggle("open", open);
-      navButton.setAttribute("aria-expanded", String(open));
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener("click", () => {
+      const open = mobileMenu.classList.toggle("open");
+      menuToggle.classList.toggle("open", open);
+      menuToggle.setAttribute("aria-expanded", String(open));
     });
 
-    menu.querySelectorAll("a").forEach((link) => {
+    mobileMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        menu.classList.remove("open");
-        navButton.classList.remove("open");
-        navButton.setAttribute("aria-expanded", "false");
+        mobileMenu.classList.remove("open");
+        menuToggle.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
       });
     });
   }
@@ -81,7 +60,7 @@
       const rect = el.getBoundingClientRect();
       const x = event.clientX - rect.left - rect.width / 2;
       const y = event.clientY - rect.top - rect.height / 2;
-      el.style.transform = `translate(${x * 0.16}px, ${y * 0.16}px)`;
+      el.style.transform = `translate(${x * 0.14}px, ${y * 0.14}px)`;
     });
 
     el.addEventListener("mouseleave", () => {
@@ -94,7 +73,7 @@
       const rect = el.getBoundingClientRect();
       const px = (event.clientX - rect.left) / rect.width - 0.5;
       const py = (event.clientY - rect.top) / rect.height - 0.5;
-      el.style.transform = `perspective(900px) rotateX(${py * -7}deg) rotateY(${px * 8}deg) translateY(-3px)`;
+      el.style.transform = `perspective(900px) rotateX(${py * -6}deg) rotateY(${px * 7}deg) translateY(-3px)`;
     });
 
     el.addEventListener("mouseleave", () => {
@@ -102,15 +81,27 @@
     });
   });
 
+  const portal = document.getElementById("portalWindow");
+  if (portal && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    addEventListener("scroll", () => {
+      const y = Math.min(scrollY, innerHeight);
+      portal.style.transform = `translateY(${y * 0.03}px) scale(${1 - y * 0.000045})`;
+    }, { passive: true });
+  }
+
   const form = document.getElementById("contactForm");
   const status = document.getElementById("formStatus");
-
   if (form && status) {
     form.addEventListener("submit", () => {
       status.textContent = "A enviar mensagem...";
     });
   }
 
+  setupDragCards();
+  setupWordMesh();
+})();
+
+function setupDragCards() {
   document.querySelectorAll(".drag-card").forEach((card) => {
     let active = false;
     let ox = 0;
@@ -121,7 +112,7 @@
     let vy = 0;
     let raf = null;
 
-    const animateInertia = () => {
+    const inertia = () => {
       if (active) return;
 
       const parent = card.parentElement.getBoundingClientRect();
@@ -143,9 +134,7 @@
       vx *= 0.88;
       vy *= 0.88;
 
-      if (Math.abs(vx) > 0.3 || Math.abs(vy) > 0.3) {
-        raf = requestAnimationFrame(animateInertia);
-      }
+      if (Math.abs(vx) > 0.3 || Math.abs(vy) > 0.3) raf = requestAnimationFrame(inertia);
     };
 
     card.addEventListener("pointerdown", (event) => {
@@ -189,14 +178,12 @@
     card.addEventListener("pointerup", (event) => {
       active = false;
       try { card.releasePointerCapture(event.pointerId); } catch (err) {}
-      animateInertia();
+      inertia();
     });
 
     card.addEventListener("pointercancel", () => { active = false; });
   });
-
-  setupWordMesh();
-})();
+}
 
 function setupWordMesh() {
   const canvas = document.getElementById("wordMesh");
@@ -206,9 +193,9 @@ function setupWordMesh() {
   const palette = ["#8ef4ec", "#9bbcff", "#f3d39d", "#bff5d8", "#eeb2ca", "#cdbbff", "#f5f1e8"];
 
   const words = [
-    { text: "DPI", size: 34, group: 0 },
-    { text: "Dados", size: 30, group: 1 },
-    { text: "Interop", size: 29, group: 0 },
+    { text: "DPI", size: 35, group: 0 },
+    { text: "Dados", size: 31, group: 1 },
+    { text: "Interop", size: 30, group: 0 },
     { text: "GovCloud", size: 27, group: 2 },
     { text: "SIGE", size: 27, group: 1 },
     { text: "Ciber", size: 25, group: 3 },
@@ -241,15 +228,15 @@ function setupWordMesh() {
     const rect = canvas.getBoundingClientRect();
     const cx = rect.width / 2;
     const cy = rect.height / 2;
-    const radius = Math.min(rect.width, rect.height) * 0.30;
+    const radius = Math.min(rect.width, rect.height) * 0.31;
 
     nodes = words.map((w, i) => {
       const angle = (Math.PI * 2 * i) / words.length - Math.PI / 2;
-      const rr = radius * (0.55 + (i % 5) * 0.10);
+      const rr = radius * (0.50 + (i % 5) * 0.11);
       return {
         ...w,
-        x: cx + Math.cos(angle) * rr + (Math.random() - 0.5) * 34,
-        y: cy + Math.sin(angle) * rr + (Math.random() - 0.5) * 34,
+        x: cx + Math.cos(angle) * rr + (Math.random() - 0.5) * 30,
+        y: cy + Math.sin(angle) * rr + (Math.random() - 0.5) * 30,
         vx: (Math.random() - 0.5) * 0.24,
         vy: (Math.random() - 0.5) * 0.24,
         tx: cx + Math.cos(angle) * rr,
@@ -261,7 +248,7 @@ function setupWordMesh() {
 
   function resize() {
     const rect = canvas.getBoundingClientRect();
-    dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    dpr = Math.max(1, Math.min(2, devicePixelRatio || 1));
     canvas.width = Math.floor(rect.width * dpr);
     canvas.height = Math.floor(rect.height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -270,10 +257,7 @@ function setupWordMesh() {
 
   function getPointer(event) {
     const rect = canvas.getBoundingClientRect();
-    return {
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top
-    };
+    return { x: event.clientX - rect.left, y: event.clientY - rect.top };
   }
 
   function findNode(x, y) {
@@ -288,7 +272,6 @@ function setupWordMesh() {
     const p = getPointer(event);
     pointer = { ...p, active: true };
     dragging = findNode(p.x, p.y);
-
     if (dragging) {
       dragging.vx = 0;
       dragging.vy = 0;
@@ -299,7 +282,6 @@ function setupWordMesh() {
   canvas.addEventListener("pointermove", (event) => {
     const p = getPointer(event);
     pointer = { ...p, active: true };
-
     if (dragging) {
       dragging.x += (p.x - dragging.x) * 0.34;
       dragging.y += (p.y - dragging.y) * 0.34;
@@ -317,7 +299,7 @@ function setupWordMesh() {
     dragging = null;
   });
 
-  function roundRect(ctx, x, y, w, h, r) {
+  function rounded(x, y, w, h, r) {
     const radius = Math.min(r, w / 2, h / 2);
     ctx.beginPath();
     ctx.moveTo(x + radius, y);
@@ -340,8 +322,8 @@ function setupWordMesh() {
     const y = n.y - h / 2;
 
     ctx.globalAlpha = alpha;
-    roundRect(ctx, x, y, w, h, Math.min(18, h / 2));
-    ctx.fillStyle = "rgba(5,5,5,.50)";
+    rounded(x, y, w, h, Math.min(18, h / 2));
+    ctx.fillStyle = "rgba(5,5,5,.54)";
     ctx.fill();
     ctx.strokeStyle = "rgba(245,241,232,.14)";
     ctx.lineWidth = 1;
@@ -395,6 +377,7 @@ function setupWordMesh() {
 
         if (n.x < 40 || n.x > w - 40) n.vx *= -0.72;
         if (n.y < 40 || n.y > h - 40) n.vy *= -0.72;
+
         n.x = Math.max(36, Math.min(w - 36, n.x));
         n.y = Math.max(54, Math.min(h - 76, n.y));
       }
@@ -406,7 +389,6 @@ function setupWordMesh() {
         const b = nodes[j];
         const dist = Math.hypot(a.x - b.x, a.y - b.y);
         const limit = a.group === b.group ? 230 : 150;
-
         if (dist < limit) {
           const alpha = (1 - dist / limit) * (a.group === b.group ? 0.23 : 0.10);
           ctx.strokeStyle = `rgba(142,244,236,${alpha})`;
@@ -431,6 +413,6 @@ function setupWordMesh() {
   }
 
   resize();
-  window.addEventListener("resize", resize);
+  addEventListener("resize", resize);
   requestAnimationFrame(tick);
 }

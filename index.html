@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DevNexus Digital | Transformação Digital Institucional</title>
-  <meta name="description" content="Consultoria em transformação digital, DPI, governação de dados, interoperabilidade, sistemas públicos e modernização institucional.">
+  <title>DevNexus Digital | Portal de Transformação Digital</title>
+  <meta name="description" content="Consultoria em transformação digital, DPI, dados, interoperabilidade, sistemas públicos e modernização institucional.">
   <meta property="og:title" content="DevNexus Digital">
   <meta property="og:description" content="Transformação digital com visão institucional.">
   <meta property="og:type" content="website">
@@ -14,74 +14,78 @@
 </head>
 
 <body>
-  <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader__inner">
-      <span>DevNexus</span>
-      <b id="loadNumber">0%</b>
-    </div>
-  </div>
-
   <div class="noise" aria-hidden="true"></div>
   <div class="cursor" id="cursor" aria-hidden="true"></div>
 
-  <header class="topbar" data-reveal>
-    <div class="wrap nav">
-      <a class="brand magnetic" href="#inicio" aria-label="DevNexus Digital">
-        <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
-        <span>Dev<span>Nexus</span></span>
-      </a>
-
-      <button class="navbutton" id="navButton" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span>
-      </button>
-
-      <nav class="menu" id="menu" aria-label="Menu principal">
-        <a class="magnetic" href="#experiencia">Experiência</a>
-        <a class="magnetic" href="#casos">Casos</a>
-        <a class="magnetic" href="#visao">Visão</a>
-        <a class="magnetic navcta" href="#contacto">Contacto</a>
-      </nav>
-    </div>
-  </header>
-
   <main id="inicio">
-    <section class="hero">
-      <div class="wrap hero-layout">
-        <div class="hero-left">
-          <p class="eyebrow" data-reveal>Digital Public Infrastructure · Dados · Estado</p>
+    <section class="entry">
+      <div class="portal-window" id="portalWindow" data-reveal>
+        <header class="window-bar">
+          <a class="brand magnetic" href="#inicio" aria-label="DevNexus Digital">
+            <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
+            <span>Dev<span>Nexus</span></span>
+          </a>
 
-          <h1 class="hero-title" aria-label="Resolver problemas públicos">
-            <span data-split>RESOLVER</span>
-            <span class="line-flex"><em data-split>problemas</em></span>
-            <span class="muted" data-split>PÚBLICOS</span>
-          </h1>
+          <nav class="window-nav" aria-label="Menu principal">
+            <a class="magnetic" href="#work">Work</a>
+            <a class="magnetic" href="#cases">Cases</a>
+            <a class="magnetic" href="#system">System</a>
+            <a class="magnetic nav-cta" href="#contacto">Let's talk</a>
+          </nav>
 
-          <p class="hero-copy" data-reveal>
-            Arquitectura, dados, interoperabilidade, procurement técnico e operação para projectos públicos que têm de funcionar.
-          </p>
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+            <span></span><span></span>
+          </button>
+        </header>
 
-          <div class="hero-actions" data-reveal>
-            <a class="btn btn-primary magnetic" href="#contacto">Falar com a DevNexus</a>
-            <a class="btn btn-ghost magnetic" href="#casos">Ver abordagem</a>
+        <nav class="mobile-menu" id="mobileMenu">
+          <a href="#work">Work</a>
+          <a href="#cases">Cases</a>
+          <a href="#system">System</a>
+          <a href="#contacto">Let's talk</a>
+        </nav>
+
+        <div class="window-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" data-reveal>Digital Public Infrastructure · Estado · Dados</p>
+
+            <h1 class="hero-title" aria-label="Resolver problemas públicos">
+              <span data-split>RESOLVER</span>
+              <em data-split>problemas</em>
+              <span class="muted" data-split>PÚBLICOS</span>
+            </h1>
+
+            <p class="lead" data-reveal>
+              A DevNexus Digital desenha a arquitectura institucional da transformação digital:
+              DPI, dados, interoperabilidade, procurement técnico e operação sustentável.
+            </p>
+
+            <div class="hero-actions" data-reveal>
+              <a class="btn btn-primary magnetic" href="#contacto">Entrar em contacto</a>
+              <a class="btn btn-ghost magnetic" href="#work">Explorar sistema</a>
+            </div>
           </div>
 
-          <div class="scroll-mark" data-reveal>Scroll para explorar</div>
+          <aside class="command-panel" data-reveal>
+            <div class="command-head">
+              <span></span><span></span><span></span>
+              <b>ecosystem.map</b>
+            </div>
+
+            <canvas id="wordMesh" aria-label="Mapa interactivo do ecossistema DevNexus"></canvas>
+
+            <div class="command-caption">
+              <b>Arraste os conceitos.</b>
+              <span>A transformação digital só funciona quando dados, sistemas, processos e mandato se ligam.</span>
+            </div>
+          </aside>
         </div>
 
-        <aside class="hero-panel" data-reveal data-tilt>
-          <div class="panel-top">
-            <p>Complexidade institucional</p>
-            <span>→</span>
-            <p>Arquitectura digital clara</p>
-          </div>
-
-          <canvas id="wordMesh" aria-label="Malha interactiva de palavras"></canvas>
-
-          <div class="panel-caption">
-            <b>Drag the ecosystem</b>
-            <span>Arraste os conceitos. A transformação digital só funciona quando as peças se ligam.</span>
-          </div>
-        </aside>
+        <div class="window-footer">
+          <span>01 / Entrada</span>
+          <span>DPI · Dados · Interoperabilidade · Sistemas Públicos</span>
+          <a href="#work">Scroll</a>
+        </div>
       </div>
     </section>
 
@@ -92,108 +96,102 @@
       </div>
     </section>
 
-    <section id="experiencia" class="section">
-      <div class="wrap split-head">
-        <h2 class="section-title" data-reveal>Work<span>experience</span></h2>
+    <section id="work" class="system-section">
+      <div class="system-window" data-reveal>
+        <div class="section-index">02 / Work experience</div>
 
-        <div class="section-copy" data-reveal>
-          <p>
-            A DevNexus trabalha onde os projectos digitais normalmente falham: mandato, governação,
-            dados, sistemas legados, contratação, capacidade técnica e operação.
-          </p>
+        <div class="split">
+          <h2 class="section-title">Work<span>experience</span></h2>
 
-          <div class="logo-grid">
-            <span data-tilt>DPI</span>
-            <span data-tilt>SIGE</span>
-            <span data-tilt>eGIF</span>
-            <span data-tilt>APD</span>
-            <span data-tilt>GovCloud</span>
-            <span data-tilt>PMO</span>
+          <div class="section-copy">
+            <p>
+              A DevNexus trabalha onde os projectos digitais falham: mandato, governação,
+              dados, sistemas legados, procurement, capacidade técnica e operação real.
+            </p>
+
+            <div class="module-grid">
+              <article data-tilt><b>DPI</b><span>Identidade, registos, pagamentos e serviços comuns.</span></article>
+              <article data-tilt><b>Dados</b><span>Modelos, qualidade, protecção, BI e partilha.</span></article>
+              <article data-tilt><b>Interop</b><span>APIs, eGIF, barramento e integração institucional.</span></article>
+              <article data-tilt><b>SIGE</b><span>Educação, escolas, inventário TIC e operação sectorial.</span></article>
+              <article data-tilt><b>Ciber</b><span>Continuidade, risco, SOC, CERT e resiliência.</span></article>
+              <article data-tilt><b>Procurement</b><span>TDR, BOQ, avaliação, aceitação e sustentabilidade.</span></article>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="casos" class="section section-cases">
-      <div class="wrap">
-        <div class="split-head">
-          <h2 class="section-title" data-reveal>Case<span>studies</span></h2>
-          <p class="section-copy" data-reveal>
-            Casos estruturados como frentes de intervenção. Não é vender software. É organizar o Estado para entregar serviços digitais com dados fiáveis.
+    <section id="cases" class="system-section">
+      <div class="system-window" data-reveal>
+        <div class="section-index">03 / Case studies</div>
+
+        <div class="split">
+          <h2 class="section-title">Case<span>studies</span></h2>
+          <p class="section-copy">
+            Casos estruturados como sistemas de decisão. Não é vender software. É organizar a instituição para entregar serviços públicos digitais com dados fiáveis.
           </p>
         </div>
 
-        <div class="case-grid">
-          <article class="case-card case-card--wide" data-reveal data-tilt>
-            <div class="case-art">
-              <div class="case-lines"></div>
-              <div class="chip-cloud">
-                <span>DPI</span><span>Identidade</span><span>Registos</span><span>Pagamentos</span><span>Interop</span>
-              </div>
+        <div class="case-stack">
+          <article class="case-row" data-reveal>
+            <div class="case-number">01</div>
+            <div>
+              <h3>Arquitectura DPI para serviços públicos.</h3>
+              <p>Identidade, registos, pagamentos, dados e interoperabilidade com governação e operação.</p>
             </div>
-            <div class="case-body">
-              <p class="case-kicker">CASE STUDY · 01</p>
-              <h3>Transformar serviços públicos em arquitectura digital coerente.</h3>
-              <p>Integração de identidade, registos, dados, pagamentos e canais digitais com governação, segurança e operação.</p>
-            </div>
+            <div class="case-tags"><span>DPI</span><span>ID</span><span>Pagamentos</span><span>Interop</span></div>
           </article>
 
-          <article class="case-card" data-reveal data-tilt>
-            <div class="case-art small">
-              <div class="chip-cloud">
-                <span>SIGE</span><span>Escolas</span><span>Inventário</span>
-              </div>
-            </div>
-            <div class="case-body">
-              <p class="case-kicker">CASE STUDY · 02</p>
+          <article class="case-row" data-reveal>
+            <div class="case-number">02</div>
+            <div>
               <h3>Educação com dados fiáveis.</h3>
-              <p>SIGE, inventário tecnológico, conectividade, processos escolares e gestão sectorial baseada em evidência.</p>
+              <p>SIGE, inventário tecnológico, conectividade, processos escolares e gestão sectorial.</p>
             </div>
+            <div class="case-tags"><span>SIGE</span><span>Escolas</span><span>Dados</span></div>
           </article>
 
-          <article class="case-card" data-reveal data-tilt>
-            <div class="case-art small alt">
-              <div class="chip-cloud">
-                <span>TDR</span><span>BOQ</span><span>Avaliação</span>
-              </div>
-            </div>
-            <div class="case-body">
-              <p class="case-kicker">CASE STUDY · 03</p>
+          <article class="case-row" data-reveal>
+            <div class="case-number">03</div>
+            <div>
               <h3>Procurement técnico que protege o projecto.</h3>
-              <p>Especificações, critérios de avaliação, aceitação, transferência de capacidade e sustentabilidade pós-contrato.</p>
+              <p>Especificações, critérios de avaliação, aceitação, formação e sustentabilidade.</p>
             </div>
+            <div class="case-tags"><span>TDR</span><span>BOQ</span><span>Aceitação</span></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="visao" class="section">
-      <div class="wrap life-layout">
-        <div class="life-panel" data-reveal>
-          <h2>When not<br><span>building systems</span></h2>
-          <p>
-            A DevNexus evita o teatro digital. O foco é fazer instituições funcionarem melhor:
-            dados certos, processos claros, sistemas interoperáveis e capacidade local para manter.
-          </p>
-        </div>
+    <section id="system" class="system-section">
+      <div class="system-window" data-reveal>
+        <div class="section-index">04 / Operating system</div>
 
-        <div class="photo-wall" data-reveal>
-          <div class="photo-card" style="--r:-4deg" data-tilt>Dados</div>
-          <div class="photo-card" style="--r:3deg" data-tilt>Interop</div>
-          <div class="photo-card" style="--r:-2deg" data-tilt>Ciber</div>
-          <div class="photo-card" style="--r:4deg" data-tilt>Serviços</div>
-          <div class="photo-card" style="--r:-3deg" data-tilt>GovCloud</div>
-          <div class="photo-card" style="--r:2deg" data-tilt>DPI</div>
+        <div class="split">
+          <h2 class="section-title">Public<span>operating system</span></h2>
+
+          <div class="timeline">
+            <div data-reveal><b>01</b><h3>Diagnóstico</h3><p>Mandato, actores, processos, dados, sistemas e constrangimentos.</p></div>
+            <div data-reveal><b>02</b><h3>Arquitectura</h3><p>Modelo funcional, dados, integrações, segurança e operação.</p></div>
+            <div data-reveal><b>03</b><h3>Contratação</h3><p>TDR, especificações, avaliação técnica e gestão de risco.</p></div>
+            <div data-reveal><b>04</b><h3>Sustentação</h3><p>Formação, aceitação, governação, manuais e melhoria contínua.</p></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="contacto" class="cta">
-      <div class="wrap">
-        <div class="cta-panel" data-reveal>
-          <div class="cta-copy">
+    <section id="contacto" class="system-section contact-section">
+      <div class="system-window contact-window" data-reveal>
+        <div class="section-index">05 / Contact</div>
+
+        <div class="contact-grid">
+          <div>
             <p class="case-kicker">OPEN TO WORK</p>
-            <h2>Looking for<span>digital transformation?</span>Let's talk</h2>
+            <h2 class="contact-title">Let's<span>talk</span></h2>
+            <p class="contact-lead">
+              Envie o sector, o problema e o resultado pretendido. A resposta começa pela arquitectura, não pela compra de tecnologia.
+            </p>
           </div>
 
           <form class="form" id="contactForm" action="https://formsubmit.co/info@devnexusdigital.com" method="POST">
@@ -230,20 +228,20 @@
             <button class="btn btn-primary magnetic" type="submit">Enviar mensagem</button>
             <p class="status" id="formStatus">Primeira submissão exige confirmação no email corporativo.</p>
           </form>
+        </div>
 
-          <div class="drag-zone" aria-hidden="true">
-            <div class="drag-card d1"><small>Drag me!</small>DPI</div>
-            <div class="drag-card d2">Dados</div>
-            <div class="drag-card d3">Interop</div>
-            <div class="drag-card d4">SIGE</div>
-            <div class="drag-card d5">Ciber</div>
-          </div>
+        <div class="drag-zone" aria-hidden="true">
+          <div class="drag-card d1"><small>Drag me!</small>DPI</div>
+          <div class="drag-card d2">Dados</div>
+          <div class="drag-card d3">Interop</div>
+          <div class="drag-card d4">SIGE</div>
+          <div class="drag-card d5">Ciber</div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="wrap foot">
       <div class="brand">
         <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>

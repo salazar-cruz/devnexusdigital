@@ -1,34 +1,37 @@
-DevNexus Digital — versão radical completa
+DevNexus Digital — Portal Window
 
-Esta versão NÃO é só index.html.
+Correção de arquitectura:
+- A moldura/experiência deixou de ser um cartão dentro da página.
+- A janela é agora a própria entrada do site.
+- O ecrã inicial inteiro é uma única janela/sistema.
+- A navegação, headline, word mesh e chamada de acção vivem dentro dessa janela.
+- As secções seguintes mantêm a mesma linguagem de janelas/sistema.
 
 Estrutura:
 - index.html
 - css/style.css
 - js/main.js
 - assets/favicon.svg
+- README_PUBLICACAO.txt
 
-Interacções incluídas:
-- loader inicial com percentagem;
+Interacções:
 - cursor personalizado;
-- menu mobile funcional;
-- animações de entrada no scroll;
+- menu mobile;
 - hero tipográfico animado;
 - word mesh em canvas;
-- palavras interactivas no canvas;
-- cards arrastáveis com inércia;
-- hover/tilt nos cards;
+- drag cards com inércia;
+- hover/tilt;
 - botões magnéticos;
-- formulário configurado para info@devnexusdigital.com via FormSubmit.
+- scroll reveal;
+- parallax leve da janela inicial;
+- formulário FormSubmit para info@devnexusdigital.com.
 
-Publicação no GitHub Pages:
+Publicação:
 1. Descompactar o ZIP.
 2. Copiar index.html, css/, js/ e assets/ para a raiz do repositório devnexusdigital.
-3. Substituir ficheiros antigos quando o sistema pedir.
-4. Manter o ficheiro CNAME com:
+3. Substituir os ficheiros antigos.
+4. Manter o CNAME com:
    devnexusdigital.com
-5. GitHub Desktop: Changes -> Commit -> Push.
-6. Abrir https://devnexusdigital.com/?v=radical-full para evitar cache antiga.
-
-Nota:
-Na primeira submissão do formulário, o FormSubmit envia uma confirmação para info@devnexusdigital.com.
+5. Commit + Push.
+6. Abrir:
+   https://devnexusdigital.com/?v=portal-window
