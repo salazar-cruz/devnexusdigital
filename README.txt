@@ -1,11 +1,13 @@
-DevNexus Digital — Rubik 3D real.
+DevNexus Digital — Rubik sólido e legível.
 
-Mudança principal:
-- O objecto central já não é um quadrado/plano.
-- Agora é composto por 27 cubinhos 3D.
-- Cada cubinho tem faces próprias, profundidade, sombra, separação e autocolantes.
-- As faces visíveis trazem termos do ecossistema de transformação digital.
-- Continua a ser ficheiro único: index.html.
+Esta versão abandona os 27 cubinhos separados, porque visualmente ficavam confusos.
+Agora usa um Rubik sólido:
+- 6 faces;
+- grelha 3x3 em cada face;
+- três faces bem visíveis;
+- profundidade real por CSS 3D;
+- rotação curta, sem virar para posições estranhas;
+- sombras e volume mais fortes.
 
 Publicação:
 1. Descompactar.

@@ -283,7 +283,7 @@
       display: grid;
       place-items: center;
       position: relative;
-      perspective: 1400px;
+      perspective: 1250px;
       border-radius: 44px;
       background:
         radial-gradient(circle at 30% 25%, rgba(133,239,230,.12), transparent 34%),
@@ -305,186 +305,131 @@
       pointer-events: none;
     }
 
-    .rubik-stage::after {
-      content: "";
-      position: absolute;
-      width: 140%;
-      height: 90px;
-      background: linear-gradient(90deg, transparent, rgba(244,241,234,.15), transparent);
-      transform: rotate(-18deg) translateX(-68%);
-      animation: sweep 8s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes sweep {
-      0%, 34% { transform: rotate(-18deg) translateX(-72%); opacity: 0; }
-      45% { opacity: 1; }
-      70%, 100% { transform: rotate(-18deg) translateX(72%); opacity: 0; }
-    }
-
-    .rubik-scene {
-      width: 360px;
-      height: 360px;
+    .rubik-shell {
+      width: 390px;
+      height: 390px;
+      display: grid;
+      place-items: center;
+      transform-style: preserve-3d;
       position: relative;
+      z-index: 3;
+    }
+
+    .rubik-solid {
+      --s: 282px;
+      --half: calc(var(--s) / 2);
+      position: relative;
+      width: var(--s);
+      height: var(--s);
       transform-style: preserve-3d;
-      z-index: 2;
+      transform: rotateX(-24deg) rotateY(-36deg) rotateZ(1deg);
+      animation: solidRubik 12s ease-in-out infinite;
+      filter: drop-shadow(0 42px 70px rgba(0,0,0,.48));
     }
 
-    .rubik3d {
-      --cubie: 70px;
-      --gap: 9px;
-      --step: calc(var(--cubie) + var(--gap));
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 0;
-      height: 0;
-      transform-style: preserve-3d;
-      animation: realRubikRotate 28s cubic-bezier(.65,0,.35,1) infinite;
-      filter: drop-shadow(0 44px 88px rgba(0,0,0,.44));
+    @keyframes solidRubik {
+      0%, 100% { transform: rotateX(-24deg) rotateY(-36deg) rotateZ(1deg); }
+      35% { transform: rotateX(-18deg) rotateY(-50deg) rotateZ(-1deg); }
+      70% { transform: rotateX(-30deg) rotateY(-24deg) rotateZ(2deg); }
     }
 
-    .rubik3d:hover {
-      animation-play-state: paused;
-    }
-
-    @keyframes realRubikRotate {
-      0%   { transform: rotateX(-28deg) rotateY(-34deg) rotateZ(0deg); }
-      18%  { transform: rotateX(-22deg) rotateY(-124deg) rotateZ(1deg); }
-      36%  { transform: rotateX(-18deg) rotateY(-214deg) rotateZ(0deg); }
-      54%  { transform: rotateX(-24deg) rotateY(-304deg) rotateZ(-1deg); }
-      72%  { transform: rotateX(62deg) rotateY(-326deg) rotateZ(2deg); }
-      86%  { transform: rotateX(-104deg) rotateY(-326deg) rotateZ(-2deg); }
-      100% { transform: rotateX(-28deg) rotateY(-394deg) rotateZ(0deg); }
-    }
-
-    .cubie {
-      position: absolute;
-      width: var(--cubie);
-      height: var(--cubie);
-      left: calc(var(--cubie) / -2);
-      top: calc(var(--cubie) / -2);
-      transform-style: preserve-3d;
-      transform:
-        translate3d(
-          calc(var(--x) * var(--step)),
-          calc(var(--y) * var(--step)),
-          calc(var(--z) * var(--step))
-        );
-    }
-
-    .side {
+    .rubik-face {
       position: absolute;
       inset: 0;
       display: grid;
-      place-items: center;
-      border-radius: 12px;
-      overflow: hidden;
-      backface-visibility: visible;
-      background:
-        linear-gradient(135deg, rgba(13,17,23,.92), rgba(27,34,45,.96));
-      border: 1px solid rgba(244,241,234,.06);
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 9px;
+      padding: 9px;
+      border-radius: 26px;
+      background: #080b10;
+      border: 1px solid rgba(244,241,234,.16);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.04),
-        inset 0 -18px 34px rgba(0,0,0,.22);
+        inset 0 0 0 1px rgba(255,255,255,.04),
+        inset 0 18px 38px rgba(255,255,255,.035),
+        inset 0 -30px 55px rgba(0,0,0,.34);
+      backface-visibility: hidden;
     }
 
-    .side::after {
-      content: "";
-      position: absolute;
-      inset: 7px;
-      border-radius: 9px;
-      border: 1px solid rgba(255,255,255,.08);
-      pointer-events: none;
-    }
-
-    .side em {
-      position: relative;
-      z-index: 2;
-      font-style: normal;
+    .rubik-face span {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border-radius: 15px;
+      padding: 6px;
       color: rgba(13,17,23,.88);
       font-size: clamp(.56rem, .78vw, .74rem);
-      font-weight: 930;
-      line-height: 1.02;
+      font-weight: 940;
+      line-height: 1.03;
       letter-spacing: -.04em;
-      text-align: center;
-      padding: 4px;
       text-shadow: 0 1px 0 rgba(255,255,255,.22);
-    }
-
-    .side.inner em { display: none; }
-
-    .side.front  { transform: translateZ(calc(var(--cubie) / 2)); }
-    .side.back   { transform: rotateY(180deg) translateZ(calc(var(--cubie) / 2)); }
-    .side.right  { transform: rotateY(90deg) translateZ(calc(var(--cubie) / 2)); }
-    .side.left   { transform: rotateY(-90deg) translateZ(calc(var(--cubie) / 2)); }
-    .side.top    { transform: rotateX(90deg) translateZ(calc(var(--cubie) / 2)); }
-    .side.bottom { transform: rotateX(-90deg) translateZ(calc(var(--cubie) / 2)); }
-
-    .side.sticker.front  { background: linear-gradient(145deg, #dff7f6, #85efe6); }
-    .side.sticker.back   { background: linear-gradient(145deg, #efe8ff, #cdbbff); }
-    .side.sticker.right  { background: linear-gradient(145deg, #e7eeff, #8fb7ff); }
-    .side.sticker.left   { background: linear-gradient(145deg, #e9ffe8, #bdf4df); }
-    .side.sticker.top    { background: linear-gradient(145deg, #fff0cf, #f1d6a8); }
-    .side.sticker.bottom { background: linear-gradient(145deg, #ffe2ef, #eab7ce); }
-
-    .side.sticker {
-      border: 1px solid rgba(255,255,255,.24);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.38),
-        inset 0 -14px 28px rgba(0,0,0,.10),
-        0 10px 22px rgba(0,0,0,.20);
+        inset 0 1px 0 rgba(255,255,255,.36),
+        inset 0 -14px 26px rgba(0,0,0,.12),
+        0 12px 20px rgba(0,0,0,.18);
+      position: relative;
+      overflow: hidden;
     }
 
-    .side.sticker::before {
+    .rubik-face span::before {
       content: "";
       position: absolute;
-      inset: 6px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, rgba(255,255,255,.24), transparent 48%, rgba(0,0,0,.05));
-      pointer-events: none;
-    }
-
-    .axis-glow {
-      position: absolute;
       inset: 0;
-      z-index: 1;
+      background: linear-gradient(135deg, rgba(255,255,255,.26), transparent 45%, rgba(0,0,0,.04));
       pointer-events: none;
     }
 
-    .axis-glow span {
+    .rubik-face span:nth-child(1),
+    .rubik-face span:nth-child(5),
+    .rubik-face span:nth-child(9) { background: linear-gradient(145deg, #dff7f6, #85efe6); }
+
+    .rubik-face span:nth-child(2),
+    .rubik-face span:nth-child(6) { background: linear-gradient(145deg, #e7eeff, #8fb7ff); }
+
+    .rubik-face span:nth-child(3),
+    .rubik-face span:nth-child(7) { background: linear-gradient(145deg, #fff0cf, #f1d6a8); }
+
+    .rubik-face span:nth-child(4),
+    .rubik-face span:nth-child(8) { background: linear-gradient(145deg, #ffe2ef, #eab7ce); }
+
+    .rubik-face.front  { transform: translateZ(var(--half)); }
+    .rubik-face.back   { transform: rotateY(180deg) translateZ(var(--half)); }
+    .rubik-face.right  { transform: rotateY(90deg) translateZ(var(--half)); filter: brightness(.92); }
+    .rubik-face.left   { transform: rotateY(-90deg) translateZ(var(--half)); filter: brightness(.78); }
+    .rubik-face.top    { transform: rotateX(90deg) translateZ(var(--half)); filter: brightness(1.06); }
+    .rubik-face.bottom { transform: rotateX(-90deg) translateZ(var(--half)); filter: brightness(.70); }
+
+    .rubik-solid::before {
+      content: "";
       position: absolute;
-      border: 1px solid rgba(244,241,234,.11);
-      border-radius: 999px;
-      filter: blur(.1px);
-      opacity: .7;
-      animation: orbitRing 12s linear infinite;
+      inset: -18px;
+      border-radius: 38px;
+      transform: translateZ(-165px);
+      background: radial-gradient(circle, rgba(0,0,0,.44), transparent 62%);
+      filter: blur(14px);
+      opacity: .9;
     }
 
-    .axis-glow span:nth-child(1) {
-      width: 420px; height: 160px; left: 50%; top: 50%;
-      margin-left: -210px; margin-top: -80px;
+    .ring {
+      position: absolute;
+      border: 1px solid rgba(244,241,234,.12);
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .ring.one {
+      width: 420px;
+      height: 160px;
       transform: rotate(-18deg);
       border-color: rgba(133,239,230,.18);
     }
 
-    .axis-glow span:nth-child(2) {
-      width: 360px; height: 138px; left: 50%; top: 50%;
-      margin-left: -180px; margin-top: -69px;
+    .ring.two {
+      width: 360px;
+      height: 140px;
       transform: rotate(54deg);
       border-color: rgba(143,183,255,.18);
-      animation-duration: 15s;
-    }
-
-    @keyframes orbitRing {
-      to { rotate: 360deg; }
-    }
-
-    .orbit-tags {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
     }
 
     .tag {
@@ -498,6 +443,7 @@
       font-weight: 780;
       animation: floatTag 7s ease-in-out infinite alternate;
       backdrop-filter: blur(10px);
+      z-index: 2;
     }
 
     .tag:nth-child(1) { left: 8%; top: 15%; color: var(--cyan); }
@@ -849,46 +795,39 @@
       h1 { font-size: clamp(3.5rem, 18vw, 5.8rem); }
 
       .rubik-stage {
-        min-height: 460px;
+        min-height: 450px;
         border-radius: 30px;
       }
 
-      .rubik-scene {
-        width: 280px;
-        height: 280px;
+      .rubik-shell {
+        width: 290px;
+        height: 290px;
       }
 
-      .rubik3d {
-        --cubie: 52px;
-        --gap: 7px;
+      .rubik-solid {
+        --s: 204px;
       }
 
-      .side {
-        border-radius: 9px;
+      .rubik-face {
+        gap: 7px;
+        padding: 7px;
+        border-radius: 20px;
       }
 
-      .side::after {
-        inset: 5px;
-        border-radius: 7px;
+      .rubik-face span {
+        border-radius: 10px;
+        font-size: .49rem;
+        padding: 4px;
       }
 
-      .side em {
-        font-size: .47rem;
-        padding: 3px;
-      }
-
-      .axis-glow span:nth-child(1) {
+      .ring.one {
         width: 300px;
         height: 116px;
-        margin-left: -150px;
-        margin-top: -58px;
       }
 
-      .axis-glow span:nth-child(2) {
+      .ring.two {
         width: 260px;
         height: 102px;
-        margin-left: -130px;
-        margin-top: -51px;
       }
 
       .work-grid,
@@ -966,50 +905,25 @@
           </div>
         </div>
 
-        <div class="rubik-stage reveal" aria-label="Cubo Rubik 3D do ecossistema de transformação digital">
-          <div class="orbit-tags">
-            <span class="tag">Identidade Digital</span>
-            <span class="tag">Serviços Públicos</span>
-            <span class="tag">Procurement</span>
-            <span class="tag">APD / Dados</span>
-            <span class="tag">Pagamentos</span>
-            <span class="tag">Capacitação</span>
-          </div>
+        <div class="rubik-stage reveal" aria-label="Rubik sólido do ecossistema de transformação digital">
+          <span class="tag">Identidade Digital</span>
+          <span class="tag">Serviços Públicos</span>
+          <span class="tag">Procurement</span>
+          <span class="tag">APD / Dados</span>
+          <span class="tag">Pagamentos</span>
+          <span class="tag">Capacitação</span>
 
-          <div class="axis-glow" aria-hidden="true">
-            <span></span>
-            <span></span>
-          </div>
+          <span class="ring one" aria-hidden="true"></span>
+          <span class="ring two" aria-hidden="true"></span>
 
-          <div class="rubik-scene" aria-hidden="true">
-            <div class="rubik3d">
-              <div class="cubie" style="--x:-1;--y:-1;--z:-1;"><span class="side front inner"><em></em></span><span class="side back sticker"><em>Proc.</em></span><span class="side right inner"><em></em></span><span class="side left sticker"><em>SIGE</em></span><span class="side top sticker"><em>APD</em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:-1;--y:-1;--z:0;"><span class="side front inner"><em></em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left sticker"><em>Escola</em></span><span class="side top sticker"><em>Catálogo</em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:-1;--y:-1;--z:1;"><span class="side front sticker"><em>DPI</em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left sticker"><em>Invent.</em></span><span class="side top sticker"><em>Risco</em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:-1;--y:0;--z:-1;"><span class="side front inner"><em></em></span><span class="side back sticker"><em>Contratos</em></span><span class="side right inner"><em></em></span><span class="side left sticker"><em>Saúde</em></span><span class="side top inner"><em></em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:-1;--y:0;--z:0;"><span class="side front inner"><em></em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left sticker"><em>MIS</em></span><span class="side top inner"><em></em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:-1;--y:0;--z:1;"><span class="side front sticker"><em>Dados</em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left sticker"><em>Registos</em></span><span class="side top inner"><em></em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:-1;--y:1;--z:-1;"><span class="side front inner"><em></em></span><span class="side back sticker"><em>Formação</em></span><span class="side right inner"><em></em></span><span class="side left sticker"><em>Eleições</em></span><span class="side top inner"><em></em></span><span class="side bottom sticker"><em>Dados</em></span></div>
-              <div class="cubie" style="--x:-1;--y:1;--z:0;"><span class="side front inner"><em></em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left sticker"><em>Cadernos</em></span><span class="side top inner"><em></em></span><span class="side bottom sticker"><em>Capacid.</em></span></div>
-              <div class="cubie" style="--x:-1;--y:1;--z:1;"><span class="side front sticker"><em>Pag.</em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left sticker"><em>Resultados</em></span><span class="side top inner"><em></em></span><span class="side bottom sticker"><em>Estrat.</em></span></div>
-              <div class="cubie" style="--x:0;--y:-1;--z:-1;"><span class="side front inner"><em></em></span><span class="side back sticker"><em>BOQ</em></span><span class="side right inner"><em></em></span><span class="side left inner"><em></em></span><span class="side top sticker"><em>eGIF</em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:0;--y:-1;--z:0;"><span class="side front inner"><em></em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left inner"><em></em></span><span class="side top sticker"><em>BI</em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:0;--y:-1;--z:1;"><span class="side front sticker"><em>ID</em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left inner"><em></em></span><span class="side top sticker"><em>PMO</em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:0;--y:0;--z:-1;"><span class="side front inner"><em></em></span><span class="side back sticker"><em>Aceit.</em></span><span class="side right inner"><em></em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:0;--y:0;--z:0;"><span class="side front inner"><em></em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:0;--y:0;--z:1;"><span class="side front sticker"><em>Interop</em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:0;--y:1;--z:-1;"><span class="side front inner"><em></em></span><span class="side back sticker"><em>Suporte</em></span><span class="side right inner"><em></em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom sticker"><em>Serviços</em></span></div>
-              <div class="cubie" style="--x:0;--y:1;--z:0;"><span class="side front inner"><em></em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom sticker"><em>Finanças</em></span></div>
-              <div class="cubie" style="--x:0;--y:1;--z:1;"><span class="side front sticker"><em>Serviços</em></span><span class="side back inner"><em></em></span><span class="side right inner"><em></em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom sticker"><em>Processos</em></span></div>
-              <div class="cubie" style="--x:1;--y:-1;--z:-1;"><span class="side front inner"><em></em></span><span class="side back sticker"><em>TDR</em></span><span class="side right sticker"><em>SOC</em></span><span class="side left inner"><em></em></span><span class="side top sticker"><em>Normas</em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:1;--y:-1;--z:0;"><span class="side front inner"><em></em></span><span class="side back inner"><em></em></span><span class="side right sticker"><em>DevOps</em></span><span class="side left inner"><em></em></span><span class="side top sticker"><em>Qual.</em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:1;--y:-1;--z:1;"><span class="side front sticker"><em>Reg.</em></span><span class="side back inner"><em></em></span><span class="side right sticker"><em>Cloud</em></span><span class="side left inner"><em></em></span><span class="side top sticker"><em>Roadmap</em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:1;--y:0;--z:-1;"><span class="side front inner"><em></em></span><span class="side back sticker"><em>Aval.</em></span><span class="side right sticker"><em>Backup</em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:1;--y:0;--z:0;"><span class="side front inner"><em></em></span><span class="side back inner"><em></em></span><span class="side right sticker"><em>CERT</em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:1;--y:0;--z:1;"><span class="side front sticker"><em>APIs</em></span><span class="side back inner"><em></em></span><span class="side right sticker"><em>Ciber</em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom inner"><em></em></span></div>
-              <div class="cubie" style="--x:1;--y:1;--z:-1;"><span class="side front inner"><em></em></span><span class="side back sticker"><em>SLA</em></span><span class="side right sticker"><em>Resil.</em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom sticker"><em>Sustent.</em></span></div>
-              <div class="cubie" style="--x:1;--y:1;--z:0;"><span class="side front inner"><em></em></span><span class="side back inner"><em></em></span><span class="side right sticker"><em>ZeroTrust</em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom sticker"><em>Operação</em></span></div>
-              <div class="cubie" style="--x:1;--y:1;--z:1;"><span class="side front sticker"><em>GovStack</em></span><span class="side back inner"><em></em></span><span class="side right sticker"><em>SLA</em></span><span class="side left inner"><em></em></span><span class="side top inner"><em></em></span><span class="side bottom sticker"><em>Mudança</em></span></div>
+          <div class="rubik-shell" aria-hidden="true">
+            <div class="rubik-solid">
+              <div class="rubik-face front"><span>DPI</span><span>ID Digital</span><span>Registos</span><span>Dados</span><span>Interop</span><span>APIs</span><span>Pagamentos</span><span>Serviços</span><span>GovStack</span></div>
+<div class="rubik-face right"><span>GovCloud</span><span>Cloud</span><span>DevOps</span><span>SOC</span><span>Ciber</span><span>CERT</span><span>Backup</span><span>Resiliência</span><span>Zero Trust</span></div>
+<div class="rubik-face top"><span>APD</span><span>eGIF</span><span>Normas</span><span>Catálogo</span><span>BI</span><span>Qualidade</span><span>Risco</span><span>PMO</span><span>Roadmap</span></div>
+<div class="rubik-face left"><span>SIGE</span><span>Escolas</span><span>Inventário</span><span>Saúde</span><span>MIS</span><span>Registos</span><span>Eleições</span><span>Cadernos</span><span>Resultados</span></div>
+<div class="rubik-face back"><span>TDR</span><span>BOQ</span><span>Procurement</span><span>Avaliação</span><span>Aceitação</span><span>Contratos</span><span>SLA</span><span>Suporte</span><span>Formação</span></div>
+<div class="rubik-face bottom"><span>Estratégia</span><span>Processos</span><span>Mudança</span><span>Capacidade</span><span>Finanças</span><span>Operação</span><span>Dados</span><span>Serviços</span><span>Sustentar</span></div>
             </div>
           </div>
         </div>
