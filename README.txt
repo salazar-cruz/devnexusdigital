@@ -1,15 +1,10 @@
-DevNexus Digital — versão inspirada no template Dev's Portfolio.
+DevNexus Digital — versão Rubik 3x3.
 
-Características:
-- ficheiro único: index.html;
-- visual escuro/minimalista;
-- tipografia grande;
-- cubo 3D animado;
-- faces do cubo: DPI, GovCloud, SIGE, Dados, Ciber, Interop;
-- etiquetas orbitais do ecossistema;
-- marquee com termos de transformação digital;
-- secções tipo case studies;
-- formulário configurado para info@devnexusdigital.com via FormSubmit.
+Mudança principal:
+- Substituído o cubo simples por um cubo Rubik 3x3.
+- Cada face tem 9 módulos do ecossistema de transformação digital.
+- O cubo tem 6 faces reais, como um Rubik: front, back, right, left, top e bottom.
+- Cada face representa uma família: DPI, GovCloud/Ciber, Sectores, Dados/Normas, Procurement, Estratégia/Operação.
 
 Publicação:
 1. Descompactar.

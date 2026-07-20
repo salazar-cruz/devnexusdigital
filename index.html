@@ -11,23 +11,20 @@
       --bg: #0d1117;
       --bg-2: #111827;
       --paper: #f4f1ea;
-      --paper-2: #e9e3d6;
-      --ink: #14171f;
-      --muted: #7e8794;
-      --soft: rgba(244,241,234,.10);
-      --soft-2: rgba(244,241,234,.16);
+      --paper-soft: rgba(244,241,234,.68);
       --line: rgba(244,241,234,.14);
+      --soft: rgba(244,241,234,.065);
       --blue: #8fb7ff;
       --cyan: #85efe6;
       --mint: #bdf4df;
       --sand: #f1d6a8;
       --rose: #eab7ce;
-      --shadow: 0 40px 130px rgba(0,0,0,.34);
-      --radius: 30px;
+      --violet: #cdbbff;
+      --shadow: 0 42px 140px rgba(0,0,0,.38);
+      --radius: 34px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -58,11 +55,7 @@
     }
 
     a { color: inherit; text-decoration: none; }
-
-    .wrap {
-      width: min(1200px, 92%);
-      margin-inline: auto;
-    }
+    .wrap { width: min(1200px, 92%); margin-inline: auto; }
 
     .header {
       position: fixed;
@@ -159,11 +152,6 @@
       margin-left: 4px;
     }
 
-    .menu .navcta:hover {
-      color: #0d1117;
-      background: white;
-    }
-
     .navbutton {
       display: none;
       width: 42px;
@@ -200,7 +188,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns: 1.02fr .98fr;
       gap: 72px;
       align-items: center;
     }
@@ -231,16 +219,14 @@
     }
 
     h1 {
-      font-size: clamp(4rem, 9.6vw, 10.4rem);
+      font-size: clamp(4rem, 9.4vw, 10.2rem);
       line-height: .79;
       letter-spacing: -.105em;
       max-width: 980px;
       margin-bottom: 28px;
     }
 
-    .word-muted {
-      color: rgba(244,241,234,.42);
-    }
+    .word-muted { color: rgba(244,241,234,.42); }
 
     .lead {
       color: rgba(244,241,234,.72);
@@ -296,12 +282,12 @@
       padding: 8px 10px;
     }
 
-    .cube-stage {
-      min-height: 560px;
+    .rubik-stage {
+      min-height: 600px;
       display: grid;
       place-items: center;
       position: relative;
-      perspective: 1150px;
+      perspective: 1250px;
       border-radius: 44px;
       background:
         radial-gradient(circle at 30% 25%, rgba(133,239,230,.12), transparent 34%),
@@ -310,25 +296,28 @@
       border: 1px solid rgba(244,241,234,.12);
       box-shadow: var(--shadow);
       overflow: hidden;
+      isolation: isolate;
     }
 
-    .cube-stage::before {
+    .rubik-stage::before {
       content: "";
       position: absolute;
-      inset: 40px;
+      inset: 42px;
       border: 1px solid rgba(244,241,234,.08);
       border-radius: 38px;
       transform: rotate(-3deg);
+      pointer-events: none;
     }
 
-    .cube-stage::after {
+    .rubik-stage::after {
       content: "";
       position: absolute;
       width: 140%;
       height: 90px;
-      background: linear-gradient(90deg, transparent, rgba(244,241,234,.16), transparent);
+      background: linear-gradient(90deg, transparent, rgba(244,241,234,.15), transparent);
       transform: rotate(-18deg) translateX(-68%);
       animation: sweep 8s ease-in-out infinite;
+      pointer-events: none;
     }
 
     @keyframes sweep {
@@ -337,70 +326,97 @@
       70%, 100% { transform: rotate(-18deg) translateX(72%); opacity: 0; }
     }
 
-    .cube {
-      --s: 240px;
+    .rubik {
+      --s: 282px;
+      --half: calc(var(--s) / 2);
       width: var(--s);
       height: var(--s);
       position: relative;
       transform-style: preserve-3d;
-      animation: cubeRotate 18s cubic-bezier(.65,0,.35,1) infinite;
+      animation: rubikRotate 24s cubic-bezier(.65,0,.35,1) infinite;
       z-index: 2;
+      filter: drop-shadow(0 34px 70px rgba(0,0,0,.38));
     }
 
-    .cube:hover {
+    .rubik:hover {
       animation-play-state: paused;
     }
 
-    @keyframes cubeRotate {
-      0%   { transform: rotateX(-18deg) rotateY(28deg); }
-      18%  { transform: rotateX(-18deg) rotateY(118deg); }
-      34%  { transform: rotateX(-18deg) rotateY(208deg); }
-      50%  { transform: rotateX(-18deg) rotateY(298deg); }
-      66%  { transform: rotateX(72deg) rotateY(318deg); }
-      82%  { transform: rotateX(-108deg) rotateY(318deg); }
-      100% { transform: rotateX(-18deg) rotateY(388deg); }
+    @keyframes rubikRotate {
+      0%   { transform: rotateX(-22deg) rotateY(32deg) rotateZ(0deg); }
+      14%  { transform: rotateX(-22deg) rotateY(122deg) rotateZ(0deg); }
+      28%  { transform: rotateX(-22deg) rotateY(212deg) rotateZ(0deg); }
+      42%  { transform: rotateX(-22deg) rotateY(302deg) rotateZ(0deg); }
+      58%  { transform: rotateX(70deg) rotateY(320deg) rotateZ(-2deg); }
+      74%  { transform: rotateX(-112deg) rotateY(320deg) rotateZ(2deg); }
+      100% { transform: rotateX(-22deg) rotateY(392deg) rotateZ(0deg); }
     }
 
-    .face {
+    .rubik-face {
       position: absolute;
       inset: 0;
       display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 7px;
+      padding: 7px;
+      border-radius: 24px;
+      background: rgba(0,0,0,.32);
+      border: 1px solid rgba(244,241,234,.16);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.04),
+        inset 0 22px 44px rgba(255,255,255,.025);
+      backface-visibility: hidden;
+    }
+
+    .rubik-face.front  { transform: translateZ(var(--half)); }
+    .rubik-face.back   { transform: rotateY(180deg) translateZ(var(--half)); }
+    .rubik-face.right  { transform: rotateY(90deg) translateZ(var(--half)); }
+    .rubik-face.left   { transform: rotateY(-90deg) translateZ(var(--half)); }
+    .rubik-face.top    { transform: rotateX(90deg) translateZ(var(--half)); }
+    .rubik-face.bottom { transform: rotateX(-90deg) translateZ(var(--half)); }
+
+    .tile {
+      display: grid;
       place-items: center;
-      border: 1px solid rgba(244,241,234,.18);
-      border-radius: 28px;
-      background:
-        linear-gradient(145deg, rgba(244,241,234,.17), rgba(244,241,234,.045)),
-        radial-gradient(circle at 22% 18%, rgba(133,239,230,.18), transparent 42%);
-      backdrop-filter: blur(18px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.14);
       text-align: center;
-      padding: 22px;
+      border-radius: 14px;
+      padding: 6px;
+      color: rgba(13,17,23,.86);
+      font-size: clamp(.58rem, .8vw, .76rem);
+      font-weight: 920;
+      line-height: 1.05;
+      letter-spacing: -.035em;
+      text-shadow: 0 1px 0 rgba(255,255,255,.28);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.34),
+        inset 0 -12px 24px rgba(0,0,0,.07),
+        0 9px 18px rgba(0,0,0,.18);
+      transform: translateZ(1px);
+      overflow-wrap: anywhere;
     }
 
-    .face strong {
-      display: block;
-      font-size: clamp(1.8rem, 3vw, 2.65rem);
-      line-height: .9;
-      letter-spacing: -.075em;
+    .t1 { background: linear-gradient(145deg, #dff7f6, #85efe6); }
+    .t2 { background: linear-gradient(145deg, #e7eeff, #8fb7ff); }
+    .t3 { background: linear-gradient(145deg, #fff0cf, #f1d6a8); }
+    .t4 { background: linear-gradient(145deg, #ffe2ef, #eab7ce); }
+    .t5 { background: linear-gradient(145deg, #e9ffe8, #bdf4df); }
+    .t6 { background: linear-gradient(145deg, #efe8ff, #cdbbff); }
+
+    .rubik-face.front .tile:nth-child(5),
+    .rubik-face.back .tile:nth-child(5),
+    .rubik-face.right .tile:nth-child(5),
+    .rubik-face.left .tile:nth-child(5),
+    .rubik-face.top .tile:nth-child(5),
+    .rubik-face.bottom .tile:nth-child(5) {
       color: var(--paper);
-      margin-bottom: 12px;
+      background: linear-gradient(135deg, rgba(13,17,23,.95), rgba(42,61,86,.96));
+      border: 1px solid rgba(244,241,234,.16);
+      text-shadow: none;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.12),
+        0 12px 28px rgba(0,0,0,.28);
     }
-
-    .face span {
-      display: block;
-      color: rgba(244,241,234,.62);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: .68rem;
-      font-weight: 850;
-    }
-
-    .front  { transform: translateZ(calc(var(--s) / 2)); }
-    .back   { transform: rotateY(180deg) translateZ(calc(var(--s) / 2)); }
-    .right  { transform: rotateY(90deg) translateZ(calc(var(--s) / 2)); }
-    .left   { transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)); }
-    .top    { transform: rotateX(90deg) translateZ(calc(var(--s) / 2)); }
-    .bottom { transform: rotateX(-90deg) translateZ(calc(var(--s) / 2)); }
 
     .orbit-tags {
       position: absolute;
@@ -419,6 +435,7 @@
       font-size: .76rem;
       font-weight: 780;
       animation: floatTag 7s ease-in-out infinite alternate;
+      backdrop-filter: blur(10px);
     }
 
     .tag:nth-child(1) { left: 8%; top: 15%; color: var(--cyan); }
@@ -445,7 +462,7 @@
       width: max-content;
       gap: 28px;
       padding: 18px 0;
-      animation: marquee 30s linear infinite;
+      animation: marquee 32s linear infinite;
       color: rgba(244,241,234,.55);
       font-weight: 850;
       text-transform: uppercase;
@@ -464,9 +481,7 @@
       to { transform: translateX(-50%); }
     }
 
-    .section {
-      padding: 104px 0;
-    }
+    .section { padding: 104px 0; }
 
     .section-head {
       display: grid;
@@ -574,7 +589,7 @@
       font-weight: 770;
     }
 
-    .mini-cube {
+    .rubik-mini {
       justify-self: end;
       width: 240px;
       aspect-ratio: 1;
@@ -584,16 +599,22 @@
         linear-gradient(135deg, rgba(244,241,234,.10), rgba(244,241,234,.03)),
         radial-gradient(circle at 40% 40%, rgba(133,239,230,.18), transparent 50%);
       display: grid;
-      place-items: center;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      padding: 18px;
       transform: rotate(-7deg);
     }
 
-    .mini-cube span {
-      font-size: 4rem;
-      font-weight: 950;
-      letter-spacing: -.1em;
-      color: rgba(244,241,234,.82);
+    .rubik-mini span {
+      border-radius: 12px;
+      background: rgba(244,241,234,.12);
+      border: 1px solid rgba(244,241,234,.12);
     }
+
+    .rubik-mini span:nth-child(1), .rubik-mini span:nth-child(5), .rubik-mini span:nth-child(9) { background: rgba(133,239,230,.38); }
+    .rubik-mini span:nth-child(2), .rubik-mini span:nth-child(6) { background: rgba(143,183,255,.36); }
+    .rubik-mini span:nth-child(3), .rubik-mini span:nth-child(7) { background: rgba(241,214,168,.32); }
+    .rubik-mini span:nth-child(4), .rubik-mini span:nth-child(8) { background: rgba(234,183,206,.30); }
 
     .ecosystem {
       display: grid;
@@ -653,10 +674,7 @@
       max-width: 560px;
     }
 
-    .form {
-      display: grid;
-      gap: 14px;
-    }
+    .form { display: grid; gap: 14px; }
 
     .form label {
       color: rgba(244,241,234,.70);
@@ -737,32 +755,15 @@
         grid-template-columns: 1fr;
       }
 
-      .cube-stage {
-        min-height: 470px;
-      }
-
-      .ecosystem {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .mini-cube {
-        justify-self: start;
-      }
+      .rubik-stage { min-height: 500px; }
+      .ecosystem { grid-template-columns: repeat(2, 1fr); }
+      .rubik-mini { justify-self: start; }
     }
 
     @media (max-width: 740px) {
-      .header {
-        top: 10px;
-      }
-
-      .nav {
-        border-radius: 28px;
-        min-height: 60px;
-      }
-
-      .navbutton {
-        display: block;
-      }
+      .header { top: 10px; }
+      .nav { border-radius: 28px; min-height: 60px; }
+      .navbutton { display: block; }
 
       .menu {
         position: absolute;
@@ -780,42 +781,31 @@
         backdrop-filter: blur(22px);
       }
 
-      .menu.open {
-        display: flex;
-      }
+      .menu.open { display: flex; }
+      .menu a { padding: 14px 16px; }
+      .menu .navcta { margin-top: 6px; text-align: center; }
 
-      .menu a {
-        padding: 14px 16px;
-      }
+      .hero { padding-top: 110px; }
 
-      .menu .navcta {
-        margin-top: 6px;
-        text-align: center;
-      }
+      h1 { font-size: clamp(3.5rem, 18vw, 5.8rem); }
 
-      .hero {
-        padding-top: 110px;
-      }
-
-      h1 {
-        font-size: clamp(3.5rem, 18vw, 5.8rem);
-      }
-
-      .cube-stage {
-        min-height: 390px;
+      .rubik-stage {
+        min-height: 410px;
         border-radius: 30px;
       }
 
-      .cube {
-        --s: 182px;
+      .rubik { --s: 204px; }
+
+      .rubik-face {
+        gap: 5px;
+        padding: 5px;
+        border-radius: 19px;
       }
 
-      .face {
-        border-radius: 22px;
-      }
-
-      .face strong {
-        font-size: 1.55rem;
+      .tile {
+        border-radius: 10px;
+        font-size: .52rem;
+        padding: 4px;
       }
 
       .work-grid,
@@ -823,13 +813,8 @@
         grid-template-columns: 1fr;
       }
 
-      .work-card.large {
-        grid-column: span 1;
-      }
-
-      .section {
-        padding: 78px 0;
-      }
+      .work-card.large { grid-column: span 1; }
+      .section { padding: 78px 0; }
 
       .contact-panel {
         padding: 24px;
@@ -898,7 +883,7 @@
           </div>
         </div>
 
-        <div class="cube-stage reveal" aria-label="Cubo animado do ecossistema de transformação digital">
+        <div class="rubik-stage reveal" aria-label="Cubo Rubik animado do ecossistema de transformação digital">
           <div class="orbit-tags">
             <span class="tag">Identidade Digital</span>
             <span class="tag">Serviços Públicos</span>
@@ -908,13 +893,13 @@
             <span class="tag">Capacitação</span>
           </div>
 
-          <div class="cube">
-            <div class="face front"><div><strong>DPI</strong><span>Digital Public Infrastructure</span></div></div>
-            <div class="face back"><div><strong>GovCloud</strong><span>Infraestrutura soberana</span></div></div>
-            <div class="face right"><div><strong>SIGE</strong><span>Educação e gestão escolar</span></div></div>
-            <div class="face left"><div><strong>Dados</strong><span>Governação e qualidade</span></div></div>
-            <div class="face top"><div><strong>Ciber</strong><span>Segurança e resiliência</span></div></div>
-            <div class="face bottom"><div><strong>Interop</strong><span>APIs, eGIF e integração</span></div></div>
+          <div class="rubik">
+              <div class="rubik-face front"><span class="tile t1">DPI</span><span class="tile t2">ID Digital</span><span class="tile t3">Registos</span><span class="tile t4">Dados</span><span class="tile t5">Interop</span><span class="tile t6">APIs</span><span class="tile t1">Pagamentos</span><span class="tile t2">Serviços</span><span class="tile t3">GovStack</span></div>
+              <div class="rubik-face back"><span class="tile t1">GovCloud</span><span class="tile t2">Cloud</span><span class="tile t3">DevOps</span><span class="tile t4">SOC</span><span class="tile t5">Ciber</span><span class="tile t6">CERT</span><span class="tile t1">Backup</span><span class="tile t2">Resiliência</span><span class="tile t3">Zero Trust</span></div>
+              <div class="rubik-face right"><span class="tile t1">SIGE</span><span class="tile t2">Escolas</span><span class="tile t3">Inventário</span><span class="tile t4">Saúde</span><span class="tile t5">MIS</span><span class="tile t6">Registos</span><span class="tile t1">Eleições</span><span class="tile t2">Cadernos</span><span class="tile t3">Resultados</span></div>
+              <div class="rubik-face left"><span class="tile t1">APD</span><span class="tile t2">Privacidade</span><span class="tile t3">Consent.</span><span class="tile t4">eGIF</span><span class="tile t5">Normas</span><span class="tile t6">Catálogo</span><span class="tile t1">BI</span><span class="tile t2">Dashboards</span><span class="tile t3">Qualidade</span></div>
+              <div class="rubik-face top"><span class="tile t1">Procurement</span><span class="tile t2">TDR</span><span class="tile t3">BOQ</span><span class="tile t4">Avaliação</span><span class="tile t5">Aceitação</span><span class="tile t6">SLA</span><span class="tile t1">Formação</span><span class="tile t2">Manuais</span><span class="tile t3">Suporte</span></div>
+              <div class="rubik-face bottom"><span class="tile t1">Estratégia</span><span class="tile t2">Roadmap</span><span class="tile t3">PMO</span><span class="tile t4">Processos</span><span class="tile t5">Mudança</span><span class="tile t6">Capacidade</span><span class="tile t1">Finanças</span><span class="tile t2">Risco</span><span class="tile t3">Operação</span></div>
           </div>
         </div>
       </div>
@@ -975,7 +960,9 @@
                 <span>Governação</span><span>Roteiro</span><span>eGIF</span><span>DPI</span><span>Dados</span>
               </div>
             </div>
-            <div class="mini-cube"><span>DPI</span></div>
+            <div class="rubik-mini" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
           </article>
 
           <article class="work-card reveal">
@@ -1109,21 +1096,16 @@
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    const cubeStage = document.querySelector(".cube-stage");
-    const cube = document.querySelector(".cube");
+    const stage = document.querySelector(".rubik-stage");
+    const rubik = document.querySelector(".rubik");
 
-    if (cubeStage && cube && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      cubeStage.addEventListener("mousemove", (event) => {
-        const rect = cubeStage.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width - 0.5) * 14;
-        const y = ((event.clientY - rect.top) / rect.height - 0.5) * -14;
-        cubeStage.style.setProperty("--mx", `${x}deg`);
-        cubeStage.style.setProperty("--my", `${y}deg`);
-        cube.style.filter = "drop-shadow(0 28px 60px rgba(0,0,0,.28))";
+    if (stage && rubik && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      stage.addEventListener("mousemove", () => {
+        rubik.style.filter = "drop-shadow(0 44px 88px rgba(0,0,0,.44))";
       });
 
-      cubeStage.addEventListener("mouseleave", () => {
-        cube.style.filter = "";
+      stage.addEventListener("mouseleave", () => {
+        rubik.style.filter = "";
       });
     }
 
