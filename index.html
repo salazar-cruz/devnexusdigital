@@ -3,210 +3,1276 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DevNexus Digital — Public Digital Systems</title>
-  <meta name="description" content="Transformação digital institucional: DPI, dados, interoperabilidade, procurement técnico e sistemas públicos.">
-  <meta property="og:title" content="DevNexus Digital">
-  <meta property="og:description" content="Public digital systems. Institutional transformation.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://devnexusdigital.com/">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/animation.css">
+  <title>DevNexus Digital | Transformação Digital Institucional</title>
+  <meta name="description" content="Consultoria em transformação digital, DPI, governação de dados, interoperabilidade, sistemas públicos e modernização institucional.">
+
+  <style>
+    :root {
+      --bg: #080b11;
+      --panel: rgba(244,241,234,.055);
+      --panel-2: rgba(244,241,234,.082);
+      --paper: #f4f1ea;
+      --muted: rgba(244,241,234,.62);
+      --soft: rgba(244,241,234,.42);
+      --line: rgba(244,241,234,.13);
+      --cyan: #85efe6;
+      --blue: #8fb7ff;
+      --sand: #f1d6a8;
+      --mint: #bdf4df;
+      --rose: #eab7ce;
+      --violet: #cdbbff;
+      --shadow: 0 42px 140px rgba(0,0,0,.42);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      color: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 14% 8%, rgba(143,183,255,.16), transparent 30%),
+        radial-gradient(circle at 86% 12%, rgba(133,239,230,.12), transparent 30%),
+        radial-gradient(circle at 52% 88%, rgba(241,214,168,.11), transparent 40%),
+        linear-gradient(135deg, #06080d 0%, #0b0f16 52%, #111827 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: .23;
+      background-image:
+        linear-gradient(rgba(244,241,234,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(244,241,234,.055) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: radial-gradient(circle at 50% 20%, black, transparent 74%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, transparent, rgba(8,11,17,.24) 62%, rgba(8,11,17,.88)),
+        radial-gradient(circle at 50% 0%, transparent 0, rgba(8,11,17,.35) 70%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1200px, 92%); margin-inline: auto; }
+
+    .header {
+      position: fixed;
+      inset: 18px 0 auto;
+      z-index: 80;
+      pointer-events: none;
+    }
+
+    .nav {
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 9px 10px 9px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(8,11,17,.62);
+      box-shadow: 0 18px 70px rgba(0,0,0,.26);
+      backdrop-filter: blur(22px);
+      pointer-events: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 940;
+      letter-spacing: -.05em;
+      white-space: nowrap;
+    }
+
+    .brand span span { color: var(--cyan); }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.03)),
+        linear-gradient(135deg, rgba(133,239,230,.28), rgba(143,183,255,.22));
+      border: 1px solid rgba(244,241,234,.16);
+    }
+
+    .brand-mark b {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      box-shadow: 0 0 20px rgba(133,239,230,.44);
+    }
+
+    .brand-mark i {
+      position: absolute;
+      width: 48px;
+      height: 19px;
+      border: 2px solid rgba(133,239,230,.56);
+      border-radius: 50%;
+      transform: rotate(-28deg);
+    }
+
+    .brand-mark i:nth-child(3) {
+      border-color: rgba(143,183,255,.50);
+      transform: rotate(42deg);
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(244,241,234,.76);
+      font-size: .9rem;
+      font-weight: 760;
+    }
+
+    .menu a {
+      padding: 10px 13px;
+      border-radius: 999px;
+      transition: .22s ease;
+    }
+
+    .menu a:hover {
+      background: rgba(244,241,234,.08);
+      color: var(--paper);
+    }
+
+    .menu .navcta {
+      color: #0b0f16;
+      background: var(--paper);
+      margin-left: 4px;
+    }
+
+    .navbutton {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(244,241,234,.14);
+      border-radius: 50%;
+      background: rgba(244,241,234,.08);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .navbutton span {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      height: 2px;
+      background: var(--paper);
+      transition: .22s;
+    }
+
+    .navbutton span:first-child { top: 15px; }
+    .navbutton span:last-child { bottom: 15px; }
+    .navbutton.open span:first-child { top: 20px; transform: rotate(45deg); }
+    .navbutton.open span:last-child { bottom: 20px; transform: rotate(-45deg); }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 126px 0 80px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(244,241,234,.055);
+      color: rgba(244,241,234,.68);
+      text-transform: uppercase;
+      letter-spacing: .095em;
+      font-size: .72rem;
+      font-weight: 880;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 0 7px rgba(133,239,230,.10);
+    }
+
+    h1 {
+      font-size: clamp(4.2rem, 9.5vw, 10.7rem);
+      line-height: .78;
+      letter-spacing: -.112em;
+      max-width: 980px;
+      margin-bottom: 30px;
+    }
+
+    .word-muted { color: rgba(244,241,234,.38); }
+
+    .lead {
+      max-width: 740px;
+      color: rgba(244,241,234,.70);
+      font-size: clamp(1.08rem, 1.7vw, 1.28rem);
+      margin-bottom: 34px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 13px 20px;
+      border: 0;
+      font: inherit;
+      font-weight: 870;
+      cursor: pointer;
+      transition: .22s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn.primary {
+      color: #0b0f16;
+      background: var(--paper);
+    }
+
+    .btn.secondary {
+      border: 1px solid rgba(244,241,234,.16);
+      background: rgba(244,241,234,.06);
+      color: var(--paper);
+    }
+
+    .mini-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: rgba(244,241,234,.58);
+      font-size: .88rem;
+      font-weight: 740;
+    }
+
+    .mini-strip span {
+      border: 1px solid rgba(244,241,234,.11);
+      background: rgba(244,241,234,.048);
+      border-radius: 999px;
+      padding: 8px 10px;
+    }
+
+    .wordmesh-card {
+      min-height: 640px;
+      position: relative;
+      border: 1px solid rgba(244,241,234,.12);
+      border-radius: 44px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(133,239,230,.13), transparent 34%),
+        radial-gradient(circle at 72% 70%, rgba(143,183,255,.13), transparent 36%),
+        rgba(244,241,234,.034);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .wordmesh-card::before {
+      content: "";
+      position: absolute;
+      inset: 34px;
+      border: 1px solid rgba(244,241,234,.075);
+      border-radius: 38px;
+      transform: rotate(-3deg);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .wordmesh-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.11), transparent);
+      transform: translateX(-85%) rotate(12deg);
+      animation: sweep 8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @keyframes sweep {
+      0%, 34% { transform: translateX(-85%) rotate(12deg); opacity: 0; }
+      48% { opacity: .9; }
+      76%, 100% { transform: translateX(85%) rotate(12deg); opacity: 0; }
+    }
+
+    #wordMesh {
+      width: 100%;
+      height: 100%;
+      min-height: 640px;
+      display: block;
+      cursor: grab;
+      position: relative;
+      z-index: 3;
+    }
+
+    #wordMesh:active { cursor: grabbing; }
+
+    .mesh-caption {
+      position: absolute;
+      left: 26px;
+      bottom: 24px;
+      z-index: 4;
+      max-width: 320px;
+      color: rgba(244,241,234,.52);
+      font-size: .88rem;
+      font-weight: 720;
+    }
+
+    .mesh-caption b {
+      color: var(--paper);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid rgba(244,241,234,.10);
+      border-bottom: 1px solid rgba(244,241,234,.10);
+      background: rgba(244,241,234,.032);
+    }
+
+    .marquee-track {
+      width: max-content;
+      display: flex;
+      gap: 28px;
+      padding: 18px 0;
+      color: rgba(244,241,234,.50);
+      font-weight: 860;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      white-space: nowrap;
+      font-size: .82rem;
+      animation: marquee 34s linear infinite;
+    }
+
+    .marquee-track span::after {
+      content: "·";
+      margin-left: 28px;
+      color: rgba(244,241,234,.20);
+    }
+
+    @keyframes marquee {
+      to { transform: translateX(-50%); }
+    }
+
+    .section { padding: 106px 0; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 62px;
+      align-items: end;
+      margin-bottom: 40px;
+    }
+
+    .kicker {
+      color: rgba(244,241,234,.50);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 920;
+      font-size: .78rem;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: clamp(2.8rem, 5.5vw, 6.2rem);
+      line-height: .86;
+      letter-spacing: -.095em;
+    }
+
+    .section-intro {
+      color: rgba(244,241,234,.61);
+      font-size: 1.08rem;
+      max-width: 700px;
+    }
+
+    .ecosystem {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .eco-item {
+      min-height: 128px;
+      padding: 18px;
+      border-radius: 23px;
+      border: 1px solid rgba(244,241,234,.11);
+      background: rgba(244,241,234,.046);
+      transition: .25s ease;
+    }
+
+    .eco-item:hover {
+      transform: translateY(-5px);
+      background: rgba(244,241,234,.072);
+      border-color: rgba(244,241,234,.18);
+    }
+
+    .eco-item b {
+      display: block;
+      color: var(--paper);
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .eco-item span {
+      color: rgba(244,241,234,.56);
+      font-size: .91rem;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .work-card {
+      min-height: 350px;
+      padding: 28px;
+      border-radius: 34px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 86% 10%, rgba(143,183,255,.12), transparent 38%),
+        rgba(244,241,234,.052);
+      border: 1px solid rgba(244,241,234,.12);
+      box-shadow: 0 20px 80px rgba(0,0,0,.14);
+      transition: .28s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-8px);
+      background:
+        radial-gradient(circle at 86% 10%, rgba(133,239,230,.14), transparent 38%),
+        rgba(244,241,234,.074);
+      border-color: rgba(244,241,234,.21);
+    }
+
+    .work-card.large {
+      grid-column: span 2;
+      min-height: 398px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .card-num {
+      color: rgba(244,241,234,.36);
+      font-weight: 920;
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .work-card h3 {
+      font-size: clamp(1.8rem, 3.3vw, 3.5rem);
+      line-height: .92;
+      letter-spacing: -.075em;
+      margin-bottom: 16px;
+    }
+
+    .work-card p {
+      color: rgba(244,241,234,.60);
+      max-width: 640px;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .stack span {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(244,241,234,.07);
+      border: 1px solid rgba(244,241,234,.10);
+      color: rgba(244,241,234,.64);
+      font-size: .78rem;
+      font-weight: 780;
+    }
+
+    .case-visual {
+      min-height: 230px;
+      align-self: stretch;
+      border-radius: 30px;
+      border: 1px solid rgba(244,241,234,.12);
+      background:
+        linear-gradient(135deg, rgba(244,241,234,.08), rgba(244,241,234,.025)),
+        radial-gradient(circle at 42% 38%, rgba(133,239,230,.20), transparent 38%),
+        radial-gradient(circle at 68% 62%, rgba(143,183,255,.15), transparent 36%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-visual span {
+      position: absolute;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(244,241,234,.12);
+      background: rgba(8,11,17,.38);
+      color: rgba(244,241,234,.72);
+      font-size: .78rem;
+      font-weight: 800;
+    }
+
+    .case-visual span:nth-child(1) { left: 10%; top: 18%; color: var(--cyan); }
+    .case-visual span:nth-child(2) { right: 12%; top: 24%; color: var(--blue); }
+    .case-visual span:nth-child(3) { left: 22%; bottom: 22%; color: var(--sand); }
+    .case-visual span:nth-child(4) { right: 18%; bottom: 18%; color: var(--mint); }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .step {
+      padding: 22px;
+      border-radius: 26px;
+      min-height: 210px;
+      border: 1px solid rgba(244,241,234,.11);
+      background: rgba(244,241,234,.046);
+    }
+
+    .step b {
+      display: block;
+      color: var(--cyan);
+      font-size: .86rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+
+    .step h3 {
+      font-size: 1.26rem;
+      letter-spacing: -.045em;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      color: rgba(244,241,234,.58);
+      font-size: .95rem;
+    }
+
+    .contact-panel {
+      padding: 34px;
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 90% 8%, rgba(133,239,230,.10), transparent 38%),
+        rgba(244,241,234,.058);
+      border: 1px solid rgba(244,241,234,.12);
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 42px;
+      align-items: start;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-panel h2 {
+      font-size: clamp(3rem, 6.2vw, 7.4rem);
+      line-height: .80;
+      letter-spacing: -.112em;
+      margin-bottom: 20px;
+    }
+
+    .contact-panel p {
+      color: rgba(244,241,234,.62);
+      max-width: 560px;
+    }
+
+    .form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .form label {
+      display: grid;
+      gap: 7px;
+      color: rgba(244,241,234,.70);
+      font-weight: 760;
+    }
+
+    .form input,
+    .form select,
+    .form textarea {
+      width: 100%;
+      border: 1px solid rgba(244,241,234,.14);
+      border-radius: 18px;
+      padding: 14px 15px;
+      color: var(--paper);
+      background: rgba(244,241,234,.055);
+      outline: none;
+      font: inherit;
+    }
+
+    .form input:focus,
+    .form select:focus,
+    .form textarea:focus {
+      border-color: rgba(133,239,230,.45);
+      box-shadow: 0 0 0 4px rgba(133,239,230,.10);
+    }
+
+    .status {
+      min-height: 22px;
+      color: rgba(244,241,234,.50);
+      font-size: .92rem;
+    }
+
+    .footer {
+      padding: 36px 0 46px;
+      color: rgba(244,241,234,.45);
+      border-top: 1px solid rgba(244,241,234,.10);
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity .82s ease, transform .82s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (max-width: 1060px) {
+      .hero-grid,
+      .section-head,
+      .work-card.large,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .wordmesh-card { min-height: 540px; }
+      #wordMesh { min-height: 540px; }
+
+      .ecosystem,
+      .process {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 740px) {
+      .header { top: 10px; }
+      .nav { border-radius: 28px; min-height: 60px; }
+      .navbutton { display: block; }
+
+      .menu {
+        position: absolute;
+        left: 4%;
+        right: 4%;
+        top: 74px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        border: 1px solid rgba(244,241,234,.14);
+        background: rgba(8,11,17,.93);
+        border-radius: 24px;
+        padding: 8px;
+        backdrop-filter: blur(22px);
+      }
+
+      .menu.open { display: flex; }
+      .menu a { padding: 14px 16px; }
+      .menu .navcta { margin-top: 6px; text-align: center; }
+
+      .hero { padding-top: 110px; }
+      h1 { font-size: clamp(3.5rem, 18vw, 5.8rem); }
+
+      .wordmesh-card {
+        min-height: 430px;
+        border-radius: 30px;
+      }
+
+      #wordMesh { min-height: 430px; }
+
+      .mesh-caption {
+        left: 18px;
+        right: 18px;
+        bottom: 16px;
+      }
+
+      .section { padding: 78px 0; }
+
+      .ecosystem,
+      .process,
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-card.large { grid-column: span 1; }
+
+      .contact-panel {
+        padding: 24px;
+        border-radius: 30px;
+      }
+
+      .foot {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="boot" id="boot" aria-hidden="true">
-    <div class="boot__line">
-      <span>DevNexus Digital</span>
-      <b id="bootPercent">00</b>
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="DevNexus Digital">
+        <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
+        <span>Dev<span>Nexus</span> Digital</span>
+      </a>
+
+      <button class="navbutton" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="menu" aria-label="Menu principal">
+        <a href="#ecosistema">Ecossistema</a>
+        <a href="#trabalho">Trabalho</a>
+        <a href="#metodo">Método</a>
+        <a href="#contacto" class="navcta">Contacto</a>
+      </nav>
     </div>
-  </div>
-
-  <canvas id="field" class="field" aria-hidden="true"></canvas>
-  <div class="cursor" id="cursor" aria-hidden="true"></div>
-
-  <header class="nav" data-enter>
-    <a class="brand magnetic" href="#start" aria-label="DevNexus Digital">
-      <img src="assets/mark.svg" alt="">
-      <span>DevNexus</span>
-    </a>
-
-    <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
-      <span></span><span></span>
-    </button>
-
-    <nav class="nav__links" id="navLinks" aria-label="Menu principal">
-      <a class="magnetic" href="#work">Work</a>
-      <a class="magnetic" href="#cases">Cases</a>
-      <a class="magnetic" href="#method">Method</a>
-      <a class="magnetic" href="#contact">Talk</a>
-    </nav>
   </header>
 
-  <main>
-    <section id="start" class="act act--hero">
-      <div class="stage">
-        <p class="mono hero__meta" data-enter>Digital Public Infrastructure / Data / State Systems</p>
+  <main id="inicio">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Digital Public Infrastructure · Dados · Sistemas Públicos</p>
 
-        <h1 class="mega" aria-label="Resolver problemas públicos">
-          <span data-line>RESOLVER</span>
-          <span data-line class="accent">PROBLEMAS</span>
-          <span data-line>PÚBLICOS</span>
-        </h1>
+          <h1>
+            RESOLVER<br>
+            <span class="word-muted">PROBLEMAS</span><br>
+            PÚBLICOS
+          </h1>
 
-        <div class="hero__bottom">
-          <p data-enter>
-            A DevNexus Digital transforma problemas institucionais complexos em sistemas públicos digitais:
-            arquitectura, dados, interoperabilidade, contratação técnica e operação sustentável.
+          <p class="lead">
+            A DevNexus Digital transforma intenção institucional em arquitectura, dados, interoperabilidade,
+            procurement técnico e serviços digitais sustentáveis.
           </p>
 
-          <div class="hero__actions" data-enter>
-            <a class="button button--solid magnetic" href="#contact">Começar conversa</a>
-            <a class="button button--ghost magnetic" href="#cases">Ver casos</a>
+          <div class="actions">
+            <a class="btn primary" href="#contacto">Falar com a DevNexus</a>
+            <a class="btn secondary" href="#trabalho">Ver abordagem</a>
+          </div>
+
+          <div class="mini-strip">
+            <span>DPI</span>
+            <span>Dados</span>
+            <span>Interop</span>
+            <span>GovCloud</span>
+            <span>SIGE</span>
+            <span>Cibersegurança</span>
           </div>
         </div>
 
-        <div class="living-words" id="livingWords" aria-label="Conceitos arrastáveis">
-          <button class="word w1" type="button">DPI</button>
-          <button class="word w2" type="button">Dados</button>
-          <button class="word w3" type="button">Interop</button>
-          <button class="word w4" type="button">SIGE</button>
-          <button class="word w5" type="button">GovCloud</button>
-          <button class="word w6" type="button"><small>drag me</small>Ciber</button>
+        <div class="wordmesh-card reveal">
+          <canvas id="wordMesh" aria-label="Malha interactiva do ecossistema de transformação digital"></canvas>
+          <p class="mesh-caption"><b>Ecossistema interactivo</b>Arraste as palavras. A transformação digital funciona quando as peças se ligam.</p>
         </div>
-
-        <div class="scroll-hint mono" data-enter>Scroll / explore</div>
       </div>
     </section>
 
-    <section id="work" class="act">
-      <div class="stage two-col">
-        <div>
-          <p class="mono kicker" data-enter>01 / Work experience</p>
-          <h2 class="display" data-enter>Não é<br><span>tecnologia solta.</span></h2>
-        </div>
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Identidade Digital</span><span>Registos</span><span>Pagamentos Digitais</span><span>Interoperabilidade</span><span>Governação de Dados</span><span>Cibersegurança</span><span>Serviços Públicos Digitais</span><span>Educação</span><span>Saúde</span><span>Eleições</span><span>GovCloud</span><span>Procurement</span>
+        <span>Identidade Digital</span><span>Registos</span><span>Pagamentos Digitais</span><span>Interoperabilidade</span><span>Governação de Dados</span><span>Cibersegurança</span><span>Serviços Públicos Digitais</span><span>Educação</span><span>Saúde</span><span>Eleições</span><span>GovCloud</span><span>Procurement</span>
+      </div>
+    </section>
 
-        <div class="copy-block" data-enter>
-          <p>
-            O trabalho começa antes da compra de software. Começa no mandato institucional,
-            na arquitectura, nos dados, nos processos, nos riscos e na capacidade real de operação.
-          </p>
-
-          <div class="capability-grid">
-            <article><b>DPI</b><span>Identidade, registos, pagamentos e serviços comuns.</span></article>
-            <article><b>Dados</b><span>Modelos, qualidade, privacidade, BI e partilha.</span></article>
-            <article><b>Interop</b><span>APIs, eGIF, catálogo, barramento e integração.</span></article>
-            <article><b>Sectoriais</b><span>Educação, saúde, eleições e serviços públicos.</span></article>
+    <section id="ecosistema" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">Ecossistema</p>
+            <h2 class="section-title">A transformação digital não é uma aplicação.</h2>
           </div>
+          <p class="section-intro">
+            É uma arquitectura institucional: pessoas, processos, dados, plataformas, regras, financiamento,
+            contratação, segurança e capacidade de operação.
+          </p>
+        </div>
+
+        <div class="ecosystem">
+          <div class="eco-item reveal"><b>DPI</b><span>Identidade, registos, pagamentos, interoperabilidade e serviços comuns.</span></div>
+          <div class="eco-item reveal"><b>Dados</b><span>Modelos, qualidade, protecção, partilha e uso para decisão.</span></div>
+          <div class="eco-item reveal"><b>Interoperabilidade</b><span>APIs, eGIF, barramento, normas e integração entre sistemas.</span></div>
+          <div class="eco-item reveal"><b>Cibersegurança</b><span>Risco, continuidade, resposta, resiliência e confiança operacional.</span></div>
+          <div class="eco-item reveal"><b>Educação</b><span>SIGE, inventário TIC, conectividade, dados escolares e gestão sectorial.</span></div>
+          <div class="eco-item reveal"><b>Saúde</b><span>Registos, fluxos de informação, interoperabilidade e continuidade.</span></div>
+          <div class="eco-item reveal"><b>Eleições</b><span>Integridade dos dados, rastreabilidade, transparência e operação segura.</span></div>
+          <div class="eco-item reveal"><b>Procurement</b><span>TDR, especificações, avaliação, aceitação e sustentabilidade.</span></div>
         </div>
       </div>
     </section>
 
-    <section id="cases" class="act act--cases">
-      <div class="stage">
-        <p class="mono kicker" data-enter>02 / Selected cases</p>
+    <section id="trabalho" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">Trabalho</p>
+            <h2 class="section-title">Da ideia bonita ao sistema que aguenta.</h2>
+          </div>
+          <p class="section-intro">
+            A abordagem junta estratégia, arquitectura, contratação e operação. Sem teatro digital.
+          </p>
+        </div>
 
-        <div class="case-rail" id="caseRail">
-          <article class="case-panel" data-enter>
-            <div class="case-panel__index">01</div>
+        <div class="work-grid">
+          <article class="work-card large reveal">
             <div>
-              <h3>DPI como infra-estrutura pública, não como moda tecnológica.</h3>
-              <p>Identidade, registos, pagamentos, interoperabilidade e dados sob uma governação comum.</p>
-              <div class="tags"><span>DPI</span><span>ID Digital</span><span>Pagamentos</span><span>Interop</span></div>
+              <p class="card-num">Framework · 01</p>
+              <h3>Arquitectura institucional de transformação digital.</h3>
+              <p>
+                Mapeamento de actores, mandatos, processos, dados, plataformas, riscos e decisões necessárias
+                para evitar projectos tecnológicos soltos.
+              </p>
+              <div class="stack">
+                <span>Governação</span><span>Roteiro</span><span>eGIF</span><span>DPI</span><span>Dados</span>
+              </div>
+            </div>
+            <div class="case-visual" aria-hidden="true">
+              <span>DPI</span>
+              <span>Dados</span>
+              <span>Interop</span>
+              <span>Serviços</span>
             </div>
           </article>
 
-          <article class="case-panel" data-enter>
-            <div class="case-panel__index">02</div>
-            <div>
-              <h3>Educação com dados fiáveis e operação no terreno.</h3>
-              <p>SIGE, escolas, inventário tecnológico, conectividade, relatórios e capacidade local.</p>
-              <div class="tags"><span>SIGE</span><span>Escolas</span><span>Dados</span><span>Operação</span></div>
+          <article class="work-card reveal">
+            <p class="card-num">Framework · 02</p>
+            <h3>Sistemas sectoriais.</h3>
+            <p>Educação, saúde e eleições com foco em dados fiáveis, processos claros e operação sustentável.</p>
+            <div class="stack">
+              <span>SIGE</span><span>Saúde</span><span>Eleições</span><span>Operação</span>
             </div>
           </article>
 
-          <article class="case-panel" data-enter>
-            <div class="case-panel__index">03</div>
-            <div>
-              <h3>Procurement técnico que não entrega o ouro ao bandido.</h3>
-              <p>TDR, BOQ, critérios de avaliação, aceitação técnica, formação e sustentabilidade.</p>
-              <div class="tags"><span>TDR</span><span>BOQ</span><span>Avaliação</span><span>Aceitação</span></div>
+          <article class="work-card reveal">
+            <p class="card-num">Framework · 03</p>
+            <h3>Procurement técnico.</h3>
+            <p>Termos de referência, especificações, critérios de avaliação, aceitação e transferência de capacidade.</p>
+            <div class="stack">
+              <span>TDR</span><span>BOQ</span><span>Aceitação</span><span>Capacitação</span>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="method" class="act">
-      <div class="stage method">
-        <div>
-          <p class="mono kicker" data-enter>03 / Method</p>
-          <h2 class="display" data-enter>Primeiro<br><span>o problema.</span></h2>
+    <section id="metodo" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">Método</p>
+            <h2 class="section-title">Primeiro o problema. Depois a tecnologia.</h2>
+          </div>
+          <p class="section-intro">
+            Sequência curta, pragmática e dura contra a ilusão de comprar plataformas antes de entender a instituição.
+          </p>
         </div>
 
-        <div class="method-list">
-          <article data-enter><b>01</b><h3>Diagnóstico</h3><p>Mandato, actores, processos, sistemas, dados e constrangimentos.</p></article>
-          <article data-enter><b>02</b><h3>Arquitectura</h3><p>Modelo funcional, interoperabilidade, segurança e operação.</p></article>
-          <article data-enter><b>03</b><h3>Contratação</h3><p>Especificações, critérios, avaliação técnica e gestão de risco.</p></article>
-          <article data-enter><b>04</b><h3>Sustentação</h3><p>Formação, aceitação, documentação, governação e melhoria contínua.</p></article>
+        <div class="process">
+          <div class="step reveal"><b>01</b><h3>Diagnóstico</h3><p>Mandato, actores, processos, dados, sistemas e constrangimentos.</p></div>
+          <div class="step reveal"><b>02</b><h3>Arquitectura</h3><p>Modelo funcional, dados, integrações, segurança e operação.</p></div>
+          <div class="step reveal"><b>03</b><h3>Contratação</h3><p>TDR, especificações, critérios de avaliação e gestão de risco.</p></div>
+          <div class="step reveal"><b>04</b><h3>Sustentação</h3><p>Formação, aceitação, manuais, governação e melhoria contínua.</p></div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="act act--contact">
-      <div class="stage contact">
-        <div class="contact__copy">
-          <p class="mono kicker" data-enter>04 / Open to work</p>
-          <h2 class="mega mega--contact" data-enter>LET'S<br><span>TALK</span></h2>
-          <p data-enter>Envie o sector, o problema e o resultado pretendido. A resposta começa pela arquitectura, não pela compra de tecnologia.</p>
+    <section id="contacto" class="section">
+      <div class="wrap">
+        <div class="contact-panel reveal">
+          <div>
+            <p class="kicker">Contacto</p>
+            <h2>LET'S<br>TALK</h2>
+            <p>
+              Envie o sector, o problema e o resultado pretendido. O formulário está configurado para
+              info@devnexusdigital.com.
+            </p>
+          </div>
+
+          <form class="form" id="contactForm" action="https://formsubmit.co/info@devnexusdigital.com" method="POST">
+            <input type="hidden" name="_subject" value="Nova mensagem via devnexusdigital.com">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://devnexusdigital.com/#contacto">
+
+            <label>Nome
+              <input name="nome" required autocomplete="name">
+            </label>
+
+            <label>Email
+              <input type="email" name="email" required autocomplete="email">
+            </label>
+
+            <label>Área
+              <select name="area" required>
+                <option value="">Seleccionar</option>
+                <option>DPI</option>
+                <option>Governação digital</option>
+                <option>Educação / SIGE</option>
+                <option>Saúde</option>
+                <option>Eleições</option>
+                <option>Dados e interoperabilidade</option>
+                <option>Procurement técnico</option>
+              </select>
+            </label>
+
+            <label>Mensagem
+              <textarea name="mensagem" rows="5" required></textarea>
+            </label>
+
+            <button class="btn primary" type="submit">Enviar mensagem</button>
+            <p class="status" id="formStatus">Primeira submissão exige confirmação no email corporativo.</p>
+          </form>
         </div>
-
-        <form class="form" id="contactForm" action="https://formsubmit.co/info@devnexusdigital.com" method="POST" data-enter>
-          <input type="hidden" name="_subject" value="Nova mensagem via devnexusdigital.com">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://devnexusdigital.com/#contact">
-
-          <label>Nome
-            <input name="nome" required autocomplete="name">
-          </label>
-
-          <label>Email
-            <input type="email" name="email" required autocomplete="email">
-          </label>
-
-          <label>Área
-            <select name="area" required>
-              <option value="">Seleccionar</option>
-              <option>DPI</option>
-              <option>Governação digital</option>
-              <option>Educação / SIGE</option>
-              <option>Saúde</option>
-              <option>Eleições</option>
-              <option>Dados e interoperabilidade</option>
-              <option>Procurement técnico</option>
-            </select>
-          </label>
-
-          <label>Mensagem
-            <textarea name="mensagem" rows="5" required></textarea>
-          </label>
-
-          <button class="button button--solid magnetic" type="submit">Enviar mensagem</button>
-          <p class="status" id="formStatus">Primeira submissão exige confirmação no email corporativo.</p>
-        </form>
       </div>
     </section>
   </main>
 
-  <footer class="footer mono">
-    <span>© 2026 DevNexus Digital</span>
-    <span>Public digital systems / Cabo Verde</span>
+  <footer class="footer">
+    <div class="wrap foot">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
+        <span>Dev<span>Nexus</span> Digital</span>
+      </div>
+      <p>© 2026 DevNexus Digital · Transformação digital com visão institucional.</p>
+    </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
-  <script src="js/interactions.js" defer></script>
-  <script src="js/field.js" defer></script>
+  <script>
+    const navButton = document.querySelector(".navbutton");
+    const menu = document.querySelector(".menu");
+
+    if (navButton && menu) {
+      navButton.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        navButton.classList.toggle("open", open);
+        navButton.setAttribute("aria-expanded", String(open));
+      });
+
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.remove("open");
+          navButton.classList.remove("open");
+          navButton.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    const form = document.getElementById("contactForm");
+    const status = document.getElementById("formStatus");
+
+    if (form && status) {
+      form.addEventListener("submit", () => {
+        status.textContent = "A enviar mensagem...";
+      });
+    }
+
+    const canvas = document.getElementById("wordMesh");
+    const ctx = canvas.getContext("2d");
+
+    const palette = ["#85efe6", "#8fb7ff", "#f1d6a8", "#bdf4df", "#eab7ce", "#cdbbff", "#f4f1ea"];
+
+    const words = [
+      { text: "DPI", size: 34, group: 0 },
+      { text: "Dados", size: 30, group: 1 },
+      { text: "Interop", size: 29, group: 0 },
+      { text: "GovCloud", size: 27, group: 2 },
+      { text: "SIGE", size: 27, group: 1 },
+      { text: "Ciber", size: 25, group: 3 },
+      { text: "APD", size: 24, group: 4 },
+      { text: "eGIF", size: 24, group: 0 },
+      { text: "Identidade", size: 22, group: 0 },
+      { text: "Registos", size: 21, group: 2 },
+      { text: "Pagamentos", size: 21, group: 5 },
+      { text: "Serviços Públicos", size: 20, group: 1 },
+      { text: "Procurement", size: 20, group: 2 },
+      { text: "TDR", size: 19, group: 4 },
+      { text: "BOQ", size: 18, group: 5 },
+      { text: "Saúde", size: 19, group: 3 },
+      { text: "Educação", size: 19, group: 1 },
+      { text: "Eleições", size: 19, group: 2 },
+      { text: "BI", size: 18, group: 1 },
+      { text: "APIs", size: 18, group: 0 },
+      { text: "SOC", size: 17, group: 3 },
+      { text: "CERT", size: 17, group: 3 },
+      { text: "PMO", size: 17, group: 5 },
+      { text: "Roadmap", size: 18, group: 4 }
+    ];
+
+    let nodes = [];
+    let dragging = null;
+    let pointer = { x: 0, y: 0, active: false };
+    let dpr = 1;
+
+    function resetNodes() {
+      const rect = canvas.getBoundingClientRect();
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const radius = Math.min(rect.width, rect.height) * 0.30;
+
+      nodes = words.map((w, i) => {
+        const angle = (Math.PI * 2 * i) / words.length - Math.PI / 2;
+        const rr = radius * (0.55 + (i % 5) * 0.10);
+        return {
+          ...w,
+          x: cx + Math.cos(angle) * rr + (Math.random() - 0.5) * 34,
+          y: cy + Math.sin(angle) * rr + (Math.random() - 0.5) * 34,
+          vx: (Math.random() - 0.5) * 0.24,
+          vy: (Math.random() - 0.5) * 0.24,
+          tx: cx + Math.cos(angle) * rr,
+          ty: cy + Math.sin(angle) * rr,
+          r: Math.max(36, w.size * 1.9)
+        };
+      });
+    }
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      canvas.width = Math.floor(rect.width * dpr);
+      canvas.height = Math.floor(rect.height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      resetNodes();
+    }
+
+    function getPointer(event) {
+      const rect = canvas.getBoundingClientRect();
+      const touch = event.touches && event.touches[0];
+      return {
+        x: (touch ? touch.clientX : event.clientX) - rect.left,
+        y: (touch ? touch.clientY : event.clientY) - rect.top
+      };
+    }
+
+    function findNode(x, y) {
+      for (let i = nodes.length - 1; i >= 0; i--) {
+        const n = nodes[i];
+        if (Math.hypot(n.x - x, n.y - y) < n.r) return n;
+      }
+      return null;
+    }
+
+    canvas.addEventListener("pointerdown", (event) => {
+      const p = getPointer(event);
+      pointer = { ...p, active: true };
+      dragging = findNode(p.x, p.y);
+      if (dragging) {
+        dragging.vx = 0;
+        dragging.vy = 0;
+        canvas.setPointerCapture(event.pointerId);
+      }
+    });
+
+    canvas.addEventListener("pointermove", (event) => {
+      const p = getPointer(event);
+      pointer = { ...p, active: true };
+
+      if (dragging) {
+        dragging.x += (p.x - dragging.x) * 0.34;
+        dragging.y += (p.y - dragging.y) * 0.34;
+      }
+    });
+
+    canvas.addEventListener("pointerup", (event) => {
+      dragging = null;
+      pointer.active = false;
+      try { canvas.releasePointerCapture(event.pointerId); } catch (e) {}
+    });
+
+    canvas.addEventListener("pointerleave", () => {
+      pointer.active = false;
+      dragging = null;
+    });
+
+    function drawRoundedLabel(n, alpha) {
+      ctx.save();
+      ctx.font = `900 ${n.size}px Inter, Arial, sans-serif`;
+      const textW = ctx.measureText(n.text).width;
+      const padX = 16;
+      const padY = 10;
+      const w = textW + padX * 2;
+      const h = n.size + padY * 2;
+      const x = n.x - w / 2;
+      const y = n.y - h / 2;
+      const radius = Math.min(18, h / 2);
+
+      ctx.globalAlpha = alpha;
+      ctx.beginPath();
+      ctx.roundRect(x, y, w, h, radius);
+      ctx.fillStyle = "rgba(8,11,17,.48)";
+      ctx.fill();
+      ctx.strokeStyle = "rgba(244,241,234,.13)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      const grad = ctx.createLinearGradient(x, y, x + w, y + h);
+      grad.addColorStop(0, palette[n.group % palette.length]);
+      grad.addColorStop(1, "#f4f1ea");
+
+      ctx.fillStyle = grad;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(n.text, n.x, n.y + 1);
+      ctx.restore();
+    }
+
+    function tick() {
+      const rect = canvas.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+
+      ctx.clearRect(0, 0, w, h);
+
+      const bg = ctx.createRadialGradient(w * 0.50, h * 0.44, 20, w * 0.50, h * 0.44, Math.max(w, h) * .62);
+      bg.addColorStop(0, "rgba(133,239,230,.11)");
+      bg.addColorStop(.52, "rgba(143,183,255,.055)");
+      bg.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, w, h);
+
+      for (const n of nodes) {
+        if (n !== dragging) {
+          n.vx += (n.tx - n.x) * 0.0009;
+          n.vy += (n.ty - n.y) * 0.0009;
+
+          if (pointer.active) {
+            const dx = n.x - pointer.x;
+            const dy = n.y - pointer.y;
+            const dist = Math.max(1, Math.hypot(dx, dy));
+            if (dist < 130) {
+              const force = (130 - dist) / 130;
+              n.vx += (dx / dist) * force * 0.16;
+              n.vy += (dy / dist) * force * 0.16;
+            }
+          }
+
+          n.x += n.vx;
+          n.y += n.vy;
+          n.vx *= 0.935;
+          n.vy *= 0.935;
+
+          if (n.x < 40 || n.x > w - 40) n.vx *= -0.72;
+          if (n.y < 40 || n.y > h - 40) n.vy *= -0.72;
+          n.x = Math.max(36, Math.min(w - 36, n.x));
+          n.y = Math.max(44, Math.min(h - 64, n.y));
+        }
+      }
+
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i];
+          const b = nodes[j];
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          const limit = a.group === b.group ? 230 : 150;
+
+          if (dist < limit) {
+            const alpha = (1 - dist / limit) * (a.group === b.group ? .23 : .10);
+            ctx.strokeStyle = `rgba(133,239,230,${alpha})`;
+            ctx.lineWidth = a.group === b.group ? 1.2 : .8;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            const mx = (a.x + b.x) / 2;
+            const my = (a.y + b.y) / 2;
+            ctx.quadraticCurveTo(mx, my - 18, b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      for (const n of nodes) {
+        const near = pointer.active && Math.hypot(n.x - pointer.x, n.y - pointer.y) < 150;
+        const alpha = n === dragging ? 1 : near ? .96 : .84;
+        drawRoundedLabel(n, alpha);
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      resize();
+      window.addEventListener("resize", resize);
+      requestAnimationFrame(tick);
+    } else {
+      resize();
+      for (const n of nodes) drawRoundedLabel(n, .9);
+    }
+  </script>
 </body>
 </html>

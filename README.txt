@@ -1,21 +1,18 @@
-DevNexus Digital — versão inspirada em devashish.design.
+DevNexus Digital — versão word mesh premium.
 
-Características:
-- estrutura próxima do site de referência:
-  hero tipográfico;
-  bloco de apresentação;
-  experiência;
-  case studies;
-  bloco humano/visão;
-  contacto com Let's talk;
-  cards arrastáveis tipo Drag me.
-- Não copia código, imagens nem assets do site original.
-- Ficheiro único: index.html.
-- Formulário configurado para info@devnexusdigital.com via FormSubmit.
+Esta versão substitui o Rubik por uma solução mais profissional:
+- tipografia forte inspirada em portfólio premium;
+- estética escura, limpa e institucional;
+- malha interactiva de palavras;
+- palavras arrastáveis no ecossistema de transformação digital;
+- sem imagens;
+- sem bibliotecas externas;
+- ficheiro único: index.html;
+- formulário configurado para info@devnexusdigital.com via FormSubmit.
 
 Publicação:
 1. Descompactar.
 2. Copiar index.html para a raiz do repositório devnexusdigital.
 3. Substituir o index.html antigo.
-4. Manter o ficheiro CNAME.
+4. Manter o ficheiro CNAME no repositório.
 5. GitHub Desktop: Changes -> Commit -> Push.
