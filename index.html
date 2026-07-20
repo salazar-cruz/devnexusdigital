@@ -3,254 +3,210 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DevNexus Digital | Portal de Transformação Digital</title>
-  <meta name="description" content="Consultoria em transformação digital, DPI, dados, interoperabilidade, sistemas públicos e modernização institucional.">
+  <title>DevNexus Digital — Public Digital Systems</title>
+  <meta name="description" content="Transformação digital institucional: DPI, dados, interoperabilidade, procurement técnico e sistemas públicos.">
   <meta property="og:title" content="DevNexus Digital">
-  <meta property="og:description" content="Transformação digital com visão institucional.">
+  <meta property="og:description" content="Public digital systems. Institutional transformation.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devnexusdigital.com/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/animation.css">
 </head>
 
 <body>
-  <div class="noise" aria-hidden="true"></div>
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot__line">
+      <span>DevNexus Digital</span>
+      <b id="bootPercent">00</b>
+    </div>
+  </div>
+
+  <canvas id="field" class="field" aria-hidden="true"></canvas>
   <div class="cursor" id="cursor" aria-hidden="true"></div>
 
-  <main id="inicio">
-    <section class="entry">
-      <div class="portal-window" id="portalWindow" data-reveal>
-        <header class="window-bar">
-          <a class="brand magnetic" href="#inicio" aria-label="DevNexus Digital">
-            <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
-            <span>Dev<span>Nexus</span></span>
-          </a>
+  <header class="nav" data-enter>
+    <a class="brand magnetic" href="#start" aria-label="DevNexus Digital">
+      <img src="assets/mark.svg" alt="">
+      <span>DevNexus</span>
+    </a>
 
-          <nav class="window-nav" aria-label="Menu principal">
-            <a class="magnetic" href="#work">Work</a>
-            <a class="magnetic" href="#cases">Cases</a>
-            <a class="magnetic" href="#system">System</a>
-            <a class="magnetic nav-cta" href="#contacto">Let's talk</a>
-          </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
 
-          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
-            <span></span><span></span>
-          </button>
-        </header>
+    <nav class="nav__links" id="navLinks" aria-label="Menu principal">
+      <a class="magnetic" href="#work">Work</a>
+      <a class="magnetic" href="#cases">Cases</a>
+      <a class="magnetic" href="#method">Method</a>
+      <a class="magnetic" href="#contact">Talk</a>
+    </nav>
+  </header>
 
-        <nav class="mobile-menu" id="mobileMenu">
-          <a href="#work">Work</a>
-          <a href="#cases">Cases</a>
-          <a href="#system">System</a>
-          <a href="#contacto">Let's talk</a>
-        </nav>
+  <main>
+    <section id="start" class="act act--hero">
+      <div class="stage">
+        <p class="mono hero__meta" data-enter>Digital Public Infrastructure / Data / State Systems</p>
 
-        <div class="window-grid">
-          <div class="hero-copy">
-            <p class="eyebrow" data-reveal>Digital Public Infrastructure · Estado · Dados</p>
+        <h1 class="mega" aria-label="Resolver problemas públicos">
+          <span data-line>RESOLVER</span>
+          <span data-line class="accent">PROBLEMAS</span>
+          <span data-line>PÚBLICOS</span>
+        </h1>
 
-            <h1 class="hero-title" aria-label="Resolver problemas públicos">
-              <span data-split>RESOLVER</span>
-              <em data-split>problemas</em>
-              <span class="muted" data-split>PÚBLICOS</span>
-            </h1>
-
-            <p class="lead" data-reveal>
-              A DevNexus Digital desenha a arquitectura institucional da transformação digital:
-              DPI, dados, interoperabilidade, procurement técnico e operação sustentável.
-            </p>
-
-            <div class="hero-actions" data-reveal>
-              <a class="btn btn-primary magnetic" href="#contacto">Entrar em contacto</a>
-              <a class="btn btn-ghost magnetic" href="#work">Explorar sistema</a>
-            </div>
-          </div>
-
-          <aside class="command-panel" data-reveal>
-            <div class="command-head">
-              <span></span><span></span><span></span>
-              <b>ecosystem.map</b>
-            </div>
-
-            <canvas id="wordMesh" aria-label="Mapa interactivo do ecossistema DevNexus"></canvas>
-
-            <div class="command-caption">
-              <b>Arraste os conceitos.</b>
-              <span>A transformação digital só funciona quando dados, sistemas, processos e mandato se ligam.</span>
-            </div>
-          </aside>
-        </div>
-
-        <div class="window-footer">
-          <span>01 / Entrada</span>
-          <span>DPI · Dados · Interoperabilidade · Sistemas Públicos</span>
-          <a href="#work">Scroll</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="ticker" aria-hidden="true">
-      <div class="ticker-track">
-        <span>DPI</span><span>Identidade Digital</span><span>Registos</span><span>Pagamentos Digitais</span><span>Interoperabilidade</span><span>Dados</span><span>Cibersegurança</span><span>SIGE</span><span>Saúde</span><span>Eleições</span><span>GovCloud</span><span>Procurement</span>
-        <span>DPI</span><span>Identidade Digital</span><span>Registos</span><span>Pagamentos Digitais</span><span>Interoperabilidade</span><span>Dados</span><span>Cibersegurança</span><span>SIGE</span><span>Saúde</span><span>Eleições</span><span>GovCloud</span><span>Procurement</span>
-      </div>
-    </section>
-
-    <section id="work" class="system-section">
-      <div class="system-window" data-reveal>
-        <div class="section-index">02 / Work experience</div>
-
-        <div class="split">
-          <h2 class="section-title">Work<span>experience</span></h2>
-
-          <div class="section-copy">
-            <p>
-              A DevNexus trabalha onde os projectos digitais falham: mandato, governação,
-              dados, sistemas legados, procurement, capacidade técnica e operação real.
-            </p>
-
-            <div class="module-grid">
-              <article data-tilt><b>DPI</b><span>Identidade, registos, pagamentos e serviços comuns.</span></article>
-              <article data-tilt><b>Dados</b><span>Modelos, qualidade, protecção, BI e partilha.</span></article>
-              <article data-tilt><b>Interop</b><span>APIs, eGIF, barramento e integração institucional.</span></article>
-              <article data-tilt><b>SIGE</b><span>Educação, escolas, inventário TIC e operação sectorial.</span></article>
-              <article data-tilt><b>Ciber</b><span>Continuidade, risco, SOC, CERT e resiliência.</span></article>
-              <article data-tilt><b>Procurement</b><span>TDR, BOQ, avaliação, aceitação e sustentabilidade.</span></article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="cases" class="system-section">
-      <div class="system-window" data-reveal>
-        <div class="section-index">03 / Case studies</div>
-
-        <div class="split">
-          <h2 class="section-title">Case<span>studies</span></h2>
-          <p class="section-copy">
-            Casos estruturados como sistemas de decisão. Não é vender software. É organizar a instituição para entregar serviços públicos digitais com dados fiáveis.
+        <div class="hero__bottom">
+          <p data-enter>
+            A DevNexus Digital transforma problemas institucionais complexos em sistemas públicos digitais:
+            arquitectura, dados, interoperabilidade, contratação técnica e operação sustentável.
           </p>
+
+          <div class="hero__actions" data-enter>
+            <a class="button button--solid magnetic" href="#contact">Começar conversa</a>
+            <a class="button button--ghost magnetic" href="#cases">Ver casos</a>
+          </div>
         </div>
 
-        <div class="case-stack">
-          <article class="case-row" data-reveal>
-            <div class="case-number">01</div>
-            <div>
-              <h3>Arquitectura DPI para serviços públicos.</h3>
-              <p>Identidade, registos, pagamentos, dados e interoperabilidade com governação e operação.</p>
-            </div>
-            <div class="case-tags"><span>DPI</span><span>ID</span><span>Pagamentos</span><span>Interop</span></div>
-          </article>
-
-          <article class="case-row" data-reveal>
-            <div class="case-number">02</div>
-            <div>
-              <h3>Educação com dados fiáveis.</h3>
-              <p>SIGE, inventário tecnológico, conectividade, processos escolares e gestão sectorial.</p>
-            </div>
-            <div class="case-tags"><span>SIGE</span><span>Escolas</span><span>Dados</span></div>
-          </article>
-
-          <article class="case-row" data-reveal>
-            <div class="case-number">03</div>
-            <div>
-              <h3>Procurement técnico que protege o projecto.</h3>
-              <p>Especificações, critérios de avaliação, aceitação, formação e sustentabilidade.</p>
-            </div>
-            <div class="case-tags"><span>TDR</span><span>BOQ</span><span>Aceitação</span></div>
-          </article>
+        <div class="living-words" id="livingWords" aria-label="Conceitos arrastáveis">
+          <button class="word w1" type="button">DPI</button>
+          <button class="word w2" type="button">Dados</button>
+          <button class="word w3" type="button">Interop</button>
+          <button class="word w4" type="button">SIGE</button>
+          <button class="word w5" type="button">GovCloud</button>
+          <button class="word w6" type="button"><small>drag me</small>Ciber</button>
         </div>
+
+        <div class="scroll-hint mono" data-enter>Scroll / explore</div>
       </div>
     </section>
 
-    <section id="system" class="system-section">
-      <div class="system-window" data-reveal>
-        <div class="section-index">04 / Operating system</div>
+    <section id="work" class="act">
+      <div class="stage two-col">
+        <div>
+          <p class="mono kicker" data-enter>01 / Work experience</p>
+          <h2 class="display" data-enter>Não é<br><span>tecnologia solta.</span></h2>
+        </div>
 
-        <div class="split">
-          <h2 class="section-title">Public<span>operating system</span></h2>
+        <div class="copy-block" data-enter>
+          <p>
+            O trabalho começa antes da compra de software. Começa no mandato institucional,
+            na arquitectura, nos dados, nos processos, nos riscos e na capacidade real de operação.
+          </p>
 
-          <div class="timeline">
-            <div data-reveal><b>01</b><h3>Diagnóstico</h3><p>Mandato, actores, processos, dados, sistemas e constrangimentos.</p></div>
-            <div data-reveal><b>02</b><h3>Arquitectura</h3><p>Modelo funcional, dados, integrações, segurança e operação.</p></div>
-            <div data-reveal><b>03</b><h3>Contratação</h3><p>TDR, especificações, avaliação técnica e gestão de risco.</p></div>
-            <div data-reveal><b>04</b><h3>Sustentação</h3><p>Formação, aceitação, governação, manuais e melhoria contínua.</p></div>
+          <div class="capability-grid">
+            <article><b>DPI</b><span>Identidade, registos, pagamentos e serviços comuns.</span></article>
+            <article><b>Dados</b><span>Modelos, qualidade, privacidade, BI e partilha.</span></article>
+            <article><b>Interop</b><span>APIs, eGIF, catálogo, barramento e integração.</span></article>
+            <article><b>Sectoriais</b><span>Educação, saúde, eleições e serviços públicos.</span></article>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contacto" class="system-section contact-section">
-      <div class="system-window contact-window" data-reveal>
-        <div class="section-index">05 / Contact</div>
+    <section id="cases" class="act act--cases">
+      <div class="stage">
+        <p class="mono kicker" data-enter>02 / Selected cases</p>
 
-        <div class="contact-grid">
-          <div>
-            <p class="case-kicker">OPEN TO WORK</p>
-            <h2 class="contact-title">Let's<span>talk</span></h2>
-            <p class="contact-lead">
-              Envie o sector, o problema e o resultado pretendido. A resposta começa pela arquitectura, não pela compra de tecnologia.
-            </p>
-          </div>
+        <div class="case-rail" id="caseRail">
+          <article class="case-panel" data-enter>
+            <div class="case-panel__index">01</div>
+            <div>
+              <h3>DPI como infra-estrutura pública, não como moda tecnológica.</h3>
+              <p>Identidade, registos, pagamentos, interoperabilidade e dados sob uma governação comum.</p>
+              <div class="tags"><span>DPI</span><span>ID Digital</span><span>Pagamentos</span><span>Interop</span></div>
+            </div>
+          </article>
 
-          <form class="form" id="contactForm" action="https://formsubmit.co/info@devnexusdigital.com" method="POST">
-            <input type="hidden" name="_subject" value="Nova mensagem via devnexusdigital.com">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://devnexusdigital.com/#contacto">
+          <article class="case-panel" data-enter>
+            <div class="case-panel__index">02</div>
+            <div>
+              <h3>Educação com dados fiáveis e operação no terreno.</h3>
+              <p>SIGE, escolas, inventário tecnológico, conectividade, relatórios e capacidade local.</p>
+              <div class="tags"><span>SIGE</span><span>Escolas</span><span>Dados</span><span>Operação</span></div>
+            </div>
+          </article>
 
-            <label>Nome
-              <input name="nome" required autocomplete="name">
-            </label>
+          <article class="case-panel" data-enter>
+            <div class="case-panel__index">03</div>
+            <div>
+              <h3>Procurement técnico que não entrega o ouro ao bandido.</h3>
+              <p>TDR, BOQ, critérios de avaliação, aceitação técnica, formação e sustentabilidade.</p>
+              <div class="tags"><span>TDR</span><span>BOQ</span><span>Avaliação</span><span>Aceitação</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            <label>Email
-              <input type="email" name="email" required autocomplete="email">
-            </label>
-
-            <label>Área
-              <select name="area" required>
-                <option value="">Seleccionar</option>
-                <option>DPI</option>
-                <option>Governação digital</option>
-                <option>Educação / SIGE</option>
-                <option>Saúde</option>
-                <option>Eleições</option>
-                <option>Dados e interoperabilidade</option>
-                <option>Procurement técnico</option>
-              </select>
-            </label>
-
-            <label>Mensagem
-              <textarea name="mensagem" rows="5" required></textarea>
-            </label>
-
-            <button class="btn btn-primary magnetic" type="submit">Enviar mensagem</button>
-            <p class="status" id="formStatus">Primeira submissão exige confirmação no email corporativo.</p>
-          </form>
+    <section id="method" class="act">
+      <div class="stage method">
+        <div>
+          <p class="mono kicker" data-enter>03 / Method</p>
+          <h2 class="display" data-enter>Primeiro<br><span>o problema.</span></h2>
         </div>
 
-        <div class="drag-zone" aria-hidden="true">
-          <div class="drag-card d1"><small>Drag me!</small>DPI</div>
-          <div class="drag-card d2">Dados</div>
-          <div class="drag-card d3">Interop</div>
-          <div class="drag-card d4">SIGE</div>
-          <div class="drag-card d5">Ciber</div>
+        <div class="method-list">
+          <article data-enter><b>01</b><h3>Diagnóstico</h3><p>Mandato, actores, processos, sistemas, dados e constrangimentos.</p></article>
+          <article data-enter><b>02</b><h3>Arquitectura</h3><p>Modelo funcional, interoperabilidade, segurança e operação.</p></article>
+          <article data-enter><b>03</b><h3>Contratação</h3><p>Especificações, critérios, avaliação técnica e gestão de risco.</p></article>
+          <article data-enter><b>04</b><h3>Sustentação</h3><p>Formação, aceitação, documentação, governação e melhoria contínua.</p></article>
         </div>
+      </div>
+    </section>
+
+    <section id="contact" class="act act--contact">
+      <div class="stage contact">
+        <div class="contact__copy">
+          <p class="mono kicker" data-enter>04 / Open to work</p>
+          <h2 class="mega mega--contact" data-enter>LET'S<br><span>TALK</span></h2>
+          <p data-enter>Envie o sector, o problema e o resultado pretendido. A resposta começa pela arquitectura, não pela compra de tecnologia.</p>
+        </div>
+
+        <form class="form" id="contactForm" action="https://formsubmit.co/info@devnexusdigital.com" method="POST" data-enter>
+          <input type="hidden" name="_subject" value="Nova mensagem via devnexusdigital.com">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://devnexusdigital.com/#contact">
+
+          <label>Nome
+            <input name="nome" required autocomplete="name">
+          </label>
+
+          <label>Email
+            <input type="email" name="email" required autocomplete="email">
+          </label>
+
+          <label>Área
+            <select name="area" required>
+              <option value="">Seleccionar</option>
+              <option>DPI</option>
+              <option>Governação digital</option>
+              <option>Educação / SIGE</option>
+              <option>Saúde</option>
+              <option>Eleições</option>
+              <option>Dados e interoperabilidade</option>
+              <option>Procurement técnico</option>
+            </select>
+          </label>
+
+          <label>Mensagem
+            <textarea name="mensagem" rows="5" required></textarea>
+          </label>
+
+          <button class="button button--solid magnetic" type="submit">Enviar mensagem</button>
+          <p class="status" id="formStatus">Primeira submissão exige confirmação no email corporativo.</p>
+        </form>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap foot">
-      <div class="brand">
-        <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
-        <span>Dev<span>Nexus</span></span>
-      </div>
-      <p>© 2026 DevNexus Digital · Transformação digital com visão institucional.</p>
-    </div>
+  <footer class="footer mono">
+    <span>© 2026 DevNexus Digital</span>
+    <span>Public digital systems / Cabo Verde</span>
   </footer>
 
   <script src="js/main.js" defer></script>
+  <script src="js/interactions.js" defer></script>
+  <script src="js/field.js" defer></script>
 </body>
 </html>

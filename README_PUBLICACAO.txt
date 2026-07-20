@@ -1,37 +1,37 @@
-DevNexus Digital — Portal Window
+DevNexus Digital — ZERO RADICAL
 
-Correção de arquitectura:
-- A moldura/experiência deixou de ser um cartão dentro da página.
-- A janela é agora a própria entrada do site.
-- O ecrã inicial inteiro é uma única janela/sistema.
-- A navegação, headline, word mesh e chamada de acção vivem dentro dessa janela.
-- As secções seguintes mantêm a mesma linguagem de janelas/sistema.
+Esta versão foi feita do zero.
+Não reutiliza a arquitectura visual das versões anteriores.
 
 Estrutura:
 - index.html
-- css/style.css
+- css/reset.css
+- css/layout.css
+- css/animation.css
 - js/main.js
+- js/interactions.js
+- js/field.js
+- assets/mark.svg
 - assets/favicon.svg
-- README_PUBLICACAO.txt
 
-Interacções:
-- cursor personalizado;
-- menu mobile;
-- hero tipográfico animado;
-- word mesh em canvas;
-- drag cards com inércia;
-- hover/tilt;
-- botões magnéticos;
-- scroll reveal;
-- parallax leve da janela inicial;
-- formulário FormSubmit para info@devnexusdigital.com.
+Conceito:
+- entrada full-screen como experiência principal;
+- tipografia gigante;
+- nada de frame/cartão a prender o design;
+- palavras arrastáveis integradas na entrada;
+- fundo vivo em canvas;
+- casos e método em ecrãs grandes;
+- scripts separados e activos;
+- formulário configurado para info@devnexusdigital.com via FormSubmit.
 
 Publicação:
 1. Descompactar o ZIP.
 2. Copiar index.html, css/, js/ e assets/ para a raiz do repositório devnexusdigital.
-3. Substituir os ficheiros antigos.
-4. Manter o CNAME com:
+3. Manter o ficheiro CNAME com:
    devnexusdigital.com
-5. Commit + Push.
-6. Abrir:
-   https://devnexusdigital.com/?v=portal-window
+4. Commit + Push.
+5. Abrir:
+   https://devnexusdigital.com/?v=zero-radical
+
+Nota:
+Na primeira submissão, o FormSubmit exige confirmação no email info@devnexusdigital.com.
