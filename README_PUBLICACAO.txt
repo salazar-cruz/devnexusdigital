@@ -1,23 +1,34 @@
-DEVNEXUS DIGITAL — VERSÃO CLEAN EXECUTIVA
+DevNexus Digital — versão radical completa
 
-Esta versão remove o visual pesado e brega:
-- sem imagens decorativas geradas à força;
-- logo vectorial limpo em SVG;
-- fundo leve animado por canvas;
-- design institucional, sóbrio e responsivo;
-- formulário sem mailto e sem email pessoal.
+Esta versão NÃO é só index.html.
 
-PUBLICAR:
-1. Descompactar este ZIP.
-2. Copiar tudo para a pasta local do repositório devnexusdigital.
-3. Substituir os ficheiros antigos.
-4. GitHub Desktop: Changes -> escrever uma mensagem -> Commit -> Push.
+Estrutura:
+- index.html
+- css/style.css
+- js/main.js
+- assets/favicon.svg
 
-FORMULÁRIO:
-No GitHub Pages não há backend de email. Para envio directo:
-1. Criar endpoint no Formspree, Web3Forms, Basin ou serviço equivalente.
-2. Abrir index.html.
-3. Trocar COLOCAR_ENDPOINT_AQUI pelo endpoint real.
-4. Commit e Push.
+Interacções incluídas:
+- loader inicial com percentagem;
+- cursor personalizado;
+- menu mobile funcional;
+- animações de entrada no scroll;
+- hero tipográfico animado;
+- word mesh em canvas;
+- palavras interactivas no canvas;
+- cards arrastáveis com inércia;
+- hover/tilt nos cards;
+- botões magnéticos;
+- formulário configurado para info@devnexusdigital.com via FormSubmit.
 
-Não foi colocado nenhum email pessoal no formulário.
+Publicação no GitHub Pages:
+1. Descompactar o ZIP.
+2. Copiar index.html, css/, js/ e assets/ para a raiz do repositório devnexusdigital.
+3. Substituir ficheiros antigos quando o sistema pedir.
+4. Manter o ficheiro CNAME com:
+   devnexusdigital.com
+5. GitHub Desktop: Changes -> Commit -> Push.
+6. Abrir https://devnexusdigital.com/?v=radical-full para evitar cache antiga.
+
+Nota:
+Na primeira submissão do formulário, o FormSubmit envia uma confirmação para info@devnexusdigital.com.
