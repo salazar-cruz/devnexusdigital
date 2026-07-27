@@ -631,6 +631,68 @@
       font-size:.92rem;
     }
 
+
+    .success-overlay {
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:grid;
+      place-items:center;
+      padding:24px;
+      background:rgba(7,10,15,.88);
+      backdrop-filter:blur(18px);
+    }
+
+    .success-overlay[hidden] {
+      display:none;
+    }
+
+    .success-card {
+      width:min(700px,100%);
+      padding:clamp(34px,6vw,66px);
+      border:1px solid rgba(244,241,234,.16);
+      border-radius:38px;
+      background:
+        radial-gradient(circle at 85% 10%, rgba(133,239,230,.12), transparent 40%),
+        #111720;
+      box-shadow:0 42px 140px rgba(0,0,0,.52);
+      text-align:center;
+    }
+
+    .success-check {
+      width:82px;
+      height:82px;
+      display:grid;
+      place-items:center;
+      margin:0 auto 26px;
+      border-radius:50%;
+      color:#0d1117;
+      background:linear-gradient(135deg,var(--cyan),var(--blue));
+      font-size:2.45rem;
+      font-weight:900;
+      box-shadow:0 0 46px rgba(133,239,230,.24);
+    }
+
+    .success-card h2 {
+      margin-bottom:18px;
+      font-size:clamp(2.35rem,6vw,4.8rem);
+      line-height:.95;
+      letter-spacing:-.065em;
+    }
+
+    .success-card p {
+      max-width:590px;
+      margin-inline:auto;
+      color:rgba(244,241,234,.70);
+      font-size:clamp(1rem,2vw,1.17rem);
+    }
+
+    .success-card .success-return {
+      margin-top:18px;
+      color:rgba(244,241,234,.48);
+      font-size:.92rem;
+    }
+
     .footer {
       padding:36px 0 46px;
       color:rgba(244,241,234,.45);
@@ -929,13 +991,11 @@
             </p>
           </div>
 
-          <form class="form" id="contactForm" action="https://formsubmit.co/info@devnexusdigital.com" method="POST">
+          <form class="form" id="contactForm" action="https://formsubmit.co/ajax/info@devnexusdigital.com" method="POST">
             <input type="hidden" name="_subject" value="Nova mensagem via devnexusdigital.com">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://devnexusdigital.com/obrigado.html">
-
-            <label>Nome
+<label>Nome
               <input name="nome" required autocomplete="name">
             </label>
 
@@ -967,6 +1027,19 @@
       </div>
     </section>
   </main>
+
+
+  <div class="success-overlay" id="successOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="success-card">
+      <div class="success-check" aria-hidden="true">✓</div>
+      <h2 id="successTitle">Mensagem enviada com sucesso.</h2>
+      <p>
+        Agradecemos o seu contacto. A DevNexus Digital recebeu a mensagem
+        e responderá através do endereço de email indicado.
+      </p>
+      <p class="success-return">Regresso à página inicial dentro de alguns segundos.</p>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="wrap foot">
@@ -1008,10 +1081,46 @@
 
     const form = document.getElementById("contactForm");
     const status = document.getElementById("formStatus");
+    const successOverlay = document.getElementById("successOverlay");
 
-    if (form && status) {
-      form.addEventListener("submit", () => {
-        status.textContent = "A enviar mensagem...";
+    if (form && status && successOverlay) {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+
+        submitButton.disabled = true;
+        submitButton.textContent = "A enviar...";
+        status.textContent = "";
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: {
+              "Accept": "application/json"
+            }
+          });
+
+          const result = await response.json().catch(() => ({}));
+
+          if (!response.ok || result.success === false) {
+            throw new Error(result.message || "Não foi possível enviar a mensagem.");
+          }
+
+          form.reset();
+          successOverlay.hidden = false;
+          document.body.style.overflow = "hidden";
+
+          window.setTimeout(() => {
+            window.location.replace("https://devnexusdigital.com/");
+          }, 5000);
+        } catch (error) {
+          status.textContent = "O envio falhou. Tente novamente dentro de alguns instantes.";
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
       });
     }
 
