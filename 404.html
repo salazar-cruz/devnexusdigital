@@ -693,6 +693,54 @@
       font-size:.92rem;
     }
 
+
+    .contact-emails {
+      display:grid;
+      gap:16px;
+      align-content:center;
+    }
+
+    .contact-email {
+      display:grid;
+      gap:9px;
+      padding:24px 26px;
+      border:1px solid rgba(244,241,234,.14);
+      border-radius:24px;
+      color:var(--paper);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(133,239,230,.10), transparent 40%),
+        rgba(244,241,234,.045);
+      text-decoration:none;
+      transition:transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .contact-email:hover {
+      transform:translateY(-3px);
+      border-color:rgba(133,239,230,.48);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(133,239,230,.16), transparent 42%),
+        rgba(244,241,234,.065);
+    }
+
+    .contact-email-label {
+      color:var(--cyan);
+      font-size:.78rem;
+      font-weight:850;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .contact-email strong {
+      font-size:clamp(1.05rem,2vw,1.32rem);
+      overflow-wrap:anywhere;
+    }
+
+    .contact-email-action {
+      color:rgba(244,241,234,.58);
+      font-size:.9rem;
+      font-weight:750;
+    }
+
     .footer {
       padding:36px 0 46px;
       color:rgba(244,241,234,.45);
@@ -986,62 +1034,30 @@
             <p class="kicker">Contacto</p>
             <h2>LET'S<br>TALK</h2>
             <p>
-              Envie o sector, o problema e o resultado pretendido. O formulário está configurado para
-              info@devnexusdigital.com.
+              Para apresentar uma necessidade, solicitar uma reunião ou obter mais informações,
+              entre directamente em contacto com a DevNexus Digital.
             </p>
           </div>
 
-          <form class="form" id="contactForm" action="https://formsubmit.co/ajax/info@devnexusdigital.com" method="POST">
-            <input type="hidden" name="_subject" value="Nova mensagem via devnexusdigital.com">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-<label>Nome
-              <input name="nome" required autocomplete="name">
-            </label>
+          <div class="contact-emails" aria-label="Endereços de contacto">
+            <a class="contact-email" href="mailto:contacto@devnexusdigital.com">
+              <span class="contact-email-label">Contacto geral</span>
+              <strong>contacto@devnexusdigital.com</strong>
+              <span class="contact-email-action">Enviar email →</span>
+            </a>
 
-            <label>Email
-              <input type="email" name="email" required autocomplete="email">
-            </label>
-
-            <label>Área
-              <select name="area" required>
-                <option value="">Seleccionar</option>
-                <option>DPI</option>
-                <option>Governação digital</option>
-                <option>Educação / SIGE</option>
-                <option>Saúde</option>
-                <option>Eleições</option>
-                <option>Dados e interoperabilidade</option>
-                <option>Procurement técnico</option>
-              </select>
-            </label>
-
-            <label>Mensagem
-              <textarea name="mensagem" rows="5" required></textarea>
-            </label>
-
-            <button class="btn primary" type="submit">Enviar mensagem</button>
-            <p class="status" id="formStatus" aria-live="polite"></p>
-          </form>
+            <a class="contact-email" href="mailto:info@devnexusdigital.com">
+              <span class="contact-email-label">Informações</span>
+              <strong>info@devnexusdigital.com</strong>
+              <span class="contact-email-action">Enviar email →</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-
-  <div class="success-overlay" id="successOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="successTitle">
-    <div class="success-card">
-      <div class="success-check" aria-hidden="true">✓</div>
-      <h2 id="successTitle">Mensagem enviada com sucesso.</h2>
-      <p>
-        Agradecemos o seu contacto. A DevNexus Digital recebeu a mensagem
-        e responderá através do endereço de email indicado.
-      </p>
-      <p class="success-return">Regresso à página inicial dentro de alguns segundos.</p>
-    </div>
-  </div>
-
-  <footer class="footer">
+<footer class="footer">
     <div class="wrap foot">
       <div class="brand">
         <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
@@ -1078,307 +1094,6 @@
     }, { threshold: 0.14 });
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-
-    const form = document.getElementById("contactForm");
-    const status = document.getElementById("formStatus");
-    const successOverlay = document.getElementById("successOverlay");
-
-    if (form && status && successOverlay) {
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        const submitButton = form.querySelector('button[type="submit"]');
-        const originalButtonText = submitButton.textContent;
-
-        submitButton.disabled = true;
-        submitButton.textContent = "A enviar...";
-        status.textContent = "";
-
-        try {
-          const response = await fetch(form.action, {
-            method: "POST",
-            body: new FormData(form),
-            headers: {
-              "Accept": "application/json"
-            }
-          });
-
-          const result = await response.json().catch(() => ({}));
-
-          if (!response.ok || result.success === false) {
-            throw new Error(result.message || "Não foi possível enviar a mensagem.");
-          }
-
-          form.reset();
-          successOverlay.hidden = false;
-          document.body.style.overflow = "hidden";
-
-          window.setTimeout(() => {
-            window.location.replace("https://devnexusdigital.com/");
-          }, 5000);
-        } catch (error) {
-          status.textContent = "O envio falhou. Tente novamente dentro de alguns instantes.";
-          submitButton.disabled = false;
-          submitButton.textContent = originalButtonText;
-        }
-      });
-    }
-
-    const canvas = document.getElementById("rubikCanvas");
-    const ctx = canvas.getContext("2d");
-
-    const labels = {
-      front: ["DPI", "ID", "Reg.", "Dados", "Interop", "APIs", "Pag.", "Serviços", "GovStack"],
-      right: ["Cloud", "DevOps", "SOC", "Ciber", "CERT", "Backup", "SLA", "ZeroTrust", "Resil."],
-      top: ["APD", "eGIF", "Normas", "Catálogo", "BI", "Qual.", "Risco", "PMO", "Roadmap"]
-    };
-
-    const colors = {
-      front: ["#dff7f6","#85efe6","#c9fbf6","#90eee8","#f4f1ea","#b9faf1","#ccf6ef","#9cf2ea","#e9fbf8"],
-      right: ["#e7eeff","#8fb7ff","#d8e6ff","#a9c9ff","#f4f1ea","#bfd4ff","#d8e6ff","#9fbfff","#eef4ff"],
-      top: ["#fff0cf","#f1d6a8","#ffe8bb","#f8dca3","#f4f1ea","#ffe9b9","#f4d393","#fff3d7","#f6dca8"]
-    };
-
-    function resizeCanvas() {
-      const rect = canvas.getBoundingClientRect();
-      const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-      canvas.width = Math.floor(rect.width * dpr);
-      canvas.height = Math.floor(rect.height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    function rotate(p, ax, ay) {
-      let {x, y, z} = p;
-
-      const cx = Math.cos(ax), sx = Math.sin(ax);
-      let y1 = y * cx - z * sx;
-      let z1 = y * sx + z * cx;
-      y = y1; z = z1;
-
-      const cy = Math.cos(ay), sy = Math.sin(ay);
-      let x1 = x * cy + z * sy;
-      let z2 = -x * sy + z * cy;
-      x = x1; z = z2;
-
-      return {x, y, z};
-    }
-
-    function project(p, w, h, scale) {
-      const distance = 7.2;
-      const f = scale / (distance - p.z);
-      return {
-        x: w / 2 + p.x * f,
-        y: h / 2 + p.y * f,
-        z: p.z,
-        f
-      };
-    }
-
-    function shade(hex, amt) {
-      const n = parseInt(hex.slice(1), 16);
-      let r = (n >> 16) + amt;
-      let g = ((n >> 8) & 255) + amt;
-      let b = (n & 255) + amt;
-      r = Math.max(0, Math.min(255, r));
-      g = Math.max(0, Math.min(255, g));
-      b = Math.max(0, Math.min(255, b));
-      return `rgb(${r},${g},${b})`;
-    }
-
-    function drawPoly(points, fill, stroke, lineWidth) {
-      ctx.beginPath();
-      ctx.moveTo(points[0].x, points[0].y);
-      for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
-      ctx.closePath();
-      ctx.fillStyle = fill;
-      ctx.fill();
-      if (stroke) {
-        ctx.strokeStyle = stroke;
-        ctx.lineWidth = lineWidth || 1;
-        ctx.stroke();
-      }
-    }
-
-    function centerOf(points) {
-      return {
-        x: points.reduce((s, p) => s + p.x, 0) / points.length,
-        y: points.reduce((s, p) => s + p.y, 0) / points.length,
-        z: points.reduce((s, p) => s + p.z, 0) / points.length
-      };
-    }
-
-    function drawLabel(poly, text, intensity) {
-      if (!text) return;
-      const c = centerOf(poly);
-      const areaW = Math.hypot(poly[1].x - poly[0].x, poly[1].y - poly[0].y);
-      const fontSize = Math.max(8, Math.min(16, areaW * 0.16));
-
-      ctx.save();
-      ctx.globalAlpha = Math.max(0.55, intensity);
-      ctx.fillStyle = "rgba(13,17,23,.86)";
-      ctx.font = `900 ${fontSize}px Inter, Arial, sans-serif`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-
-      const pieces = text.length > 8 ? text.split(/(?=[A-ZÁÉÍÓÚÀÇ])|\\s+/).filter(Boolean) : [text];
-      if (pieces.length > 1 && text.length > 8) {
-        ctx.fillText(pieces[0], c.x, c.y - fontSize * 0.42);
-        ctx.fillText(pieces.slice(1).join(""), c.x, c.y + fontSize * 0.60);
-      } else {
-        ctx.fillText(text, c.x, c.y);
-      }
-
-      ctx.restore();
-    }
-
-    function cubieFaces(cx, cy, cz, s, ax, ay, w, h, scale) {
-      const x0 = cx - s/2, x1 = cx + s/2;
-      const y0 = cy - s/2, y1 = cy + s/2;
-      const z0 = cz - s/2, z1 = cz + s/2;
-
-      const raw = {
-        front:  [{x:x0,y:y0,z:z1},{x:x1,y:y0,z:z1},{x:x1,y:y1,z:z1},{x:x0,y:y1,z:z1}],
-        back:   [{x:x1,y:y0,z:z0},{x:x0,y:y0,z:z0},{x:x0,y:y1,z:z0},{x:x1,y:y1,z:z0}],
-        right:  [{x:x1,y:y0,z:z1},{x:x1,y:y0,z:z0},{x:x1,y:y1,z:z0},{x:x1,y:y1,z:z1}],
-        left:   [{x:x0,y:y0,z:z0},{x:x0,y:y0,z:z1},{x:x0,y:y1,z:z1},{x:x0,y:y1,z:z0}],
-        top:    [{x:x0,y:y0,z:z0},{x:x1,y:y0,z:z0},{x:x1,y:y0,z:z1},{x:x0,y:y0,z:z1}],
-        bottom: [{x:x0,y:y1,z:z1},{x:x1,y:y1,z:z1},{x:x1,y:y1,z:z0},{x:x0,y:y1,z:z0}]
-      };
-
-      return Object.entries(raw).map(([name, pts]) => {
-        const r = pts.map(p => rotate(p, ax, ay));
-        const p2 = r.map(p => project(p, w, h, scale));
-        const v1 = {x: r[1].x - r[0].x, y: r[1].y - r[0].y, z: r[1].z - r[0].z};
-        const v2 = {x: r[2].x - r[1].x, y: r[2].y - r[1].y, z: r[2].z - r[1].z};
-        const normal = {
-          x: v1.y * v2.z - v1.z * v2.y,
-          y: v1.z * v2.x - v1.x * v2.z,
-          z: v1.x * v2.y - v1.y * v2.x
-        };
-        const depth = r.reduce((s, p) => s + p.z, 0) / 4;
-        return {name, pts: p2, normal, depth};
-      });
-    }
-
-    function stickerIndex(face, x, y, z) {
-      if (face === "front") return (y + 1) * 3 + (x + 1);
-      if (face === "right") return (y + 1) * 3 + (1 - z);
-      if (face === "top") return (z + 1) * 3 + (x + 1);
-      return -1;
-    }
-
-    function drawRubik(time) {
-      const rect = canvas.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
-
-      ctx.clearRect(0, 0, w, h);
-
-      const grd = ctx.createRadialGradient(w * .52, h * .48, 20, w * .52, h * .48, Math.max(w, h) * .52);
-      grd.addColorStop(0, "rgba(133,239,230,.12)");
-      grd.addColorStop(0.48, "rgba(143,183,255,.05)");
-      grd.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = grd;
-      ctx.fillRect(0, 0, w, h);
-
-      const t = time * 0.001;
-      const ax = -0.54 + Math.sin(t * 0.55) * 0.12;
-      const ay = -0.72 + Math.sin(t * 0.38) * 0.18;
-      const scale = Math.min(w, h) * 1.18;
-
-      const cubeSize = 0.86;
-      const gap = 0.09;
-      const step = cubeSize + gap;
-
-      const faces = [];
-
-      for (let x = -1; x <= 1; x++) {
-        for (let y = -1; y <= 1; y++) {
-          for (let z = -1; z <= 1; z++) {
-            const cx = x * step;
-            const cy = y * step;
-            const cz = z * step;
-
-            const cf = cubieFaces(cx, cy, cz, cubeSize, ax, ay, w, h, scale);
-
-            for (const f of cf) {
-              if (f.normal.z <= 0) continue;
-
-              let sticker = false;
-              let label = "";
-              let color = "#10151d";
-
-              if (f.name === "front" && z === 1) {
-                sticker = true;
-                const i = stickerIndex("front", x, y, z);
-                label = labels.front[i];
-                color = colors.front[i];
-              }
-
-              if (f.name === "right" && x === 1) {
-                sticker = true;
-                const i = stickerIndex("right", x, y, z);
-                label = labels.right[i];
-                color = colors.right[i];
-              }
-
-              if (f.name === "top" && y === -1) {
-                sticker = true;
-                const i = stickerIndex("top", x, y, z);
-                label = labels.top[i];
-                color = colors.top[i];
-              }
-
-              faces.push({
-                ...f,
-                sticker,
-                label,
-                color,
-                cubieDepth: f.depth + cx * .015 + cy * .01
-              });
-            }
-          }
-        }
-      }
-
-      faces.sort((a, b) => a.cubieDepth - b.cubieDepth);
-
-      ctx.save();
-      ctx.globalAlpha = 0.36;
-      ctx.filter = "blur(18px)";
-      ctx.fillStyle = "rgba(0,0,0,.70)";
-      ctx.beginPath();
-      ctx.ellipse(w/2 + 18, h/2 + 150, Math.min(w,h)*.28, Math.min(w,h)*.09, -0.18, 0, Math.PI*2);
-      ctx.fill();
-      ctx.restore();
-
-      for (const f of faces) {
-        const intensity = Math.max(.38, Math.min(1, f.normal.z / 1.7 + .42));
-        const fill = f.sticker ? shade(f.color, Math.round((intensity - .75) * 70)) : "#10151d";
-        const stroke = f.sticker ? "rgba(255,255,255,.26)" : "rgba(244,241,234,.08)";
-
-        drawPoly(f.pts, fill, stroke, f.sticker ? 1.1 : 1);
-
-        if (f.sticker) {
-          ctx.save();
-          ctx.globalAlpha = 0.22;
-          const grad = ctx.createLinearGradient(f.pts[0].x, f.pts[0].y, f.pts[2].x, f.pts[2].y);
-          grad.addColorStop(0, "rgba(255,255,255,.65)");
-          grad.addColorStop(.52, "rgba(255,255,255,0)");
-          grad.addColorStop(1, "rgba(0,0,0,.12)");
-          drawPoly(f.pts, grad, null, 0);
-          ctx.restore();
-
-          drawLabel(f.pts, f.label, intensity);
-        }
-      }
-
-      requestAnimationFrame(drawRubik);
-    }
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-    requestAnimationFrame(drawRubik);
   </script>
 </body>
 </html>

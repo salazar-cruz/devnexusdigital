@@ -16,6 +16,7 @@ Site institucional completo e pronto para publicação no GitHub Pages.
 3. No GitHub Desktop, fazer `Commit to main`.
 4. Fazer `Push origin`.
 
-## Formulário
 
-O formulário é enviado por AJAX. O visitante permanece no site, vê a confirmação e regressa automaticamente à página inicial.
+## Contacto
+
+O formulário foi removido. A secção apresenta ligações directas para `contacto@devnexusdigital.com` e `info@devnexusdigital.com`.
