@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DevNexus Digital | Transformação Digital Institucional</title>
-  <meta name="description" content="Consultoria em transformação digital, DPI, governação de dados, interoperabilidade, sistemas públicos e modernização institucional.">
+  <meta name="description" content="Consultoria e implementação em transformação digital institucional na Guiné-Bissau, Angola, Cabo Verde e São Tomé e Príncipe.">
 
   <style>
     :root {
@@ -852,6 +852,382 @@
         flex-direction:column;
       }
     }
+  
+    /* Identidade visual regional e premium */
+    :root {
+      --cyan:#59f0e4;
+      --blue:#6fa8ff;
+      --gold:#f2c879;
+      --coral:#ff8d7a;
+      --violet:#b79cff;
+      --emerald:#65e3a5;
+      --paper:#fffaf0;
+      --shadow:0 42px 140px rgba(0,0,0,.42);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 12% 10%, rgba(111,168,255,.24), transparent 30%),
+        radial-gradient(circle at 88% 12%, rgba(89,240,228,.18), transparent 28%),
+        radial-gradient(circle at 76% 72%, rgba(183,156,255,.14), transparent 34%),
+        radial-gradient(circle at 20% 84%, rgba(242,200,121,.14), transparent 32%),
+        linear-gradient(140deg,#070c15 0%,#0b1322 42%,#11182a 72%,#08111d 100%);
+    }
+
+    body:after {
+      content:"";
+      position:fixed;
+      inset:-20%;
+      pointer-events:none;
+      z-index:-2;
+      opacity:.48;
+      filter:blur(80px);
+      background:
+        conic-gradient(from 210deg at 50% 50%,
+          transparent 0deg,
+          rgba(89,240,228,.09) 52deg,
+          transparent 105deg,
+          rgba(111,168,255,.10) 165deg,
+          transparent 225deg,
+          rgba(242,200,121,.08) 292deg,
+          transparent 360deg);
+      animation:auroraDrift 24s linear infinite;
+    }
+
+    @keyframes auroraDrift {
+      to { transform:rotate(360deg) scale(1.06); }
+    }
+
+    .nav {
+      background:
+        linear-gradient(135deg,rgba(18,28,46,.84),rgba(10,16,28,.72));
+      border-color:rgba(255,250,240,.18);
+      box-shadow:
+        0 18px 70px rgba(0,0,0,.30),
+        inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
+    .menu .navcta,
+    .btn.primary {
+      color:#07111b;
+      background:linear-gradient(135deg,var(--paper),#e7fbf7 52%,#dce9ff);
+      box-shadow:0 12px 38px rgba(89,240,228,.14);
+    }
+
+    h1 {
+      text-shadow:0 18px 70px rgba(111,168,255,.12);
+    }
+
+    .word-muted {
+      color:transparent;
+      background:linear-gradient(90deg,var(--blue),var(--cyan),var(--gold));
+      background-clip:text;
+      -webkit-background-clip:text;
+      filter:drop-shadow(0 0 26px rgba(89,240,228,.12));
+    }
+
+    .eyebrow {
+      border-color:rgba(89,240,228,.28);
+      background:linear-gradient(90deg,rgba(89,240,228,.08),rgba(111,168,255,.07));
+    }
+
+    .lead strong {
+      color:var(--paper);
+      font-weight:800;
+    }
+
+    .mini-strip span:nth-child(3n+1) {
+      border-color:rgba(89,240,228,.20);
+      background:rgba(89,240,228,.07);
+    }
+
+    .mini-strip span:nth-child(3n+2) {
+      border-color:rgba(111,168,255,.22);
+      background:rgba(111,168,255,.07);
+    }
+
+    .mini-strip span:nth-child(3n) {
+      border-color:rgba(242,200,121,.20);
+      background:rgba(242,200,121,.06);
+    }
+
+    .rubik-stage {
+      background:
+        radial-gradient(circle at 24% 20%, rgba(89,240,228,.20), transparent 30%),
+        radial-gradient(circle at 78% 24%, rgba(111,168,255,.20), transparent 30%),
+        radial-gradient(circle at 66% 82%, rgba(242,200,121,.12), transparent 34%),
+        linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
+      border-color:rgba(255,250,240,.17);
+      box-shadow:
+        0 46px 150px rgba(0,0,0,.46),
+        0 0 90px rgba(89,240,228,.05);
+    }
+
+    .marquee {
+      background:
+        linear-gradient(90deg,rgba(89,240,228,.055),rgba(111,168,255,.055),rgba(242,200,121,.045));
+    }
+
+    .section-title {
+      text-shadow:0 14px 55px rgba(111,168,255,.10);
+    }
+
+    .regional-section {
+      padding:44px 0 104px;
+    }
+
+    .regional-panel {
+      position:relative;
+      overflow:hidden;
+      padding:clamp(28px,4vw,52px);
+      border:1px solid rgba(255,250,240,.16);
+      border-radius:40px;
+      background:
+        radial-gradient(circle at 8% 10%,rgba(89,240,228,.14),transparent 30%),
+        radial-gradient(circle at 92% 14%,rgba(111,168,255,.16),transparent 34%),
+        radial-gradient(circle at 70% 92%,rgba(242,200,121,.09),transparent 36%),
+        linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.028));
+      box-shadow:
+        0 34px 120px rgba(0,0,0,.27),
+        inset 0 1px 0 rgba(255,255,255,.055);
+    }
+
+    .regional-panel:after {
+      content:"ÁFRICA ATLÂNTICA";
+      position:absolute;
+      right:-18px;
+      bottom:-28px;
+      font-size:clamp(4rem,10vw,9rem);
+      line-height:1;
+      font-weight:950;
+      letter-spacing:-.09em;
+      color:rgba(255,255,255,.025);
+      pointer-events:none;
+    }
+
+    .regional-top {
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:44px;
+      align-items:end;
+      margin-bottom:32px;
+    }
+
+    .regional-title {
+      font-size:clamp(2.7rem,5.4vw,6rem);
+      line-height:.88;
+      letter-spacing:-.085em;
+    }
+
+    .regional-copy {
+      color:rgba(255,250,240,.69);
+      font-size:1.06rem;
+      max-width:700px;
+    }
+
+    .country-grid {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:13px;
+      position:relative;
+      z-index:2;
+    }
+
+    .country-card {
+      min-height:200px;
+      padding:22px;
+      border-radius:26px;
+      border:1px solid rgba(255,250,240,.12);
+      background:rgba(7,14,25,.54);
+      backdrop-filter:blur(14px);
+      transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+    }
+
+    .country-card:hover {
+      transform:translateY(-7px);
+      border-color:rgba(255,250,240,.28);
+      box-shadow:0 26px 65px rgba(0,0,0,.24);
+    }
+
+    .country-code {
+      display:inline-grid;
+      place-items:center;
+      width:46px;
+      height:46px;
+      border-radius:16px;
+      margin-bottom:26px;
+      font-size:.78rem;
+      font-weight:950;
+      letter-spacing:.08em;
+      color:#06111a;
+    }
+
+    .country-card:nth-child(1) .country-code {
+      background:linear-gradient(135deg,var(--emerald),var(--cyan));
+    }
+    .country-card:nth-child(2) .country-code {
+      background:linear-gradient(135deg,var(--coral),var(--gold));
+    }
+    .country-card:nth-child(3) .country-code {
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+    }
+    .country-card:nth-child(4) .country-code {
+      background:linear-gradient(135deg,var(--violet),var(--blue));
+    }
+
+    .country-card h3 {
+      font-size:1.28rem;
+      margin-bottom:8px;
+    }
+
+    .country-card p {
+      color:rgba(255,250,240,.58);
+      font-size:.91rem;
+    }
+
+    .eco-item,
+    .work-card,
+    .contact-panel,
+    .contact-email {
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+    }
+
+    .eco-item {
+      position:relative;
+      overflow:hidden;
+    }
+
+    .eco-item:before {
+      content:"";
+      position:absolute;
+      inset:0 auto 0 0;
+      width:3px;
+      opacity:.78;
+      background:linear-gradient(var(--cyan),var(--blue));
+    }
+
+    .eco-item:nth-child(2n):before {
+      background:linear-gradient(var(--blue),var(--violet));
+    }
+
+    .eco-item:nth-child(3n):before {
+      background:linear-gradient(var(--gold),var(--coral));
+    }
+
+    .work-card:nth-child(2) {
+      background:
+        radial-gradient(circle at 88% 10%,rgba(89,240,228,.17),transparent 38%),
+        rgba(255,255,255,.055);
+    }
+
+    .work-card:nth-child(3) {
+      background:
+        radial-gradient(circle at 88% 10%,rgba(242,200,121,.14),transparent 38%),
+        rgba(255,255,255,.055);
+    }
+
+    .contact-panel {
+      background:
+        radial-gradient(circle at 90% 8%,rgba(89,240,228,.16),transparent 34%),
+        radial-gradient(circle at 12% 88%,rgba(111,168,255,.12),transparent 38%),
+        linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.03));
+    }
+
+    .contact-email:first-child {
+      border-color:rgba(89,240,228,.22);
+    }
+
+    .contact-email:last-child {
+      border-color:rgba(111,168,255,.22);
+    }
+
+    .footer {
+      padding:50px 0 28px;
+      background:
+        linear-gradient(180deg,rgba(7,13,23,.18),rgba(5,10,18,.92));
+      border-top:1px solid rgba(255,250,240,.12);
+    }
+
+    .footer-main {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:46px;
+      align-items:start;
+      padding-bottom:34px;
+    }
+
+    .footer-statement {
+      color:rgba(255,250,240,.62);
+      max-width:560px;
+      margin-top:16px;
+    }
+
+    .footer-region {
+      justify-self:end;
+      max-width:520px;
+    }
+
+    .footer-label {
+      color:var(--cyan);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:.72rem;
+      font-weight:900;
+      margin-bottom:12px;
+    }
+
+    .footer-countries {
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+    }
+
+    .footer-countries span {
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,250,240,.13);
+      background:rgba(255,255,255,.045);
+      color:rgba(255,250,240,.78);
+      font-size:.84rem;
+      font-weight:760;
+    }
+
+    .footer-bottom {
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      padding-top:24px;
+      border-top:1px solid rgba(255,250,240,.09);
+      color:rgba(255,250,240,.42);
+      font-size:.9rem;
+    }
+
+    @media (max-width:900px) {
+      .regional-top,
+      .footer-main {
+        grid-template-columns:1fr;
+      }
+
+      .country-grid {
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-region {
+        justify-self:start;
+      }
+    }
+
+    @media (max-width:600px) {
+      .country-grid {
+        grid-template-columns:1fr;
+      }
+
+      .country-card {
+        min-height:auto;
+      }
+    }
+
   </style>
 </head>
 
@@ -869,6 +1245,7 @@
       </button>
 
       <nav class="menu" aria-label="Menu principal">
+        <a href="#presenca">Presença</a>
         <a href="#ecosistema">Ecossistema</a>
         <a href="#trabalho">Trabalho</a>
         <a href="#metodo">Método</a>
@@ -881,7 +1258,7 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Digital Public Infrastructure · Governação · Sistemas</p>
+          <p class="eyebrow">Guiné-Bissau · Angola · Cabo Verde · São Tomé e Príncipe</p>
 
           <h1>
             RESOLVER<br>
@@ -890,8 +1267,9 @@
           </h1>
 
           <p class="lead">
-            A DevNexus Digital trabalha no desenho, integração e sustentação do ecossistema de transformação digital:
-            DPI, dados, interoperabilidade, serviços públicos, educação, saúde, eleições e modernização administrativa.
+            A DevNexus Digital trabalha no desenho, integração e sustentação do ecossistema de transformação digital
+            em <strong>Guiné-Bissau, Angola, Cabo Verde e São Tomé e Príncipe</strong>: DPI, dados,
+            interoperabilidade, serviços públicos, educação, saúde, eleições e modernização administrativa.
           </p>
 
           <div class="actions">
@@ -906,6 +1284,8 @@
             <span>GovCloud</span>
             <span>SIGE</span>
             <span>Cibersegurança</span>
+            <span>África Atlântica</span>
+            <span>Capacidade Nacional</span>
           </div>
         </div>
 
@@ -929,6 +1309,52 @@
       <div class="marquee-track">
         <span>Identidade Digital</span><span>Registos</span><span>Pagamentos Digitais</span><span>Interoperabilidade</span><span>Governação de Dados</span><span>Cibersegurança</span><span>Serviços Públicos Digitais</span><span>Educação</span><span>Saúde</span><span>Eleições</span><span>GovCloud</span><span>Procurement</span>
         <span>Identidade Digital</span><span>Registos</span><span>Pagamentos Digitais</span><span>Interoperabilidade</span><span>Governação de Dados</span><span>Cibersegurança</span><span>Serviços Públicos Digitais</span><span>Educação</span><span>Saúde</span><span>Eleições</span><span>GovCloud</span><span>Procurement</span>
+      </div>
+    </section>
+
+
+    <section class="regional-section" id="presenca">
+      <div class="wrap">
+        <div class="regional-panel reveal">
+          <div class="regional-top">
+            <div>
+              <p class="kicker">Presença regional</p>
+              <h2 class="regional-title">Conhecimento local. Visão regional.</h2>
+            </div>
+            <p class="regional-copy">
+              A DevNexus Digital actua no espaço africano de língua portuguesa, articulando estratégia,
+              arquitectura institucional e implementação em contextos administrativos distintos.
+              A experiência acumulada permite adaptar soluções às instituições, às capacidades nacionais
+              e às prioridades de cada país.
+            </p>
+          </div>
+
+          <div class="country-grid">
+            <article class="country-card reveal">
+              <span class="country-code">GW</span>
+              <h3>Guiné-Bissau</h3>
+              <p>Governação digital, interoperabilidade, dados, serviços públicos e infra-estruturas digitais.</p>
+            </article>
+
+            <article class="country-card reveal">
+              <span class="country-code">AO</span>
+              <h3>Angola</h3>
+              <p>Modernização institucional, digitalização de processos e apoio à transformação do sector público.</p>
+            </article>
+
+            <article class="country-card reveal">
+              <span class="country-code">CV</span>
+              <h3>Cabo Verde</h3>
+              <p>Finanças públicas, saúde, educação, eleições, plataformas nacionais e serviços digitais.</p>
+            </article>
+
+            <article class="country-card reveal">
+              <span class="country-code">ST</span>
+              <h3>São Tomé e Príncipe</h3>
+              <p>Educação digital, sistemas de gestão, capacitação nacional e implementação faseada.</p>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -966,7 +1392,7 @@
             <h2 class="section-title">Da ideia bonita ao sistema que aguenta.</h2>
           </div>
           <p class="section-intro">
-            O foco é transformar intenção política em arquitectura, requisitos, contratação, implementação e operação real.
+            O foco é transformar intenção política em arquitectura, requisitos, contratação, implementação e operação real, ajustadas ao contexto institucional de cada país.
           </p>
         </div>
 
@@ -1058,12 +1484,34 @@
   </main>
 
 <footer class="footer">
-    <div class="wrap foot">
-      <div class="brand">
-        <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
-        <span>Dev<span>Nexus</span> Digital</span>
+    <div class="wrap">
+      <div class="footer-main">
+        <div>
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true"><b></b><i></i><i></i></span>
+            <span>Dev<span>Nexus</span> Digital</span>
+          </div>
+          <p class="footer-statement">
+            Consultoria e implementação em transformação digital institucional, com experiência regional
+            em estratégia, sistemas públicos, dados, interoperabilidade e capacitação.
+          </p>
+        </div>
+
+        <div class="footer-region">
+          <p class="footer-label">Âmbito de actuação</p>
+          <div class="footer-countries">
+            <span>Guiné-Bissau</span>
+            <span>Angola</span>
+            <span>Cabo Verde</span>
+            <span>São Tomé e Príncipe</span>
+          </div>
+        </div>
       </div>
-      <p>© 2026 DevNexus Digital · Transformação digital com visão institucional.</p>
+
+      <div class="footer-bottom">
+        <p>© 2026 DevNexus Digital · Transformação digital com visão institucional.</p>
+        <p>África Atlântica · Soluções adaptadas ao contexto nacional.</p>
+      </div>
     </div>
   </footer>
 
