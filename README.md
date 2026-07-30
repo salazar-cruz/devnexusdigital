@@ -32,3 +32,8 @@ Primeira versão numerada desta nova linha do site, incluindo:
 - identidade visual premium;
 - contactos directos por email;
 - cubo interactivo com manipulação por rato e toque.
+
+## Correcção 3.1.1
+
+Foi removido um bloco JavaScript antigo e duplicado que impedia o carregamento do site.
+O código do cubo interactivo foi validado com o verificador de sintaxe do Node.js.

@@ -757,14 +757,19 @@
     }
 
     .reveal {
-      opacity:0;
-      transform:translateY(34px);
-      transition:opacity .85s ease, transform .85s ease;
+      opacity:1;
+      transform:none;
+      animation:revealIn .72s ease both;
     }
 
     .reveal.visible {
       opacity:1;
-      transform:translateY(0);
+      transform:none;
+    }
+
+    @keyframes revealIn {
+      from { opacity:0; transform:translateY(18px); }
+      to { opacity:1; transform:none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1315,6 +1320,14 @@
 </head>
 
 <body>
+  <noscript>
+    <div style="position:fixed;inset:0;z-index:99999;display:grid;place-items:center;padding:30px;background:#0b1322;color:#fffaf0;font-family:system-ui;text-align:center">
+      <div>
+        <h1 style="margin-bottom:14px">DevNexus Digital</h1>
+        <p>Este site necessita de JavaScript para apresentar as animações e elementos interactivos.</p>
+      </div>
+    </div>
+  </noscript>
   <header class="header">
     <div class="wrap nav">
       <a class="brand" href="#inicio" aria-label="DevNexus Digital">
@@ -1999,10 +2012,6 @@
       requestAnimationFrame(animate);
     }
 
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-    requestAnimationFrame(drawRubik);
-    }
   </script>
 </body>
 </html>
